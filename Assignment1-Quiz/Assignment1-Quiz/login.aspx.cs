@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -13,12 +14,20 @@ namespace Assignment1_Quiz
         {
             if (!IsPostBack)
             {
+                string path = Server.MapPath("Nationalities.txt");
+                string[] readFile = File.ReadAllLines(path);
+
+                for (int i = 0; i < readFile.Length; i++)
+                {
+                    lstNationalities.Items.Add(new ListItem(readFile[i], readFile[i]));
+                }
+
                 if (Request.Cookies["user"] != null)
                 {
                     tbxFName.Text = Request.Cookies["user"]["Firstname"];
                     tbxLName.Text = Request.Cookies["user"]["Lastname"];
                     tbxEmail.Text = Request.Cookies["user"]["Email"];
-                    lstCountries.SelectedValue = Request.Cookies["user"]["Nationality"];
+                    lstNationalities.SelectedValue = Request.Cookies["user"]["Nationality"];
                 }
             }
         }
@@ -33,7 +42,7 @@ namespace Assignment1_Quiz
                     user["Firstname"] = tbxFName.Text;
                     user["Lastname"] = tbxLName.Text;
                     user["Email"] = tbxEmail.Text;
-                    user["Nationality"] = lstCountries.SelectedValue;
+                    user["Nationality"] = lstNationalities.SelectedValue;
 
                     user.Expires = DateTime.Now.AddYears(1);
                     Response.Cookies.Add(user);

@@ -40,7 +40,7 @@ namespace Assignment1_Quiz
             //Add quiz dropdown list
             for (int i = 0; i < quizCurrentList.Count; i++)
             {
-                lstQuizSelect.Items.Add(quizCurrentList.ElementAt(i)._quizName);
+                lstQuizSelect.Items.Add(new ListItem(quizCurrentList.ElementAt(i)._quizName, quizCurrentList.ElementAt(i)._quizID));
             }
         }
 
@@ -53,10 +53,11 @@ namespace Assignment1_Quiz
             string[] readFile = File.ReadAllLines(path);
             string[] splitLine;
 
+
             for (int i = 0; i < readFile.Length; i++)
             {
                 splitLine = readFile[i].Split(',');
-                if (splitLine[0] == quizCurrentList.ElementAt(i)._quizID.ToString())
+                if (splitLine[0] == lstQuizSelect.SelectedValue)
                 {
                     question = new QuizQuestions(splitLine[1], splitLine[2], splitLine[3], splitLine[4], splitLine[5], splitLine[6]);
                     questions.Add(question);
@@ -64,7 +65,7 @@ namespace Assignment1_Quiz
             }
 
             Session.Add("selectedQuiz", quizCurrentList.ElementAt(lstQuizSelect.SelectedIndex));
-            Response.Redirect("question1.aspx");
+            //Response.Redirect("question1.aspx");
         }
     }
 }

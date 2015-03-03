@@ -10,6 +10,6 @@
         <asp:Button ID="btnPopCat" Text="Pop Culture" runat="server" />
         <asp:Button ID="btnMovieCat" Text="Movies" runat="server" />
         <asp:DropDownList ID="lstQuizSelect" runat="server"></asp:DropDownList>
-        <asp:Button ID="startQuiz" Text="Start Quiz" runat="server" OnClick="startQuiz_Click"/>
+        <asp:Button ID="startQuiz" Text="Start Quiz" runat="server" OnClick="startQuiz_Click" />
     </div><!--End content-->
 </asp:Content>
