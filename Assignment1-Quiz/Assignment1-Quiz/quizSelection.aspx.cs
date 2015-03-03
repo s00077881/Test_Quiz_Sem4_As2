@@ -18,13 +18,12 @@ namespace Assignment1_Quiz
 
         }
 
-        protected void btnSportCat_Click(object sender, EventArgs e)
+        protected void btnCat_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
             Quiz quiz;
 
-            string path = Server.MapPath("Quizzes.txt");
-            string[] readFile = File.ReadAllLines(path);
+            string[] readFile = File.ReadAllLines(Server.MapPath("Quizzes.txt"));
             string[] splitLine;
 
             for (int i = 0; i < readFile.Length; i++)
@@ -36,6 +35,8 @@ namespace Assignment1_Quiz
                     quizCurrentList.Add(quiz);
                 }
             }
+
+            lstQuizSelect.Items.Clear();
 
             //Add quiz dropdown list
             for (int i = 0; i < quizCurrentList.Count; i++)
@@ -49,8 +50,7 @@ namespace Assignment1_Quiz
             List<QuizQuestions> questions = new List<QuizQuestions>();
 
             QuizQuestions question;
-            string path = Server.MapPath("QuizQuestions.txt");
-            string[] readFile = File.ReadAllLines(path);
+            string[] readFile = File.ReadAllLines(Server.MapPath("QuizQuestions.txt"));
             string[] splitLine;
 
 
@@ -64,8 +64,8 @@ namespace Assignment1_Quiz
                 }
             }
 
-            Session.Add("selectedQuiz", quizCurrentList.ElementAt(lstQuizSelect.SelectedIndex));
-            //Response.Redirect("question1.aspx");
+            Session.Add("questions", questions);
+            Response.Redirect("question1.aspx");
         }
     }
 }

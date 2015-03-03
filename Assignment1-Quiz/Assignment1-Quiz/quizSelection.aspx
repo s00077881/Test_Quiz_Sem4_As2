@@ -5,8 +5,8 @@
 
     <div id="content">
 
-        <asp:Button ID="btnSportCat" Text="Sports" CssClass="test" runat="server" />
-        <asp:Button ID="btnGeneralCat" Text="General Knowledge" runat="server" OnClick="btnSportCat_Click"/>
+        <asp:Button ID="btnSportCat" Text="Sports" CssClass="test" runat="server" OnClick="btnCat_Click"/>
+        <asp:Button ID="btnGeneralCat" Text="General Knowledge" runat="server" OnClick="btnCat_Click"/>
         <asp:Button ID="btnPopCat" Text="Pop Culture" runat="server" />
         <asp:Button ID="btnMovieCat" Text="Movies" runat="server" />
         <asp:DropDownList ID="lstQuizSelect" runat="server"></asp:DropDownList>

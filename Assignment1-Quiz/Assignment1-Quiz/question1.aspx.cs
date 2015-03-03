@@ -12,6 +12,8 @@ namespace Assignment1_Quiz
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            List<QuizQuestions> questions = (List<QuizQuestions>)Session["questions"];
+            testOut.Text = questions.ElementAt(0)._question.ToString();
         }
     }
 }
