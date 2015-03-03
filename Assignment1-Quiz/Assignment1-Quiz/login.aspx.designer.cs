@@ -22,6 +22,15 @@ namespace Assignment1_Quiz {
         protected global::System.Web.UI.WebControls.TextBox tbxFName;
         
         /// <summary>
+        /// rfvFName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvFName;
+        
+        /// <summary>
         /// tbxLName control.
         /// </summary>
         /// <remarks>
@@ -29,6 +38,15 @@ namespace Assignment1_Quiz {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbxLName;
+        
+        /// <summary>
+        /// rfvLName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvLName;
         
         /// <summary>
         /// tbxEmail control.
@@ -40,6 +58,24 @@ namespace Assignment1_Quiz {
         protected global::System.Web.UI.WebControls.TextBox tbxEmail;
         
         /// <summary>
+        /// rfvEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvEmail;
+        
+        /// <summary>
+        /// revEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revEmail;
+        
+        /// <summary>
         /// lstCountries control.
         /// </summary>
         /// <remarks>
@@ -47,6 +83,15 @@ namespace Assignment1_Quiz {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList lstCountries;
+        
+        /// <summary>
+        /// rfvNationality control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNationality;
         
         /// <summary>
         /// chkRemember control.
