@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.IO;
 
 namespace Assignment1_Quiz
 {
@@ -16,14 +19,15 @@ namespace Assignment1_Quiz
 
         public Quiz(string id, string name, string cat)
         {
+            _quizID = id;
             _quizName = name;
             _quizCategory = cat;
             //_quizQuestions = GetQuizQuestions();
         }
 
-        //public string GetQuizQuestions()
+        //public List<string> GetQuizQuestions()
         //{
-        //    return;
+        //    return "";
         //}
     }
 }

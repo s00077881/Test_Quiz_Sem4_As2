@@ -11,20 +11,11 @@ namespace Assignment1_Quiz
     public partial class quizSelection : System.Web.UI.Page
     {
         //List of currently loaded quizzes // Populate from text file "Quizzes.txt"
-        public List<Quiz> QuizCurrentList = new List<Quiz>();
+        public List<Quiz> quizCurrentList = new List<Quiz>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
 
-        }
-
-        protected void PullCat(object sender, EventArgs e)
-        {
-        }
-
-        private void ReadTextFile(string p)
-        {
-            throw new NotImplementedException();
         }
 
         protected void btnSportCat_Click(object sender, EventArgs e)
@@ -42,14 +33,38 @@ namespace Assignment1_Quiz
                 if (splitLine[2] == btn.Text)
                 {
                     quiz = new Quiz(splitLine[0], splitLine[1], splitLine[2]);
-                    QuizCurrentList.Add(quiz);
+                    quizCurrentList.Add(quiz);
                 }
             }
 
-            for (int i = 0; i < QuizCurrentList.Count; i++)
+            //Add quiz dropdown list
+            for (int i = 0; i < quizCurrentList.Count; i++)
             {
-                lstQuizSelect.Items.Add(QuizCurrentList.ElementAt(i)._quizName);
+                lstQuizSelect.Items.Add(quizCurrentList.ElementAt(i)._quizName);
             }
+        }
+
+        protected void startQuiz_Click(object sender, EventArgs e)
+        {
+            List<QuizQuestions> questions = new List<QuizQuestions>();
+
+            QuizQuestions question;
+            string path = Server.MapPath("QuizQuestions.txt");
+            string[] readFile = File.ReadAllLines(path);
+            string[] splitLine;
+
+            for (int i = 0; i < readFile.Length; i++)
+            {
+                splitLine = readFile[i].Split(',');
+                if (splitLine[0] == quizCurrentList.ElementAt(i)._quizID.ToString())
+                {
+                    question = new QuizQuestions(splitLine[1], splitLine[2], splitLine[3], splitLine[4], splitLine[5], splitLine[6]);
+                    questions.Add(question);
+                }
+            }
+
+            Session.Add("selectedQuiz", quizCurrentList.ElementAt(lstQuizSelect.SelectedIndex));
+            Response.Redirect("question1.aspx");
         }
     }
 }
