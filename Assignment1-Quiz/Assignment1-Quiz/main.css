@@ -1,18 +1,73 @@
-﻿body {
-    margin:0px;
-    padding:0px;
+﻿/**********master page***********
+********************************/
+
+body {
+    margin-left:0px; margin-top:0px; margin-right:0px; margin-bottom:0px;
+    padding:0;
+    border:0;
+    background-color:#1abc9c;
 }
+
 
 header{
     width:100%;
     height:60px;
-    background-color:#27ae60;
+    background-color:#16a085;
+    margin:0px;
     padding:0px;
-    margin-top:0px;
 }
 
+#wrapper{
+    width:960px;
+    height:auto;
+    margin:auto;
+}
+
+/*nav*/
 #headWrap{
     width:960px;
     height:60px;
-    margin:auto;
+    margin:0 auto;
 }
+
+#headwrap ul{
+    width:100%;
+    float:left;
+}
+
+#headWrap li {
+    display: inline;
+    text-decoration: none;
+    margin-right: 30px;
+    font-family: Verdana;
+    font-size: 16px;
+}
+
+/*Page Footer*/
+#mainFoot{
+    width:100%;
+    height:60px;
+    background-color:#16a085;
+}
+
+
+/********end master page*********
+********************************/
+
+
+/*****quiz selection page********
+********************************/
+
+#content{
+    width:100%;
+    height:500px;
+}
+
+#catBlock{
+    width:20%;
+    float:left;
+}
+
+
+/*****end quiz selection page****
+********************************/

@@ -6,13 +6,13 @@
 <head runat="server">
     <title></title>
 
+    <link rel="stylesheet" type="text/css" href="reset.css" />
     <link rel="stylesheet" type="text/css" href="main.css" />
 
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
-
     <header>
         <div id="headWrap">
             <ul>
@@ -22,12 +22,17 @@
         </div>
     </header>
 
-    <form id="form1" runat="server">
-    <div>
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-        
-        </asp:ContentPlaceHolder>
-    </div>
-    </form>
+    <div id="wrapper">
+        <form id="form1" runat="server">
+   
+            <asp:ContentPlaceHolder ID="mainContentBlock" runat="server">
+            
+            </asp:ContentPlaceHolder>
+    
+        </form>
+
+        <footer id="mainFoot"></footer>
+
+    </div><!--End wrapper-->
 </body>
 </html>
