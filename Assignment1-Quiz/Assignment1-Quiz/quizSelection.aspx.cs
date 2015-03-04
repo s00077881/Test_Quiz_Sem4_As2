@@ -66,7 +66,26 @@ namespace Assignment1_Quiz
             }
 
             Session.Add("questions", questions);
+            Session.Add("quesAnswered", RandomArray());
             Response.Redirect("question1.aspx");
+        }
+
+        protected List<int> RandomArray()
+        {
+            List<int> quesAnswered = new List<int>();
+            Random rnd = new Random();
+            int num;
+
+            while (quesAnswered.Count < 6)
+            {
+                num = rnd.Next(0, 6);
+
+                if (!quesAnswered.Contains(num))
+                    quesAnswered.Add(num);
+
+            }
+
+            return quesAnswered;
         }
     }
 }

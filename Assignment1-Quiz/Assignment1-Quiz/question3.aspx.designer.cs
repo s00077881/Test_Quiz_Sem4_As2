@@ -10,7 +10,7 @@
 namespace Assignment1_Quiz {
     
     
-    public partial class question1 {
+    public partial class question3 {
         
         /// <summary>
         /// lblQuestion control.
@@ -29,6 +29,15 @@ namespace Assignment1_Quiz {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList lstAnswers;
+        
+        /// <summary>
+        /// btnPrevQuestion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnPrevQuestion;
         
         /// <summary>
         /// btnNextQuestion control.
