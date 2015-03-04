@@ -20,6 +20,36 @@
     color: #f8f8f8;
 }
 
+.formHolder{
+    padding:0px;
+}
+
+.spacer{
+    margin-top:10px;
+}
+
+navbar-default-toggle-icon-bar-bg {
+  color:#fff;
+}
+
+h3{
+    margin-top:10px;
+    font-size:18px;
+}
+
+h2{
+    font-size:24px;
+}
+
+#dropButton{
+    cursor: pointer;
+}
+
+.label-default {
+  background-color:#607D8B;
+}
+    
+
 
 /********end master page*********
 ********************************/
