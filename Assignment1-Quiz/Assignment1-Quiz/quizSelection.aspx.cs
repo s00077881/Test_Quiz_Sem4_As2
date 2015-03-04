@@ -15,12 +15,13 @@ namespace Assignment1_Quiz
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //Page.MaintainScrollPositionOnPostBack = true;
         }
 
         protected void btnCat_Click(object sender, EventArgs e)
         {
-            Button btn = (Button)sender;
+            //Button 
+            ImageButton btn = (ImageButton)sender;
             Quiz quiz;
 
             string[] readFile = File.ReadAllLines(Server.MapPath("Quizzes.txt"));
@@ -29,7 +30,7 @@ namespace Assignment1_Quiz
             for (int i = 0; i < readFile.Length; i++)
             {
                 splitLine = readFile[i].Split(',');
-                if (splitLine[2] == btn.Text)
+                if (splitLine[2] == btn.AlternateText)
                 {
                     quiz = new Quiz(splitLine[0], splitLine[1], splitLine[2]);
                     quizCurrentList.Add(quiz);

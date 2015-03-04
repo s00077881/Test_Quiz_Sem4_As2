@@ -4,12 +4,29 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="mainContentBlock" runat="server">
 
     <div id="content">
-
-        <asp:Button ID="btnSportCat" Text="Sports" CssClass="test" runat="server" OnClick="btnCat_Click"/>
-        <asp:Button ID="btnGeneralCat" Text="General Knowledge" runat="server" OnClick="btnCat_Click"/>
-        <asp:Button ID="btnPopCat" Text="Pop Culture" runat="server" />
-        <asp:Button ID="btnMovieCat" Text="Movies" runat="server" />
-        <asp:DropDownList ID="lstQuizSelect" runat="server"></asp:DropDownList>
-        <asp:Button ID="startQuiz" Text="Start Quiz" runat="server" OnClick="startQuiz_Click" />
+        <div class="col-md-3 col-sm-6 col-xs-6 ">
+            <label>General Knowledge</label>
+            <asp:ImageButton ID="btnGeneralCat" CssClass="img-responsive" runat="server" AlternateText="General Knowledge" ImageUrl="~/images/general.png" OnClick="btnCat_Click" />
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-6">
+            <label>Movies</label>
+            <asp:ImageButton ID="btnMovieCat" CssClass="img-responsive" runat="server" AlternateText="Movies" ImageUrl="~/images/movie.png" OnClick="btnCat_Click" />
+        </div>
+        <div class="col-md-3  col-sm-6 col-xs-6">
+            <label>Music</label>
+            <asp:ImageButton ID="btnMusicCat1" CssClass="img-responsive" runat="server" AlternateText="Music" ImageUrl="~/images/music.png" OnClick="btnCat_Click" />
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-6">
+            <label>Sports</label>
+            <asp:ImageButton ID="btnSportCat" CssClass="img-responsive" runat="server" AlternateText="Sports" ImageUrl="~/images/sport.png" OnClick="btnCat_Click"/>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-6 col-xs-12">
+                <asp:DropDownList ID="lstQuizSelect" CssClass="form-control" runat="server"></asp:DropDownList>
+                <asp:Button ID="startQuiz" Text="Start Quiz" runat="server" OnClick="startQuiz_Click" />
+            </div>
+        </div>
+        
+        
     </div><!--End content-->
 </asp:Content>

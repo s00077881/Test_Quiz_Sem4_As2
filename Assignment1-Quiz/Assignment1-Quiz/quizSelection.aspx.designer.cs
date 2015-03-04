@@ -13,31 +13,13 @@ namespace Assignment1_Quiz {
     public partial class quizSelection {
         
         /// <summary>
-        /// btnSportCat control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSportCat;
-        
-        /// <summary>
         /// btnGeneralCat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGeneralCat;
-        
-        /// <summary>
-        /// btnPopCat control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPopCat;
+        protected global::System.Web.UI.WebControls.ImageButton btnGeneralCat;
         
         /// <summary>
         /// btnMovieCat control.
@@ -46,7 +28,25 @@ namespace Assignment1_Quiz {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnMovieCat;
+        protected global::System.Web.UI.WebControls.ImageButton btnMovieCat;
+        
+        /// <summary>
+        /// btnMusicCat1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton btnMusicCat1;
+        
+        /// <summary>
+        /// btnSportCat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton btnSportCat;
         
         /// <summary>
         /// lstQuizSelect control.

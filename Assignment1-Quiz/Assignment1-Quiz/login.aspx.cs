@@ -14,8 +14,7 @@ namespace Assignment1_Quiz
         {
             if (!IsPostBack)
             {
-                string path = Server.MapPath("Nationalities.txt");
-                string[] readFile = File.ReadAllLines(path);
+                string[] readFile = File.ReadAllLines(Server.MapPath("Nationalities.txt"));
 
                 for (int i = 0; i < readFile.Length; i++)
                 {
