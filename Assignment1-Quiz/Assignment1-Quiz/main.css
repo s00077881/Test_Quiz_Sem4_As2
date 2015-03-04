@@ -4,11 +4,16 @@
     background-color:#607D8B;
 }
 
-.navbar-default {
-    background-color: #0f006f;
-    border-color: #030033;
+.navbar-default .navbar-nav>li>a:hover {
+  color: #707070;
+}
+.navbar-default .navbar-nav>li>a {
+  color: #fff;
 }
 
+.navbar-default .navbar-brand {
+    color: #f8f8f8;
+}
 
 
 
