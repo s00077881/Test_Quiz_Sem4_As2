@@ -7,19 +7,19 @@
         <div class="col-xs-12"><h2><span class="label label-default">Select Category</span></h2></div>
         <div class="col-md-3 col-sm-6 col-xs-6 ">
             <h3><span class="label label-default">General Knowledge</span></h3>
-            <asp:ImageButton ID="btnGeneralCat" CssClass="img-responsive" runat="server" AlternateText="General Knowledge" ImageUrl="~/images/general.png" OnClick="btnCat_Click" />
+            <asp:ImageButton ID="btnGeneralCat" CssClass="img-responsive hvr-wobble-vertical" runat="server" AlternateText="General Knowledge" ImageUrl="~/images/general.png" OnClick="btnCat_Click" />
         </div>
         <div class="col-md-3 col-sm-6 col-xs-6">
             <h3><span class="label label-default">Movies</span></h3>
-            <asp:ImageButton ID="btnMovieCat" CssClass="img-responsive" runat="server" AlternateText="Movies" ImageUrl="~/images/movie.png" OnClick="btnCat_Click" />
+            <asp:ImageButton ID="btnMovieCat" CssClass="img-responsive hvr-wobble-vertical" runat="server" AlternateText="Movies" ImageUrl="~/images/movie.png" OnClick="btnCat_Click" />
         </div>
         <div class="col-md-3  col-sm-6 col-xs-6">
             <h3><span class="label label-default">Music</span></h3>
-            <asp:ImageButton ID="btnMusicCat1" CssClass="img-responsive" runat="server" AlternateText="Music" ImageUrl="~/images/music.png" OnClick="btnCat_Click" />
+            <asp:ImageButton ID="btnMusicCat1" CssClass="img-responsive hvr-wobble-vertical" runat="server" AlternateText="Music" ImageUrl="~/images/music.png" OnClick="btnCat_Click" />
         </div>
         <div class="col-md-3 col-sm-6 col-xs-6">
             <h3><span class="label label-default">Sports</span></h3>
-            <asp:ImageButton ID="btnSportCat" CssClass="img-responsive" runat="server" AlternateText="Sports" ImageUrl="~/images/sport.png" OnClick="btnCat_Click"/>
+            <asp:ImageButton ID="btnSportCat" CssClass="img-responsive hvr-wobble-vertical" runat="server" AlternateText="Sports" ImageUrl="~/images/sport.png" OnClick="btnCat_Click"/>
         </div>
         <div class="col-md-12 formHolder">
             <div id="selectQuiz" class="col-md-6 col-xs-12"><!--LeftColumn-->
