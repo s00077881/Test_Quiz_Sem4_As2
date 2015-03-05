@@ -5,35 +5,44 @@
 
     <div id="content">
         <div class="col-xs-12"><h2><span class="label label-default">Select Category</span></h2></div>
+
         <div class="col-md-3 col-sm-6 col-xs-6 ">
             <h3><span class="label label-default">General Knowledge</span></h3>
             <asp:ImageButton ID="btnGeneralCat" CssClass="img-responsive hvr-wobble-vertical" runat="server" AlternateText="General Knowledge" ImageUrl="~/images/general.png" OnClick="btnCat_Click" />
         </div>
+
         <div class="col-md-3 col-sm-6 col-xs-6">
             <h3><span class="label label-default">Movies</span></h3>
             <asp:ImageButton ID="btnMovieCat" CssClass="img-responsive hvr-wobble-vertical" runat="server" AlternateText="Movies" ImageUrl="~/images/movie.png" OnClick="btnCat_Click" />
         </div>
+
         <div class="col-md-3  col-sm-6 col-xs-6">
             <h3><span class="label label-default">Music</span></h3>
             <asp:ImageButton ID="btnMusicCat1" CssClass="img-responsive hvr-wobble-vertical" runat="server" AlternateText="Music" ImageUrl="~/images/music.png" OnClick="btnCat_Click" />
         </div>
+
         <div class="col-md-3 col-sm-6 col-xs-6">
             <h3><span class="label label-default">Sports</span></h3>
             <asp:ImageButton ID="btnSportCat" CssClass="img-responsive hvr-wobble-vertical" runat="server" AlternateText="Sports" ImageUrl="~/images/sport.png" OnClick="btnCat_Click"/>
         </div>
+
         <div class="col-md-12 formHolder">
             <div id="selectQuiz" class="col-md-6 col-xs-12"><!--LeftColumn-->
                 <h2><span class="label label-default">Select Quiz</span></h2>
                 <asp:DropDownList ID="lstQuizSelect" CssClass="form-control" runat="server"></asp:DropDownList>
-                <asp:Button ID="startQuiz" CssClass="btn" Text="Start Quiz" runat="server" OnClick="startQuiz_Click" />
+                <asp:Button ID="startQuiz" CssClass="btn spacer" Text="Start Quiz" runat="server" OnClick="startQuiz_Click" />
             </div><!--EndLeftColumn-->
+
             <div class="col-md-6 col-xs-12"><!--RightColumn-->
                 <h2 id="dropButton"><span class="label label-default">Create Quiz</span></h2>
+
                 <div id="rightColumnDrop">
+
                     <div class="spacer">
                         <h3><span class="label label-default">Quiz Name</span></h3>
-                        <asp:TextBox ID="tbxCreateName" CssClass="form-control " runat="server"></asp:TextBox>
+                        <asp:TextBox ID="tbxCreateName" placeholder="Quiz Name" CssClass="form-control " runat="server"></asp:TextBox>
                     </div>
+
                     <div class="spacer">
                         <h3><span class="label label-default">Quiz Category</span></h3>
                         <asp:DropDownList ID="lstCat" CssClass="form-control " runat="server">
@@ -43,9 +52,10 @@
                             <asp:ListItem>Sports</asp:ListItem>
                         </asp:DropDownList>
                     </div>
+
                     <div class="spacer">
                         <h3><span class="label label-default">Select Question</span></h3>
-                        <asp:DropDownList ID="lstAddQuiz" CssClass="form-control " runat="server">
+                        <asp:DropDownList ID="lstAddQuiz" CssClass="form-control " runat="server" OnSelectedIndexChanged="lstAddQuiz_SelectedIndexChanged">
                             <asp:ListItem>Question 1</asp:ListItem>
                             <asp:ListItem>Question 2</asp:ListItem>
                             <asp:ListItem>Question 3</asp:ListItem>
@@ -54,25 +64,49 @@
                             <asp:ListItem>Question 6</asp:ListItem>
                         </asp:DropDownList>
                     </div>
-                    <div class="col-md-12 spacer formHolder">
-                        <div class="col-md-3 ">
+
+                    <div class="spacer">
+                        <h3><span class="label label-default">Enter Question</span></h3>
+                        <asp:TextBox ID="tbxEnterQuestion" CssClass="form-control " runat="server"></asp:TextBox>
+                    </div>
+
+                    <div class="spacer">
+                        <div class="col-md-6 ">
                             <h3><span class="label label-default">Option1</span></h3>
-                            <asp:TextBox ID="option1" CssClass="form-control col-md-3 formHolder" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="tbxOption1" CssClass="form-control col-md-3 formHolder" runat="server"></asp:TextBox>
                         </div>
-                        <div class="col-md-3">
+
+                        <div class="col-md-6">
                             <h3><span class="label label-default">Option2</span></h3>
-                            <asp:TextBox ID="option2" CssClass="form-control col-md-3 formHolder" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="tbxOption2" CssClass="form-control col-md-3 formHolder" runat="server"></asp:TextBox>
                         </div>
-                        <div class="col-md-3">
+
+                        <div class="col-md-6">
                             <h3><span class="label label-default">Option3</span></h3>
-                            <asp:TextBox ID="option3" CssClass="form-control col-md-3 formHolder" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="tbxOption3" CssClass="form-control col-md-3 formHolder" runat="server"></asp:TextBox>
                         </div>
-                        <div class="col-md-3">
+
+                        <div class="col-md-6">
                             <h3><span class="label label-default">Option4</span></h3>
-                            <asp:TextBox ID="option4" CssClass="form-control col-md-3 formHolder" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="tbxOption4" CssClass="form-control col-md-3 formHolder" runat="server"></asp:TextBox>
                         </div>
                     </div>
-                </div>
+
+                    <div class="col-md-6 spacer">
+                        <h3><span class="label label-default">Select Answer</span></h3>
+
+                        <asp:DropDownList ID="lstSelectAns" CssClass="form-control " runat="server">
+                            <asp:ListItem>Option 1</asp:ListItem>
+                            <asp:ListItem>Option 2</asp:ListItem>
+                            <asp:ListItem>Option 3</asp:ListItem>
+                            <asp:ListItem>Option 4</asp:ListItem>
+                        </asp:DropDownList>
+                    </div>
+
+                    <div class="spacer col-md-12">
+                        <asp:Button ID="btnAdQuiz" CssClass="btn" Text="Add Quiz" runat="server" OnClick="btnAdQuiz_Click" />
+                    </div>
+                </div><!--Right column Drop-->
             </div><!--EndRightColumn-->
         </div>
     </div><!--End content-->

@@ -21,5 +21,9 @@ namespace Assignment1_Quiz
             _quizCategory = cat;
         }
 
+        public string WriteFormat()
+        {
+            return string.Format("{0},{1},{2}",_quizID,_quizName,_quizCategory);
+        }
     }
 }

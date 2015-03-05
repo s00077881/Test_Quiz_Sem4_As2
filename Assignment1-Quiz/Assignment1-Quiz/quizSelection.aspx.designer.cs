@@ -94,39 +94,66 @@ namespace Assignment1_Quiz {
         protected global::System.Web.UI.WebControls.DropDownList lstAddQuiz;
         
         /// <summary>
-        /// option1 control.
+        /// tbxEnterQuestion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox option1;
+        protected global::System.Web.UI.WebControls.TextBox tbxEnterQuestion;
         
         /// <summary>
-        /// option2 control.
+        /// tbxOption1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox option2;
+        protected global::System.Web.UI.WebControls.TextBox tbxOption1;
         
         /// <summary>
-        /// option3 control.
+        /// tbxOption2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox option3;
+        protected global::System.Web.UI.WebControls.TextBox tbxOption2;
         
         /// <summary>
-        /// option4 control.
+        /// tbxOption3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox option4;
+        protected global::System.Web.UI.WebControls.TextBox tbxOption3;
+        
+        /// <summary>
+        /// tbxOption4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbxOption4;
+        
+        /// <summary>
+        /// lstSelectAns control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList lstSelectAns;
+        
+        /// <summary>
+        /// btnAdQuiz control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAdQuiz;
     }
 }
