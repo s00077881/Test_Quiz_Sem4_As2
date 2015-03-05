@@ -15,7 +15,6 @@ namespace Assignment1_Quiz
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Page.MaintainScrollPositionOnPostBack = true;
         }
 
         protected void btnCat_Click(object sender, EventArgs e)

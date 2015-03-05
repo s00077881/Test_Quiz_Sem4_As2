@@ -6,7 +6,7 @@
 <head runat="server">
     <title></title>
 
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="main.css" />
 
@@ -27,7 +27,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Quiz-ME</a>
+          <a class="navbar-brand" href="#">Quiz-M&Euml;</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -41,7 +41,7 @@
                 <li><a href="#">s00077881</a></li>
                 <li class="divider"></li>
                 <li><a href="#">Fergal Gaffeny</a></li>
-                <li><a href="#">s00000000</a></li>
+                <li><a href="#">s00147036</a></li>
                 <li class="divider"></li>
                 <li><a href="#">Web Dev & Creative</a></li>
               </ul>
