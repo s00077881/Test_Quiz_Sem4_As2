@@ -156,24 +156,13 @@ namespace Assignment1_Quiz
                 ClientScript.RegisterClientScriptBlock(GetType(), "IsPostBack", "var isPostBack = true;", true);
             }
 
-            string curQuestion = lstAddQuiz.SelectedValue;
             string[] options = { tbxEnterQuestion.Text,tbxOption1.Text, tbxOption2.Text, tbxOption3.Text, tbxOption4.Text, lstSelectAns.SelectedValue };
 
-            switch(curQuestion)
-            {
-                case "Question 1":
-                break;
-                case "Question 2":
-                break;
-                case "Question 3":
-                break;
-                case "Question 4":
-                break;
-                case "Question 5":
-                break;
-                case "Question 6":
-                break;
-            }
+            //Cant insert without goind out of range = give list a fixed width
+            //Question an answer reverded in pbject // Find out why
+
+            QuizQuestions curQues = new QuizQuestions(tbxEnterQuestion.Text, tbxOption1.Text, tbxOption2.Text, tbxOption3.Text, tbxOption4.Text, lstSelectAns.SelectedValue);
+            quizQ.Insert(lstCat.SelectedIndex, curQues);
         }
     }
 }

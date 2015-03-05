@@ -70,8 +70,8 @@
 
     <script>
 
+        //Drop down animation
         var isPostBack;
-
         $(document).ready(function () {
             $("#dropButton").click(function (e) {
                 $("#rightColumnDrop").slideToggle(800);

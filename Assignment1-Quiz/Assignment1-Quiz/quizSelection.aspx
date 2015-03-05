@@ -55,7 +55,7 @@
 
                     <div class="spacer">
                         <h3><span class="label label-default">Select Question</span></h3>
-                        <asp:DropDownList ID="lstAddQuiz" CssClass="form-control " runat="server" OnSelectedIndexChanged="lstAddQuiz_SelectedIndexChanged">
+                        <asp:DropDownList ID="lstAddQuiz" CssClass="form-control " runat="server" AutoPostBack="true" OnSelectedIndexChanged="lstAddQuiz_SelectedIndexChanged">
                             <asp:ListItem>Question 1</asp:ListItem>
                             <asp:ListItem>Question 2</asp:ListItem>
                             <asp:ListItem>Question 3</asp:ListItem>
