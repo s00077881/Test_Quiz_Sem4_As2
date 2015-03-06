@@ -4,9 +4,3 @@
 1,What name is given to a flock of geese on the ground?,Gaggle,Gargle,Giggle,Goggle,Gaggle
 1,Which of these colours does not appear on the Italian flag?,Green,Blue,Red,White,Blue
 1,The bobcat is native to which continent?,Asia,Europe,North America,South America,North America
-4,fdgbdfhbfd,hbfdbh,fdgbhgfdbhgf,dbhfgdbh,fdbhfdbh,Option 1
-4,fdgbdfhbfd,hbfdbh,fdgbhgfdbhgf,dbhfgdbh,fdbhfdbh,Option 1
-4,fdgbdfhbfd,hbfdbh,fdgbhgfdbhgf,dbhfgdbh,fdbhfdbh,Option 1
-4,fdgbdfhbfd,hbfdbh,fdgbhgfdbhgf,dbhfgdbh,fdbhfdbh,Option 1
-4,fdgbdfhbfd,hbfdbh,fdgbhgfdbhgf,dbhfgdbh,fdbhfdbh,Option 1
-4,fdgbdfhbfd,hbfdbh,fdgbhgfdbhgf,dbhfgdbh,fdbhfdbh,Option 1

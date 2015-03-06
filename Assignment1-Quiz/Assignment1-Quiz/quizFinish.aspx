@@ -25,4 +25,7 @@
     <asp:Label ID="lblQuestion6" runat="server" />
     <asp:RadioButtonList ID="lstAnswers6" Enabled="false" runat="server" />
 
+    <asp:Label ID="lblScore" runat="server" />
+    <asp:Label ID="lblTimeTaken" runat="server" />
+
 </asp:Content>

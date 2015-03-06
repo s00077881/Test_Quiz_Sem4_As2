@@ -21,12 +21,12 @@ namespace Assignment1_Quiz
                     lstNationalities.Items.Add(new ListItem(readFile[i], readFile[i]));
                 }
 
-                if (Request.Cookies["user"] != null)
+                if (Request.Cookies["s00147036/s00077881"] != null)
                 {
-                    tbxFName.Text = Request.Cookies["user"]["Firstname"];
-                    tbxLName.Text = Request.Cookies["user"]["Lastname"];
-                    tbxEmail.Text = Request.Cookies["user"]["Email"];
-                    lstNationalities.SelectedValue = Request.Cookies["user"]["Nationality"];
+                    tbxFName.Text = Request.Cookies["s00147036/s00077881"]["Firstname"];
+                    tbxLName.Text = Request.Cookies["s00147036/s00077881"]["Lastname"];
+                    tbxEmail.Text = Request.Cookies["s00147036/s00077881"]["Email"];
+                    lstNationalities.SelectedValue = Request.Cookies["s00147036/s00077881"]["Nationality"];
                 }
             }
         }
@@ -37,7 +37,7 @@ namespace Assignment1_Quiz
             {
                 if (chkRemember.Checked)
                 {
-                    HttpCookie user = new HttpCookie("user");
+                    HttpCookie user = new HttpCookie("s00147036/s00077881");
                     user["Firstname"] = tbxFName.Text;
                     user["Lastname"] = tbxLName.Text;
                     user["Email"] = tbxEmail.Text;

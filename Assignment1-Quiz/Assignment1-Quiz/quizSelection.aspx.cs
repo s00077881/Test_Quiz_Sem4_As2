@@ -64,6 +64,7 @@ namespace Assignment1_Quiz
                 }
             }
 
+            Session.Add("timeStart", DateTime.Now);
             Session.Add("questions", questions);
             Session.Add("quesAnswered", RandomArray());
             Response.Redirect("question1.aspx");

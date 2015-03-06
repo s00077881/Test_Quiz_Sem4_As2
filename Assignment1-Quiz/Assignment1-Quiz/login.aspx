@@ -6,7 +6,7 @@
     <!--Write your HTML here-->
     <label>First Name</label>
     <asp:TextBox ID="tbxFName" runat="server" />
-    <asp:RequiredFieldValidator ID="rfvFName" ControlToValidate="tbxFName" ErrorMessage="*Please enter first name." runat="server" />
+    <asp:RequiredFieldValidator ID="rfvFName" CssClass="alert alert-danger" ControlToValidate="tbxFName" ErrorMessage="*Please enter first name." Display="Dynamic" runat="server" />
 
     <label>Last Name</label>
     <asp:TextBox ID="tbxLName" runat="server" />
