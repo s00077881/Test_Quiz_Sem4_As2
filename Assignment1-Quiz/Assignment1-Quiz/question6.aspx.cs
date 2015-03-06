@@ -40,7 +40,7 @@ namespace Assignment1_Quiz
             }
         }
 
-        protected void btnPrevQuestion_Click(object sender, EventArgs e)
+        protected void btnFinishQuiz_Click(object sender, EventArgs e)
         {
             List<string> answers = (List<string>)Session["answers"];
 
@@ -51,6 +51,11 @@ namespace Assignment1_Quiz
 
             Session.Add("answers", answers);
 
+            Response.Redirect("quizFinish.aspx");
+        }
+
+        protected void btnPrevQuestion_Click(object sender, EventArgs e)
+        {
             Response.Redirect("question5.aspx");
         }
     }

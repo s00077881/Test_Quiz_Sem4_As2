@@ -11,4 +11,5 @@
     <asp:RadioButtonList ID="lstAnswers" runat="server" />
 
     <asp:Button ID="btnPrevQuestion" Text="Previous Question" OnClick="btnPrevQuestion_Click" runat="server" />
+    <asp:Button ID="btnFinishQuiz" Text="Finish Quiz" OnClick="btnFinishQuiz_Click" runat="server" />
 </asp:Content>

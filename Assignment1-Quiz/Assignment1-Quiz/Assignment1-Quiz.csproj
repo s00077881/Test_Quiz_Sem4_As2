@@ -74,6 +74,7 @@
   <ItemGroup>
     <Content Include="login.aspx" />
     <Content Include="main.css" />
+    <Content Include="quizFinish.aspx" />
     <Content Include="quizSelection.aspx" />
     <Content Include="reset.css" />
     <Content Include="Web.config" />
@@ -136,6 +137,13 @@
     </Compile>
     <Compile Include="quiz.Master.designer.cs">
       <DependentUpon>quiz.Master</DependentUpon>
+    </Compile>
+    <Compile Include="quizFinish.aspx.cs">
+      <DependentUpon>quizFinish.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="quizFinish.aspx.designer.cs">
+      <DependentUpon>quizFinish.aspx</DependentUpon>
     </Compile>
     <Compile Include="QuizQuestions.cs" />
     <Compile Include="quizSelection.aspx.cs">
