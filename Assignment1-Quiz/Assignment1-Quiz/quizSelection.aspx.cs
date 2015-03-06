@@ -112,8 +112,10 @@ namespace Assignment1_Quiz
                 newQuiz.Add(readQuiz);
             }
 
+            string id = Convert.ToString(newQuiz.Count + 1);
+
             //Add new quiz to the newquiz list
-            readQuiz = new Quiz(Convert.ToString(newQuiz.Count + 1), name, category);
+            readQuiz = new Quiz(id, name, category);
             newQuiz.Add(readQuiz);
 
             //Write collection to "Quizzes.txt" file
@@ -126,43 +128,98 @@ namespace Assignment1_Quiz
             }
             File.WriteAllLines((Server.MapPath("Quizzes.txt")), writeToFile);
 
-            /************************************************
-             Add New Question To The Quize Question Text File
-             ************************************************/
 
-            List<QuizQuestions> newQuestions = new List<QuizQuestions>();
+
+
+
+
+            /************************************************
+             Add New Question To The Quiz Question Text File
+             ************************************************/
+            List<QuizQuestions> oldQuestions = new List<QuizQuestions>();
+            List<QuizQuestions> newQuestions = (List<QuizQuestions>)ViewState["formQuestions"];
+
 
             //Read in text file
-            readFile = File.ReadAllLines(Server.MapPath("Quizzes.txt"));
+            readFile = File.ReadAllLines(Server.MapPath("QuizQuestions.txt"));
             QuizQuestions qq;
+
 
             //Read in quizQuestion text file
             for (int i = 0; i < readFile.Length; i++)
             {
                 splitLine = readFile[i].Split(',');
-                qq = new QuizQuestions(splitLine[1], splitLine[2], splitLine[3], splitLine[4], splitLine[5], splitLine[6]);
-                newQuestions.Add(qq);
+                qq = new QuizQuestions(splitLine[0],splitLine[1], splitLine[2], splitLine[3], splitLine[4], splitLine[5], splitLine[6]);
+                oldQuestions.Add(qq);
             }
+
+            for (int i = 0; i < newQuestions.Count; i++)
+            {
+                 qq = new QuizQuestions(
+                     id,
+                     newQuestions.ElementAt(i)._question,
+                     newQuestions.ElementAt(i)._option1,
+                     newQuestions.ElementAt(i)._option2,
+                     newQuestions.ElementAt(i)._option3,
+                     newQuestions.ElementAt(i)._option4,
+                     newQuestions.ElementAt(i)._answer
+                     );
+                 oldQuestions.Add(qq);
+            }
+
+            //Write collection to "QuizQuestions.txt" file
+            writeToFile = new string[oldQuestions.Count];
+
+
+            for (int i = 0; i < oldQuestions.Count; i++)
+            {
+                QuizQuestions curQuestion = oldQuestions.ElementAt(i);
+                writeToFile[i] = curQuestion.WriteQuestions();
+            }
+
+            File.WriteAllLines((Server.MapPath("QuizQuestions.txt")), writeToFile);
         }
 
-        //Store questions added to quiz form
-        List<QuizQuestions> quizQ = new List<QuizQuestions>();
+
+
+
+
+
+
+
 
         protected void lstAddQuiz_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //Store questions added to quiz form
+            List<QuizQuestions> quizQ = new List<QuizQuestions>();
+            QuizQuestions curQues = new QuizQuestions();
+
+
+            //Store new questions in viewstate
+            if (ViewState["formQuestions"] != null)
+            {
+                quizQ = (List<QuizQuestions>)ViewState["formQuestions"];
+            }
+            else
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    quizQ.Insert(i, curQues);
+                }
+            }
+
             //Check if postback to stop jQuery animations breaking
             if (IsPostBack)
             {
                 ClientScript.RegisterClientScriptBlock(GetType(), "IsPostBack", "var isPostBack = true;", true);
             }
 
-            string[] options = { tbxEnterQuestion.Text,tbxOption1.Text, tbxOption2.Text, tbxOption3.Text, tbxOption4.Text, lstSelectAns.SelectedValue };
+            
+            curQues = new QuizQuestions(tbxEnterQuestion.Text, tbxOption1.Text, tbxOption2.Text, tbxOption3.Text, tbxOption4.Text, lstSelectAns.SelectedValue);
+            quizQ.RemoveAt(lstAddQuiz.SelectedIndex);
+            quizQ.Insert(lstAddQuiz.SelectedIndex, curQues);
 
-            //Cant insert without goind out of range = give list a fixed width
-            //Question an answer reverded in pbject // Find out why
-
-            QuizQuestions curQues = new QuizQuestions(tbxEnterQuestion.Text, tbxOption1.Text, tbxOption2.Text, tbxOption3.Text, tbxOption4.Text, lstSelectAns.SelectedValue);
-            quizQ.Insert(lstCat.SelectedIndex, curQues);
+            ViewState.Add("formQuestions", quizQ);
         }
     }
 }
