@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -18,28 +19,91 @@ namespace Assignment1_Quiz
         {
             if (!IsPostBack)
             {
-                questions = (List<QuizQuestions>)Session["questions"];
-                quesAnswered = (List<int>)Session["quesAnswered"];
-                answers = (List<string>)Session["answers"];
-
-                if (questions != null && quesAnswered != null)
-                {
-                    DisplayAnswers(0, lblQuestion1, lstAnswers1);
-                    DisplayAnswers(1, lblQuestion2, lstAnswers2);
-                    DisplayAnswers(2, lblQuestion3, lstAnswers3);
-                    DisplayAnswers(3, lblQuestion4, lstAnswers4);
-                    DisplayAnswers(4, lblQuestion5, lstAnswers5);
-                    DisplayAnswers(5, lblQuestion6, lstAnswers6);
-
-                    lblScore.Text = string.Format("Your score: {0}/6", score);
-
-                    DateTime timeStart = (DateTime)Session["timeStart"];
-                    TimeSpan timeTaken = DateTime.Now.Subtract(timeStart);
-                    lblTimeTaken.Text = string.Format("Time taken: {0:hh\\:mm\\:ss}", timeTaken);
-                }
-                else
-                    Response.Redirect("quizSelection.aspx");
+                ShowResult();
             }
+        }
+
+        protected void ShowResult()
+        {
+            questions = (List<QuizQuestions>)Session["questions"];
+            quesAnswered = (List<int>)Session["quesAnswered"];
+            answers = (List<string>)Session["answers"];
+
+            if (questions != null && quesAnswered != null)
+            {
+                DisplayAnswers(0, lblQuestion1, lstAnswers1);
+                DisplayAnswers(1, lblQuestion2, lstAnswers2);
+                DisplayAnswers(2, lblQuestion3, lstAnswers3);
+                DisplayAnswers(3, lblQuestion4, lstAnswers4);
+                DisplayAnswers(4, lblQuestion5, lstAnswers5);
+                DisplayAnswers(5, lblQuestion6, lstAnswers6);
+
+                lblScore.Text = string.Format("Your score: {0}/6", score);
+
+                DateTime timeStart = (DateTime)Session["timeStart"];
+                TimeSpan timeTaken = DateTime.Now.Subtract(timeStart);
+                lblTimeTaken.Text = string.Format("Time taken: {0:hh\\:mm\\:ss}", timeTaken);
+
+            }
+            else
+                Response.Redirect("quizSelection.aspx");
+
+
+
+            List<Quiz> quizzes = new List<Quiz>();
+            double average = 0;
+
+            string[] readFile = File.ReadAllLines(Server.MapPath("Quizzes.txt"));
+            string[] splitLine;
+
+            for (int i = 0; i < readFile.Length; i++)
+            {
+                splitLine = readFile[i].Split(',');
+                Quiz newQuiz = new Quiz(splitLine[0], splitLine[1], splitLine[2], Convert.ToInt32(splitLine[3]), Convert.ToInt32(splitLine[4]));
+                quizzes.Add(newQuiz);
+            }
+
+            foreach(Quiz q in quizzes)
+            {
+                if (q._quizID == questions.ElementAt(0)._id)
+                {
+                    int timeTaken = q._timeTaken +1;
+                    int totalScore = q._totalScore + score;
+
+                    q._timeTaken = timeTaken;
+                    q._totalScore = totalScore;
+
+                    average = Convert.ToDouble(q._totalScore) / Convert.ToDouble(q._timeTaken);
+
+                    lblTotalPeople.Text = string.Format("Total people to take quiz: {0}", q._timeTaken);
+                    lblAverageScore.Text = string.Format("Average score is: {0:f2}", average);
+                }
+            }
+
+            string[] writeToFile = new string[quizzes.Count];
+
+            for (int i = 0; i < quizzes.Count; i++)
+            {
+                Quiz currentQuiz = quizzes.ElementAt(i);
+                writeToFile[i] = currentQuiz.WriteScoreTotal();
+            }
+            File.WriteAllLines((Server.MapPath("Quizzes.txt")), writeToFile);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         }
 
         protected void DisplayAnswers(int index, Label lblID, RadioButtonList lstID)

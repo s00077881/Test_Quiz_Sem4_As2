@@ -36,5 +36,7 @@
 
     <asp:Label ID="lblScore" runat="server" />
     <asp:Label ID="lblTimeTaken" runat="server" />
+    <asp:Label ID="lblTotalPeople" runat="server" />
+    <asp:Label ID="lblAverageScore" runat="server" />
 
 </asp:Content>

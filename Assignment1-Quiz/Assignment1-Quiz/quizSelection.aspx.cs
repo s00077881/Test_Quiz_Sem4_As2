@@ -35,6 +35,7 @@ namespace Assignment1_Quiz
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Session.Clear();
         }
 
         /***************************************
@@ -90,7 +91,7 @@ namespace Assignment1_Quiz
                 splitLine = readFile[i].Split(',');
                 if (splitLine[0] == lstQuizSelect.SelectedValue)
                 {
-                    question = new QuizQuestions(splitLine[1], splitLine[2], splitLine[3], splitLine[4], splitLine[5], splitLine[6]);
+                    question = new QuizQuestions(splitLine[0],splitLine[1], splitLine[2], splitLine[3], splitLine[4], splitLine[5], splitLine[6]);
                     questions.Add(question);
                 }
             }
