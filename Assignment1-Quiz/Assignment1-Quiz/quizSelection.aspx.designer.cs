@@ -58,6 +58,15 @@ namespace Assignment1_Quiz {
         protected global::System.Web.UI.WebControls.DropDownList lstQuizSelect;
         
         /// <summary>
+        /// rFVSelectQuiz control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rFVSelectQuiz;
+        
+        /// <summary>
         /// startQuiz control.
         /// </summary>
         /// <remarks>
@@ -74,6 +83,15 @@ namespace Assignment1_Quiz {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbxCreateName;
+        
+        /// <summary>
+        /// rFVQuizName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rFVQuizName;
         
         /// <summary>
         /// lstCat control.
@@ -103,6 +121,15 @@ namespace Assignment1_Quiz {
         protected global::System.Web.UI.WebControls.TextBox tbxEnterQuestion;
         
         /// <summary>
+        /// rFVQuestion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rFVQuestion;
+        
+        /// <summary>
         /// tbxOption1 control.
         /// </summary>
         /// <remarks>
@@ -110,6 +137,15 @@ namespace Assignment1_Quiz {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbxOption1;
+        
+        /// <summary>
+        /// rFVOption1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rFVOption1;
         
         /// <summary>
         /// tbxOption2 control.
@@ -121,6 +157,15 @@ namespace Assignment1_Quiz {
         protected global::System.Web.UI.WebControls.TextBox tbxOption2;
         
         /// <summary>
+        /// rFVOption2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rFVOption2;
+        
+        /// <summary>
         /// tbxOption3 control.
         /// </summary>
         /// <remarks>
@@ -130,6 +175,15 @@ namespace Assignment1_Quiz {
         protected global::System.Web.UI.WebControls.TextBox tbxOption3;
         
         /// <summary>
+        /// rFVOption3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rFVOption3;
+        
+        /// <summary>
         /// tbxOption4 control.
         /// </summary>
         /// <remarks>
@@ -137,6 +191,15 @@ namespace Assignment1_Quiz {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbxOption4;
+        
+        /// <summary>
+        /// rFVOption4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rFVOption4;
         
         /// <summary>
         /// lstSelectAns control.

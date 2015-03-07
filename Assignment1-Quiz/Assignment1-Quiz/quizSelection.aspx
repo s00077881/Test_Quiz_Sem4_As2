@@ -8,28 +8,29 @@
 
         <div class="col-md-3 col-sm-6 col-xs-6 ">
             <h3><span class="label label-default">General Knowledge</span></h3>
-            <asp:ImageButton ID="btnGeneralCat" CssClass="img-responsive hvr-wobble-vertical" runat="server" AlternateText="General Knowledge" ImageUrl="~/images/general.png" OnClick="btnCat_Click" />
+            <asp:ImageButton CausesValidation="false" ID="btnGeneralCat" CssClass="img-responsive hvr-wobble-vertical" runat="server" AlternateText="General Knowledge" ImageUrl="~/images/general.png" OnClick="btnCat_Click" />
         </div>
 
         <div class="col-md-3 col-sm-6 col-xs-6">
             <h3><span class="label label-default">Movies</span></h3>
-            <asp:ImageButton ID="btnMovieCat" CssClass="img-responsive hvr-wobble-vertical" runat="server" AlternateText="Movies" ImageUrl="~/images/movie.png" OnClick="btnCat_Click" />
+            <asp:ImageButton CausesValidation="false" ID="btnMovieCat" CssClass="img-responsive hvr-wobble-vertical" runat="server" AlternateText="Movies" ImageUrl="~/images/movie.png" OnClick="btnCat_Click" />
         </div>
 
         <div class="col-md-3  col-sm-6 col-xs-6">
             <h3><span class="label label-default">Music</span></h3>
-            <asp:ImageButton ID="btnMusicCat1" CssClass="img-responsive hvr-wobble-vertical" runat="server" AlternateText="Music" ImageUrl="~/images/music.png" OnClick="btnCat_Click" />
+            <asp:ImageButton CausesValidation="false" ID="btnMusicCat1" CssClass="img-responsive hvr-wobble-vertical" runat="server" AlternateText="Music" ImageUrl="~/images/music.png" OnClick="btnCat_Click" />
         </div>
 
         <div class="col-md-3 col-sm-6 col-xs-6">
             <h3><span class="label label-default">Sports</span></h3>
-            <asp:ImageButton ID="btnSportCat" CssClass="img-responsive hvr-wobble-vertical" runat="server" AlternateText="Sports" ImageUrl="~/images/sport.png" OnClick="btnCat_Click"/>
+            <asp:ImageButton CausesValidation="false" ID="btnSportCat" CssClass="img-responsive hvr-wobble-vertical" runat="server" AlternateText="Sports" ImageUrl="~/images/sport.png" OnClick="btnCat_Click"/>
         </div>
 
         <div class="col-md-12 formHolder">
             <div id="selectQuiz" class="col-md-6 col-xs-12"><!--LeftColumn-->
                 <h2><span class="label label-default">Select Quiz</span></h2>
                 <asp:DropDownList ID="lstQuizSelect" CssClass="form-control" runat="server"></asp:DropDownList>
+                <asp:RequiredFieldValidator ID="rFVSelectQuiz" ControlToValidate="lstQuizSelect" CssClass="alert alert-danger col-xs-12 " Display="Dynamic" ErrorMessage="*You Must Select A Category!" runat="server" />
                 <asp:Button ID="startQuiz" CssClass="btn spacer" Text="Start Quiz" runat="server" OnClick="startQuiz_Click" />
             </div><!--EndLeftColumn-->
 
@@ -41,6 +42,7 @@
                     <div class="spacer">
                         <h3><span class="label label-default">Quiz Name</span></h3>
                         <asp:TextBox ID="tbxCreateName" placeholder="Quiz Name" CssClass="form-control " runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rFVQuizName" ControlToValidate="tbxCreateName" CssClass="alert alert-danger col-xs-12 " Display="Dynamic" ErrorMessage="*Quiz Name Is Required!" ValidationGroup="CreateQuiz" runat="server" />
                     </div>
 
                     <div class="spacer">
@@ -68,27 +70,32 @@
                     <div class="spacer">
                         <h3><span class="label label-default">Enter Question</span></h3>
                         <asp:TextBox ID="tbxEnterQuestion" CssClass="form-control " runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rFVQuestion" ControlToValidate="tbxEnterQuestion" CssClass="alert alert-danger col-xs-12 " Display="Dynamic" ErrorMessage="*Question Is Required!" ValidationGroup="CreateQuiz" runat="server" />
                     </div>
 
                     <div class="spacer">
                         <div class="col-md-6 ">
                             <h3><span class="label label-default">Option1</span></h3>
                             <asp:TextBox ID="tbxOption1" CssClass="form-control col-md-3 formHolder" runat="server"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="rFVOption1" ControlToValidate="tbxOption1" CssClass="alert alert-danger col-xs-12 " Display="Dynamic" ErrorMessage="*Option 1 Is Required!" ValidationGroup="CreateQuiz" runat="server" />
                         </div>
 
                         <div class="col-md-6">
                             <h3><span class="label label-default">Option2</span></h3>
                             <asp:TextBox ID="tbxOption2" CssClass="form-control col-md-3 formHolder" runat="server"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="rFVOption2" ControlToValidate="tbxOption2" CssClass="alert alert-danger col-xs-12 " Display="Dynamic" ErrorMessage="*Option 2 Is Required!" ValidationGroup="CreateQuiz" runat="server" />
                         </div>
 
                         <div class="col-md-6">
                             <h3><span class="label label-default">Option3</span></h3>
                             <asp:TextBox ID="tbxOption3" CssClass="form-control col-md-3 formHolder" runat="server"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="rFVOption3" ControlToValidate="tbxOption3" CssClass="alert alert-danger col-xs-12 " Display="Dynamic" ErrorMessage="*Option 3 Is Required!" ValidationGroup="CreateQuiz" runat="server" />
                         </div>
 
                         <div class="col-md-6">
                             <h3><span class="label label-default">Option4</span></h3>
                             <asp:TextBox ID="tbxOption4" CssClass="form-control col-md-3 formHolder" runat="server"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="rFVOption4" ControlToValidate="tbxOption4" CssClass="alert alert-danger col-xs-12 " Display="Dynamic" ErrorMessage="*Option 4 Is Required!" ValidationGroup="CreateQuiz" runat="server" />
                         </div>
                     </div>
 
@@ -104,7 +111,7 @@
                     </div>
 
                     <div class="spacer col-md-12">
-                        <asp:Button ID="btnAdQuiz" CssClass="btn" Text="Add Quiz" runat="server" OnClick="btnAdQuiz_Click" />
+                        <asp:Button ID="btnAdQuiz" CssClass="btn" Text="Add Quiz" runat="server" ValidationGroup="CreateQuiz" OnClick="btnAdQuiz_Click" />
                     </div>
                 </div><!--Right column Drop-->
             </div><!--EndRightColumn-->
