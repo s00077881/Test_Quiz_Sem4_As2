@@ -54,13 +54,10 @@
     
 <div class="container">
 <form id="form1" runat="server">
-   
     <asp:ContentPlaceHolder ID="mainContentBlock" runat="server">
             
-    </asp:ContentPlaceHolder>
-    
+    </asp:ContentPlaceHolder>  
 </form>
-
 <footer id="mainFoot"></footer>
 
     </div><!--End container-->

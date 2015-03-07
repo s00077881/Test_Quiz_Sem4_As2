@@ -41,6 +41,10 @@ h2{
     font-size:24px;
 }
 
+label{
+    font-size:18px;
+}
+
 #dropButton{
     cursor: pointer;
 }
