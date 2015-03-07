@@ -30,12 +30,8 @@
             <div id="selectQuiz" class="col-md-6 col-xs-12"><!--LeftColumn-->
                 <h2><span class="label label-default">Select Quiz</span></h2>
                 <asp:DropDownList ID="lstQuizSelect" CssClass="form-control" runat="server"></asp:DropDownList>
-<<<<<<< HEAD
-                <asp:Button ID="startQuiz" CssClass="btn spacer btn-default" Text="Start Quiz" runat="server" OnClick="startQuiz_Click" />
-=======
                 <asp:RequiredFieldValidator ID="rFVSelectQuiz" ControlToValidate="lstQuizSelect" CssClass="alert alert-danger col-xs-12 " Display="Dynamic" ErrorMessage="*You Must Select A Category!" runat="server" />
                 <asp:Button ID="startQuiz" CssClass="btn spacer" Text="Start Quiz" runat="server" OnClick="startQuiz_Click" />
->>>>>>> 517af5b6e7affe7ae9f1dc718f70d4ba4f9fc45d
             </div><!--EndLeftColumn-->
 
             <div class="col-md-6 col-xs-12"><!--RightColumn-->
@@ -115,11 +111,7 @@
                     </div>
 
                     <div class="spacer col-md-12">
-<<<<<<< HEAD
-                        <asp:Button ID="btnAdQuiz" CssClass="btn btn-default" Text="Add Quiz" runat="server" OnClick="btnAdQuiz_Click" />
-=======
-                        <asp:Button ID="btnAdQuiz" CssClass="btn" Text="Add Quiz" runat="server" ValidationGroup="CreateQuiz" OnClick="btnAdQuiz_Click" />
->>>>>>> 517af5b6e7affe7ae9f1dc718f70d4ba4f9fc45d
+                        <asp:Button ID="btnAdQuiz" CssClass="btn btn-default" Text="Add Quiz" runat="server" ValidationGroup="CreateQuiz" OnClick="btnAdQuiz_Click" />
                     </div>
                 </div><!--Right column Drop-->
             </div><!--EndRightColumn-->
