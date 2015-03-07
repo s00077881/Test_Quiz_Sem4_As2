@@ -103,13 +103,13 @@ namespace Assignment1_Quiz {
         protected global::System.Web.UI.WebControls.DropDownList lstCat;
         
         /// <summary>
-        /// lstAddQuiz control.
+        /// lstSelectQuestion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList lstAddQuiz;
+        protected global::System.Web.UI.WebControls.DropDownList lstSelectQuestion;
         
         /// <summary>
         /// tbxEnterQuestion control.
@@ -211,12 +211,21 @@ namespace Assignment1_Quiz {
         protected global::System.Web.UI.WebControls.DropDownList lstSelectAns;
         
         /// <summary>
-        /// btnAdQuiz control.
+        /// btnAddQuestion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAdQuiz;
+        protected global::System.Web.UI.WebControls.Button btnAddQuestion;
+        
+        /// <summary>
+        /// btnAddQuiz control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAddQuiz;
     }
 }

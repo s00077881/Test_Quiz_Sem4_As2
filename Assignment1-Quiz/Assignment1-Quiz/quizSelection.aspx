@@ -31,7 +31,7 @@
                 <h2><span class="label label-default">Select Quiz</span></h2>
                 <asp:DropDownList ID="lstQuizSelect" CssClass="form-control" runat="server"></asp:DropDownList>
                 <asp:RequiredFieldValidator ID="rFVSelectQuiz" ControlToValidate="lstQuizSelect" CssClass="alert alert-danger col-xs-12 " Display="Dynamic" ErrorMessage="*You Must Select A Category!" runat="server" />
-                <asp:Button ID="startQuiz" CssClass="btn spacer" Text="Start Quiz" runat="server" OnClick="startQuiz_Click" />
+                <asp:Button ID="startQuiz" CssClass="btn btn-default spacer" Text="Start Quiz" runat="server" OnClick="startQuiz_Click" />
             </div><!--EndLeftColumn-->
 
             <div class="col-md-6 col-xs-12"><!--RightColumn-->
@@ -57,7 +57,7 @@
 
                     <div class="spacer">
                         <h3><span class="label label-default">Select Question</span></h3>
-                        <asp:DropDownList ID="lstAddQuiz" CssClass="form-control " runat="server" AutoPostBack="true" OnSelectedIndexChanged="lstAddQuiz_SelectedIndexChanged">
+                        <asp:DropDownList ID="lstSelectQuestion" CssClass="form-control " runat="server" AutoPostBack="true" OnSelectedIndexChanged="lstSelectQuestion_SelectedIndexChanged">
                             <asp:ListItem>Question 1</asp:ListItem>
                             <asp:ListItem>Question 2</asp:ListItem>
                             <asp:ListItem>Question 3</asp:ListItem>
@@ -108,10 +108,12 @@
                             <asp:ListItem>Option 3</asp:ListItem>
                             <asp:ListItem>Option 4</asp:ListItem>
                         </asp:DropDownList>
+
+                        <asp:Button ID="btnAddQuestion" Text="Add Question" OnClick="btnAddQuestion_Click" ValidationGroup="CreateQuiz" runat="server" />
                     </div>
 
                     <div class="spacer col-md-12">
-                        <asp:Button ID="btnAdQuiz" CssClass="btn btn-default" Text="Add Quiz" runat="server" ValidationGroup="CreateQuiz" OnClick="btnAdQuiz_Click" />
+                        <asp:Button ID="btnAddQuiz" CssClass="btn btn-default" Text="Add Quiz" runat="server" ValidationGroup="CreateQuiz" OnClick="btnAddQuiz_Click" />
                     </div>
                 </div><!--Right column Drop-->
             </div><!--EndRightColumn-->

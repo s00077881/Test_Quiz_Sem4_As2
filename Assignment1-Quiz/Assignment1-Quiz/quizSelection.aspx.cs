@@ -15,11 +15,7 @@ namespace Assignment1_Quiz
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Fireing everytime there a post back overwriting the value I want .. must fix
 
-            int selectedIndex = 0;
-            selectedIndex = lstAddQuiz.SelectedIndex;
-            ViewState.Add("quizSelectedIndex", selectedIndex);
         }
 
         protected void btnCat_Click(object sender, EventArgs e)
@@ -93,10 +89,10 @@ namespace Assignment1_Quiz
             return quesAnswered;
         }
 
-        protected void btnAdQuiz_Click(object sender, EventArgs e)
+        protected void btnAddQuiz_Click(object sender, EventArgs e)
         {
             /************************************
-             Add New Quiz To The Quizes Text File
+             Add New Quiz To The Quizzes Text File
              ************************************/
 
             List<Quiz> newQuiz = new List<Quiz>();
@@ -182,43 +178,19 @@ namespace Assignment1_Quiz
             File.WriteAllLines((Server.MapPath("QuizQuestions.txt")), writeToFile);
         }
 
-        protected void lstAddQuiz_SelectedIndexChanged(object sender, EventArgs e)
+        protected void lstSelectQuestion_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //Store questions added to quiz form
-            List<QuizQuestions> quizQ = new List<QuizQuestions>();
-            QuizQuestions curQues = new QuizQuestions();
-
-            //Store new questions in viewstate
-            if (ViewState["formQuestions"] != null)
+            //Check if postback to stop jQuery animations breaking
+            if (IsPostBack)
             {
-                quizQ = (List<QuizQuestions>)ViewState["formQuestions"];
+                ClientScript.RegisterClientScriptBlock(GetType(), "IsPostBack", "var isPostBack = true;", true);
+            }
 
-                //Populate question input boxes with previous answers
-                if (quizQ.ElementAt(lstAddQuiz.SelectedIndex) != null)
-                {
-                    tbxEnterQuestion.Text = quizQ.ElementAt(lstAddQuiz.SelectedIndex)._question;
-                    tbxOption1.Text = quizQ.ElementAt(lstAddQuiz.SelectedIndex)._option1;
-                    tbxOption2.Text = quizQ.ElementAt(lstAddQuiz.SelectedIndex)._option2;
-                    tbxOption3.Text = quizQ.ElementAt(lstAddQuiz.SelectedIndex)._option3;
-                    tbxOption4.Text = quizQ.ElementAt(lstAddQuiz.SelectedIndex)._option4;
+            List<QuizQuestions> quizQ = (List<QuizQuestions>)ViewState["formQuestions"];
 
-                    switch (quizQ.ElementAt(lstAddQuiz.SelectedIndex)._answer)
-                    {
-                        case "Option1":
-                            lstSelectAns.SelectedIndex = 0;
-                            break;
-                        case "Option2":
-                            lstSelectAns.SelectedIndex = 1;
-                            break;
-                        case "Option3":
-                            lstSelectAns.SelectedIndex = 2;
-                            break;
-                        case "Option4":
-                            lstSelectAns.SelectedIndex = 3;
-                            break;
-                    }
-                }
-                else
+            if (quizQ != null)
+            {
+                if (quizQ[lstSelectQuestion.SelectedIndex]._question == null)
                 {
                     tbxEnterQuestion.Text = string.Empty;
                     tbxOption1.Text = string.Empty;
@@ -227,8 +199,60 @@ namespace Assignment1_Quiz
                     tbxOption4.Text = string.Empty;
 
                     lstSelectAns.SelectedIndex = 0;
+
+                }
+                else
+                {
+                    tbxEnterQuestion.Text = quizQ[lstSelectQuestion.SelectedIndex]._question;
+                    tbxOption1.Text = quizQ[lstSelectQuestion.SelectedIndex]._option1;
+                    tbxOption2.Text = quizQ[lstSelectQuestion.SelectedIndex]._option2;
+                    tbxOption3.Text = quizQ[lstSelectQuestion.SelectedIndex]._option3;
+                    tbxOption4.Text = quizQ[lstSelectQuestion.SelectedIndex]._option4;
+
+                    if (quizQ[lstSelectQuestion.SelectedIndex]._answer == tbxOption1.Text)
+                        lstSelectAns.SelectedIndex = 0;
+                    else if (quizQ[lstSelectQuestion.SelectedIndex]._answer == tbxOption2.Text)
+                        lstSelectAns.SelectedIndex = 1;
+                    else if (quizQ[lstSelectQuestion.SelectedIndex]._answer == tbxOption3.Text)
+                        lstSelectAns.SelectedIndex = 2;
+                    else
+                        lstSelectAns.SelectedIndex = 3;
                 }
             }
+        }
+
+        protected void btnAddQuestion_Click(object sender, EventArgs e)
+        {
+            //Check if postback to stop jQuery animations breaking
+            if (IsPostBack)
+            {
+                ClientScript.RegisterClientScriptBlock(GetType(), "IsPostBack", "var isPostBack = true;", true);
+            }
+
+            //Store questions added to quiz form
+            List<QuizQuestions> quizQ = new List<QuizQuestions>();
+            QuizQuestions curQues = new QuizQuestions();
+
+            string selectedAns = "";
+
+            switch (lstSelectAns.SelectedIndex)
+            {
+                case 0:
+                    selectedAns = tbxOption1.Text;
+                    break;
+                case 1:
+                    selectedAns = tbxOption2.Text;
+                    break;
+                case 2:
+                    selectedAns = tbxOption3.Text;
+                    break;
+                case 3:
+                    selectedAns = tbxOption4.Text;
+                    break;
+            }
+
+            if (ViewState["formQuestions"] != null)
+                quizQ = (List<QuizQuestions>)ViewState["formQuestions"];
             else
             {
                 for (int i = 0; i < 6; i++)
@@ -237,36 +261,8 @@ namespace Assignment1_Quiz
                 }
             }
 
-
-
-            //Check if postback to stop jQuery animations breaking
-            if (IsPostBack)
-            {
-                ClientScript.RegisterClientScriptBlock(GetType(), "IsPostBack", "var isPostBack = true;", true);
-            }
-
-            string selectedAns ="";
-
-            switch(lstSelectAns.SelectedValue)
-            {
-                case "Option1":
-                    selectedAns = tbxOption1.Text;
-                    break;
-                case "Option2":
-                    selectedAns = tbxOption2.Text;
-                    break;
-                case "Option3":
-                    selectedAns = tbxOption3.Text;
-                    break;
-                case "Option4":
-                    selectedAns = tbxOption4.Text;
-                    break;
-            }
-            
             curQues = new QuizQuestions(tbxEnterQuestion.Text, tbxOption1.Text, tbxOption2.Text, tbxOption3.Text, tbxOption4.Text, selectedAns);
-            quizQ.RemoveAt(Convert.ToInt32(ViewState["quizSelectedIndex"]));
-            quizQ.Insert(Convert.ToInt32(ViewState["quizSelectedIndex"]), curQues);
-
+            quizQ[lstSelectQuestion.SelectedIndex] = curQues;
             ViewState.Add("formQuestions", quizQ);
         }
     }
