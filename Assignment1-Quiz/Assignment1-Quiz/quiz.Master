@@ -53,14 +53,20 @@
 </nav>
     
 <div class="container">
-<form id="form1" runat="server">
-    <asp:ContentPlaceHolder ID="mainContentBlock" runat="server">
+    <form id="form1" runat="server">
+        <asp:ContentPlaceHolder ID="mainContentBlock" runat="server">
             
-    </asp:ContentPlaceHolder>  
-</form>
-<footer id="mainFoot"></footer>
+        </asp:ContentPlaceHolder>  
+    </form>
+</div><!--End container-->
 
-    </div><!--End container-->
+<div style="height:30px; width:100%"></div>
+
+<footer class="footer">
+    <div class="container">
+    <p class="text-muted">Place sticky footer content here.</p>
+    </div>
+</footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

@@ -112,6 +112,15 @@ namespace Assignment1_Quiz {
         protected global::System.Web.UI.WebControls.DropDownList lstSelectQuestion;
         
         /// <summary>
+        /// cVlstSelectQuestion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cVlstSelectQuestion;
+        
+        /// <summary>
         /// tbxEnterQuestion control.
         /// </summary>
         /// <remarks>

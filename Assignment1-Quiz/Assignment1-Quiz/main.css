@@ -53,21 +53,27 @@ label{
   background-color:#607D8B;
 }
     
+/*Sticky Footer*/
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 50px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 50px;
+  background-color:#607D8B;
+}
 
 
 /********end master page*********
 ********************************/
-
-
-/*****quiz selection page********
-********************************/
-
-
-
-
-/*****end quiz selection page****
-********************************/
-
 
 
 /**********wobble effect*********

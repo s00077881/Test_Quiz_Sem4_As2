@@ -31,7 +31,7 @@
                 <h2><span class="label label-default">Select Quiz</span></h2>
                 <asp:DropDownList ID="lstQuizSelect" CssClass="form-control" runat="server"></asp:DropDownList>
                 <asp:RequiredFieldValidator ID="rFVSelectQuiz" ControlToValidate="lstQuizSelect" CssClass="alert alert-danger col-xs-12 " Display="Dynamic" ErrorMessage="*You Must Select A Category!" runat="server" />
-                <asp:Button ID="startQuiz" CssClass="btn btn-default spacer" Text="Start Quiz" runat="server" OnClick="startQuiz_Click" />
+                <asp:Button ID="startQuiz" CssClass="btn btn-default spacer col-xs-12" Text="Start Quiz" runat="server" OnClick="startQuiz_Click" />
             </div><!--EndLeftColumn-->
 
             <div class="col-md-6 col-xs-12"><!--RightColumn-->
@@ -57,7 +57,7 @@
 
                     <div class="spacer">
                         <h3><span class="label label-default">Select Question</span></h3>
-                        <asp:DropDownList ID="lstSelectQuestion" CssClass="form-control " runat="server" AutoPostBack="true" OnSelectedIndexChanged="lstSelectQuestion_SelectedIndexChanged">
+                        <asp:DropDownList ID="lstSelectQuestion" CssClass="form-control " runat="server" AutoPostBack="true" CausesValidation="false" OnSelectedIndexChanged="lstSelectQuestion_SelectedIndexChanged">
                             <asp:ListItem>Question 1</asp:ListItem>
                             <asp:ListItem>Question 2</asp:ListItem>
                             <asp:ListItem>Question 3</asp:ListItem>
@@ -65,55 +65,58 @@
                             <asp:ListItem>Question 5</asp:ListItem>
                             <asp:ListItem>Question 6</asp:ListItem>
                         </asp:DropDownList>
+                        <asp:CustomValidator ID="cVlstSelectQuestion" Display="Dynamic" OnServerValidate="cVlstSelectQuestion_ServerValidate" CssClass="alert alert-danger col-xs-12 " runat="server" ErrorMessage="*All Questions/Answer Field Are Required!" ValidationGroup="CreateQuiz"></asp:CustomValidator>
                     </div>
 
                     <div class="spacer">
                         <h3><span class="label label-default">Enter Question</span></h3>
                         <asp:TextBox ID="tbxEnterQuestion" CssClass="form-control " runat="server"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="rFVQuestion" ControlToValidate="tbxEnterQuestion" CssClass="alert alert-danger col-xs-12 " Display="Dynamic" ErrorMessage="*Question Is Required!" ValidationGroup="CreateQuiz" runat="server" />
+                        <asp:RequiredFieldValidator ID="rFVQuestion" ControlToValidate="tbxEnterQuestion" CssClass="alert alert-danger col-xs-12 " Display="Dynamic" ErrorMessage="*Question Is Required!" ValidationGroup="AddQues" runat="server" />
                     </div>
 
                     <div class="spacer">
                         <div class="col-md-6 ">
                             <h3><span class="label label-default">Option1</span></h3>
                             <asp:TextBox ID="tbxOption1" CssClass="form-control col-md-3 formHolder" runat="server"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="rFVOption1" ControlToValidate="tbxOption1" CssClass="alert alert-danger col-xs-12 " Display="Dynamic" ErrorMessage="*Option 1 Is Required!" ValidationGroup="CreateQuiz" runat="server" />
+                            <asp:RequiredFieldValidator ID="rFVOption1" ControlToValidate="tbxOption1" CssClass="alert alert-danger col-xs-12 " Display="Dynamic" ErrorMessage="*Option 1 Is Required!" ValidationGroup="AddQues" runat="server" />
                         </div>
 
                         <div class="col-md-6">
                             <h3><span class="label label-default">Option2</span></h3>
                             <asp:TextBox ID="tbxOption2" CssClass="form-control col-md-3 formHolder" runat="server"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="rFVOption2" ControlToValidate="tbxOption2" CssClass="alert alert-danger col-xs-12 " Display="Dynamic" ErrorMessage="*Option 2 Is Required!" ValidationGroup="CreateQuiz" runat="server" />
+                            <asp:RequiredFieldValidator ID="rFVOption2" ControlToValidate="tbxOption2" CssClass="alert alert-danger col-xs-12 " Display="Dynamic" ErrorMessage="*Option 2 Is Required!" ValidationGroup="AddQues" runat="server" />
                         </div>
 
                         <div class="col-md-6">
                             <h3><span class="label label-default">Option3</span></h3>
                             <asp:TextBox ID="tbxOption3" CssClass="form-control col-md-3 formHolder" runat="server"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="rFVOption3" ControlToValidate="tbxOption3" CssClass="alert alert-danger col-xs-12 " Display="Dynamic" ErrorMessage="*Option 3 Is Required!" ValidationGroup="CreateQuiz" runat="server" />
+                            <asp:RequiredFieldValidator ID="rFVOption3" ControlToValidate="tbxOption3" CssClass="alert alert-danger col-xs-12 " Display="Dynamic" ErrorMessage="*Option 3 Is Required!" ValidationGroup="AddQues" runat="server" />
                         </div>
 
                         <div class="col-md-6">
                             <h3><span class="label label-default">Option4</span></h3>
                             <asp:TextBox ID="tbxOption4" CssClass="form-control col-md-3 formHolder" runat="server"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="rFVOption4" ControlToValidate="tbxOption4" CssClass="alert alert-danger col-xs-12 " Display="Dynamic" ErrorMessage="*Option 4 Is Required!" ValidationGroup="CreateQuiz" runat="server" />
+                            <asp:RequiredFieldValidator ID="rFVOption4" ControlToValidate="tbxOption4" CssClass="alert alert-danger col-xs-12 " Display="Dynamic" ErrorMessage="*Option 4 Is Required!" ValidationGroup="AddQues" runat="server" />
                         </div>
+
+                        <div class="col-md-6 form-group">
+                            <h3><span class="label label-default">Select Answer</span></h3>
+                            <asp:DropDownList ID="lstSelectAns" CssClass="form-control col-md-3 formHolder" runat="server">
+                                <asp:ListItem>Option 1</asp:ListItem>
+                                <asp:ListItem>Option 2</asp:ListItem>
+                                <asp:ListItem>Option 3</asp:ListItem>
+                                <asp:ListItem>Option 4</asp:ListItem>
+                            </asp:DropDownList>
+                        </div>
+
+                        <div class="col-md-6">
+                            <h3><span class="label label-default">Add Question</span></h3>
+                            <asp:Button ID="btnAddQuestion" Text="Add Question" CssClass=" form-control col-md-3 formHolder btn btn-default" OnClick="btnAddQuestion_Click" ValidationGroup="AddQues" runat="server" />
+                        </div>
+
                     </div>
-
-                    <div class="col-md-6 spacer">
-                        <h3><span class="label label-default">Select Answer</span></h3>
-
-                        <asp:DropDownList ID="lstSelectAns" CssClass="form-control " runat="server">
-                            <asp:ListItem>Option 1</asp:ListItem>
-                            <asp:ListItem>Option 2</asp:ListItem>
-                            <asp:ListItem>Option 3</asp:ListItem>
-                            <asp:ListItem>Option 4</asp:ListItem>
-                        </asp:DropDownList>
-
-                        <asp:Button ID="btnAddQuestion" Text="Add Question" OnClick="btnAddQuestion_Click" ValidationGroup="CreateQuiz" runat="server" />
-                    </div>
-
                     <div class="spacer col-md-12">
-                        <asp:Button ID="btnAddQuiz" CssClass="btn btn-default" Text="Add Quiz" runat="server" ValidationGroup="CreateQuiz" OnClick="btnAddQuiz_Click" />
+                        <asp:Button ID="btnAddQuiz" CssClass="btn btn-default col-xs-12" CausesValidation="true" Text="Add Quiz" runat="server" ValidationGroup="CreateQuiz" OnClick="btnAddQuiz_Click" />
                     </div>
                 </div><!--Right column Drop-->
             </div><!--EndRightColumn-->
