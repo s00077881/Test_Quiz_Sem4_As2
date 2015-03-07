@@ -7,23 +7,32 @@
         <div class="progress-bar progress-bar-info progress-bar-striped" style="width: 100%"></div>
     </div>
 
-    <asp:Label ID="lblQuestion1" runat="server" />
-    <asp:RadioButtonList ID="lstAnswers1" Enabled="false" runat="server" />
-
-    <asp:Label ID="lblQuestion2" runat="server" />
-    <asp:RadioButtonList ID="lstAnswers2" Enabled="false" runat="server" />
-
-    <asp:Label ID="lblQuestion3" runat="server" />
-    <asp:RadioButtonList ID="lstAnswers3" Enabled="false" runat="server" />
-
-    <asp:Label ID="lblQuestion4" runat="server" />
-    <asp:RadioButtonList ID="lstAnswers4" Enabled="false" runat="server" />
-
-    <asp:Label ID="lblQuestion5" runat="server" />
-    <asp:RadioButtonList ID="lstAnswers5" Enabled="false" runat="server" />
-
-    <asp:Label ID="lblQuestion6" runat="server" />
-    <asp:RadioButtonList ID="lstAnswers6" Enabled="false" runat="server" />
+    <div class="col-xs-12 col-md-6">
+        <div class="spacer">
+            <asp:Label ID="lblQuestion1" runat="server" />
+            <asp:RadioButtonList ID="lstAnswers1" Enabled="false" runat="server" />
+        </div>
+        <div class="spacer">
+            <asp:Label ID="lblQuestion2" runat="server" />
+            <asp:RadioButtonList ID="lstAnswers2" Enabled="false" runat="server" />
+        </div>
+        <div class="spacer">
+            <asp:Label ID="lblQuestion3" runat="server" />
+            <asp:RadioButtonList ID="lstAnswers3" Enabled="false" runat="server" />
+        </div>
+        <div class="spacer">
+            <asp:Label ID="lblQuestion4" runat="server" />
+            <asp:RadioButtonList ID="lstAnswers4" Enabled="false" runat="server" />
+        </div>
+        <div class="spacer">
+            <asp:Label ID="lblQuestion5" runat="server" />
+            <asp:RadioButtonList ID="lstAnswers5" Enabled="false" runat="server" />
+        </div>
+        <div class="spacer">
+            <asp:Label ID="lblQuestion6" runat="server" />
+            <asp:RadioButtonList ID="lstAnswers6" Enabled="false" runat="server" />
+        </div>
+    </div>
 
     <asp:Label ID="lblScore" runat="server" />
     <asp:Label ID="lblTimeTaken" runat="server" />

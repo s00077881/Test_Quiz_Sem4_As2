@@ -30,7 +30,7 @@
             <div id="selectQuiz" class="col-md-6 col-xs-12"><!--LeftColumn-->
                 <h2><span class="label label-default">Select Quiz</span></h2>
                 <asp:DropDownList ID="lstQuizSelect" CssClass="form-control" runat="server"></asp:DropDownList>
-                <asp:Button ID="startQuiz" CssClass="btn spacer" Text="Start Quiz" runat="server" OnClick="startQuiz_Click" />
+                <asp:Button ID="startQuiz" CssClass="btn spacer btn-default" Text="Start Quiz" runat="server" OnClick="startQuiz_Click" />
             </div><!--EndLeftColumn-->
 
             <div class="col-md-6 col-xs-12"><!--RightColumn-->
@@ -104,7 +104,7 @@
                     </div>
 
                     <div class="spacer col-md-12">
-                        <asp:Button ID="btnAdQuiz" CssClass="btn" Text="Add Quiz" runat="server" OnClick="btnAdQuiz_Click" />
+                        <asp:Button ID="btnAdQuiz" CssClass="btn btn-default" Text="Add Quiz" runat="server" OnClick="btnAdQuiz_Click" />
                     </div>
                 </div><!--Right column Drop-->
             </div><!--EndRightColumn-->

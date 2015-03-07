@@ -3,12 +3,14 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mainContentBlock" runat="server">
 
-    <div class="progress">
+    <div class="progress col-xs-12">
         <div class="progress-bar progress-bar-info progress-bar-striped" style="width: 0%"></div>
     </div>
 
-    <asp:Label ID="lblQuestion" runat="server" />
+    <asp:Label ID="lblQuestion" CssClass="col-xs-12 text-center" runat="server" />
     <asp:RadioButtonList ID="lstAnswers" runat="server" />
 
-    <asp:Button ID="btnNextQuestion" Text="Next Question" OnClick="btnNextQuestion_Click" runat="server" />
+    <div class="spacer">
+        <asp:Button ID="btnNextQuestion" Text="Next Question" CssClass="btn spacer col-xs-6 btn-default pull-right" OnClick="btnNextQuestion_Click" runat="server" />
+    </div>
 </asp:Content>
