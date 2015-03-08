@@ -9,45 +9,56 @@
 
     <div class="col-xs-12 col-md-6">
         <div class="spacer">
-            <asp:Label ID="lblQuestion1" runat="server" />
+            <strong><asp:Label ID="lblQuestion1" runat="server" /></strong>
             <asp:RadioButtonList ID="lstAnswers1" Enabled="false" runat="server" />
         </div>
         <div class="spacer">
-            <asp:Label ID="lblQuestion2" runat="server" />
+            <strong><asp:Label ID="lblQuestion2" runat="server" /></strong>
             <asp:RadioButtonList ID="lstAnswers2" Enabled="false" runat="server" />
         </div>
         <div class="spacer">
-            <asp:Label ID="lblQuestion3" runat="server" />
+            <strong><asp:Label ID="lblQuestion3" runat="server" /></strong>
             <asp:RadioButtonList ID="lstAnswers3" Enabled="false" runat="server" />
         </div>
         <div class="spacer">
-            <asp:Label ID="lblQuestion4" runat="server" />
+            <strong><asp:Label ID="lblQuestion4" runat="server" /></strong>
             <asp:RadioButtonList ID="lstAnswers4" Enabled="false" runat="server" />
         </div>
         <div class="spacer">
-            <asp:Label ID="lblQuestion5" runat="server" />
+            <strong><asp:Label ID="lblQuestion5" runat="server" /></strong>
             <asp:RadioButtonList ID="lstAnswers5" Enabled="false" runat="server" />
         </div>
         <div class="spacer">
-            <asp:Label ID="lblQuestion6" runat="server" />
+            <strong><asp:Label ID="lblQuestion6" runat="server" /></strong>
             <asp:RadioButtonList ID="lstAnswers6" Enabled="false" runat="server" />
         </div>
     </div>
 
     <div class="col-xs-12 col-md-6">
-        <div class="col-xs-12">
-            <asp:Label ID="lblTimeTaken" CssClass="" runat="server" />
+        <div class="col-xs-12 center-block spacer formHolder" style="font-size:18px">
+            <strong><asp:Label ID="lblTimeTaken" runat="server" /></strong>
         </div>
 
-        <asp:Label ID="lblScore" runat="server" />
-        <asp:Label ID="lblTotalPeople" runat="server" />
-        <asp:Label ID="lblAverageScore" runat="server" />
+        <div class="col-xs-12 formHolder spacer">
+            <asp:Label ID="lblScore" runat="server" />
+        </div>
+        
+        <div class="col-sm-12 formHolder spacer">
+            <div class="col-xs-12 col-md-6 formHolder">
+                <asp:Label ID="lblTotalPeople" runat="server" />
+            </div>
+            <div class="col-xs-12 col-md-6 formHolder">
+                <asp:Label ID="lblAverageScore" runat="server" />
+            </div>
+        </div>
 
-        <div id="chartContainer" class="formHolder" style="height: 300px; width: 100%;"></div>
+        <div class="col-xs-12 formHolder">
+            <div id="chartContainer" class="ansSpacer" style="height: 300px; width: 100%;"></div>
+        </div>
 
-        <div class="col-md-12 spacer">
-            <asp:Button ID="btnNewQuiz" Text="Select New Quiz" CssClass="btn btn-default col-xs-12 col-md-6" OnClick="btnNewQuiz_Click" runat="server" />
-            <asp:Button ID="btnRestartQuiz" Text="Restart Quiz" CssClass="btn btn-default col-xs-12 col-md-6" OnClick="btnRestartQuiz_Click" runat="server" />
+        <div class="col-md-12 ansSpacer formHolder">
+            <asp:Button ID="btnNewQuiz" Text="Select New Quiz" CssClass="btn btn-default col-xs-12 col-md-6 spacer " OnClick="btnNewQuiz_Click" runat="server" />
+            <asp:Button ID="btnRestartQuiz" Text="Restart Quiz" CssClass="btn btn-default col-xs-12 col-md-6 spacer " OnClick="btnRestartQuiz_Click" runat="server" />
         </div>
     </div>
 
@@ -64,7 +75,6 @@
             },
             animationEnabled: true,
             axisY: {
-                title: "Score",
                 maximum: 6
             },
             theme: "theme1",

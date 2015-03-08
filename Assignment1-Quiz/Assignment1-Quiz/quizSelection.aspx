@@ -27,11 +27,14 @@
         </div>
 
         <div class="col-md-12 formHolder">
+
             <div id="selectQuiz" class="col-md-6 col-xs-12"><!--LeftColumn-->
+
                 <h2><span class="label label-default">Select Quiz</span></h2>
                 <asp:DropDownList ID="lstQuizSelect" CssClass="form-control" runat="server"></asp:DropDownList>
-                <asp:RequiredFieldValidator ID="rFVSelectQuiz" ControlToValidate="lstQuizSelect" CssClass="alert alert-danger col-xs-12 " Display="Dynamic" ErrorMessage="*You Must Select A Category!" runat="server" />
-                <asp:Button ID="startQuiz" CssClass="btn btn-default spacer col-xs-12" Text="Start Quiz" runat="server" OnClick="startQuiz_Click" />
+                <asp:RequiredFieldValidator ID="rFVSelectQuiz" ControlToValidate="lstQuizSelect" CssClass="alert alert-danger label col-xs-12 " Display="Dynamic" ErrorMessage="*You Must Select A Category!" runat="server" />
+                <asp:Button ID="startQuiz" CssClass="btn btn-default spacer col-xs-12 " Text="Start Quiz" runat="server" OnClick="startQuiz_Click" />
+
             </div><!--EndLeftColumn-->
 
             <div class="col-md-6 col-xs-12"><!--RightColumn-->
@@ -42,7 +45,7 @@
                     <div class="spacer">
                         <h3><span class="label label-default labelSmall">Quiz Name</span></h3>
                         <asp:TextBox ID="tbxCreateName" placeholder="Quiz Name" CssClass="form-control " runat="server"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="rFVQuizName" ControlToValidate="tbxCreateName" CssClass="alert alert-danger col-xs-12 " Display="Dynamic" ErrorMessage="*Quiz Name Is Required!" ValidationGroup="CreateQuiz" runat="server" />
+                        <asp:RequiredFieldValidator ID="rFVQuizName" ControlToValidate="tbxCreateName" CssClass="alert alert-danger label col-xs-12 " Display="Dynamic" ErrorMessage="*Quiz Name Is Required!" ValidationGroup="CreateQuiz" runat="server" />
                     </div>
 
                     <div class="spacer">
@@ -65,38 +68,38 @@
                             <asp:ListItem>Question 5</asp:ListItem>
                             <asp:ListItem>Question 6</asp:ListItem>
                         </asp:DropDownList>
-                        <asp:CustomValidator ID="cVlstSelectQuestion" Display="Dynamic" OnServerValidate="cVlstSelectQuestion_ServerValidate" CssClass="alert alert-danger col-xs-12 " runat="server" ErrorMessage="*All Questions/Answer Field Are Required!" ValidationGroup="CreateQuiz"></asp:CustomValidator>
+                        <asp:CustomValidator ID="cVlstSelectQuestion" Display="Dynamic" OnServerValidate="cVlstSelectQuestion_ServerValidate" CssClass="alert alert-danger label col-xs-12 " runat="server" ErrorMessage="*All Questions/Answer Field Are Required!" ValidationGroup="CreateQuiz"></asp:CustomValidator>
                     </div>
 
                     <div class="spacer">
                         <h3><span class="label label-default labelSmall">Enter Question</span></h3>
                         <asp:TextBox ID="tbxEnterQuestion" CssClass="form-control " placeholder="Enter Question" runat="server"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="rFVQuestion" ControlToValidate="tbxEnterQuestion" CssClass="alert alert-danger col-xs-12 " Display="Dynamic" ErrorMessage="*Question Is Required!" ValidationGroup="AddQues" runat="server" />
+                        <asp:RequiredFieldValidator ID="rFVQuestion" ControlToValidate="tbxEnterQuestion" CssClass="alert alert-danger label col-xs-12 " Display="Dynamic" ErrorMessage="*Question Is Required!" ValidationGroup="AddQues" runat="server" />
                     </div>
 
                     <div class="spacer">
                         <div class="col-md-6 ">
                             <h3><span class="label label-default labelSmall">Option1</span></h3>
                             <asp:TextBox ID="tbxOption1" CssClass="form-control col-md-3 formHolder" placeholder="Option 1" runat="server"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="rFVOption1" ControlToValidate="tbxOption1" CssClass="alert alert-danger col-xs-12 " Display="Dynamic" ErrorMessage="*Option 1 Is Required!" ValidationGroup="AddQues" runat="server" />
+                            <asp:RequiredFieldValidator ID="rFVOption1" ControlToValidate="tbxOption1" CssClass="alert alert-danger label col-xs-12 " Display="Dynamic" ErrorMessage="*Option 1 Is Required!" ValidationGroup="AddQues" runat="server" />
                         </div>
 
                         <div class="col-md-6">
                             <h3><span class="label label-default labelSmall">Option2</span></h3>
                             <asp:TextBox ID="tbxOption2" CssClass="form-control col-md-3 formHolder" placeholder="Option 2" runat="server"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="rFVOption2" ControlToValidate="tbxOption2" CssClass="alert alert-danger col-xs-12 " Display="Dynamic" ErrorMessage="*Option 2 Is Required!" ValidationGroup="AddQues" runat="server" />
+                            <asp:RequiredFieldValidator ID="rFVOption2" ControlToValidate="tbxOption2" CssClass="alert alert-danger label col-xs-12 " Display="Dynamic" ErrorMessage="*Option 2 Is Required!" ValidationGroup="AddQues" runat="server" />
                         </div>
 
                         <div class="col-md-6">
                             <h3><span class="label label-default labelSmall">Option3</span></h3>
                             <asp:TextBox ID="tbxOption3" CssClass="form-control col-md-3 formHolder" placeholder="Option 3" runat="server"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="rFVOption3" ControlToValidate="tbxOption3" CssClass="alert alert-danger col-xs-12 " Display="Dynamic" ErrorMessage="*Option 3 Is Required!" ValidationGroup="AddQues" runat="server" />
+                            <asp:RequiredFieldValidator ID="rFVOption3" ControlToValidate="tbxOption3" CssClass="alert alert-danger label col-xs-12 " Display="Dynamic" ErrorMessage="*Option 3 Is Required!" ValidationGroup="AddQues" runat="server" />
                         </div>
 
                         <div class="col-md-6">
                             <h3><span class="label label-default labelSmall">Option4</span></h3>
                             <asp:TextBox ID="tbxOption4" CssClass="form-control col-md-3 formHolder" placeholder="Option 3" runat="server"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="rFVOption4" ControlToValidate="tbxOption4" CssClass="alert alert-danger col-xs-12 " Display="Dynamic" ErrorMessage="*Option 4 Is Required!" ValidationGroup="AddQues" runat="server" />
+                            <asp:RequiredFieldValidator ID="rFVOption4" ControlToValidate="tbxOption4" CssClass="alert alert-danger label col-xs-12 " Display="Dynamic" ErrorMessage="*Option 4 Is Required!" ValidationGroup="AddQues" runat="server" />
                         </div>
 
                         <div class="col-md-6 form-group">

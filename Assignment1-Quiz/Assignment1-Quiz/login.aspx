@@ -8,13 +8,13 @@
     <div class="form-group">
         <h3><span class="label label-default col-md-12 col-xs-12 ">First Name</span></h3>
         <asp:TextBox ID="tbxFName"  CssClass="form-control" type="text" runat="server" />
-        <asp:RequiredFieldValidator ID="rfvFName" CssClass="alert alert-danger col-xs-12" ControlToValidate="tbxFName" Display="Dynamic" ErrorMessage="*Please enter first name." runat="server" />
+        <asp:RequiredFieldValidator ID="rfvFName" CssClass="alert alert-danger label col-xs-12" ControlToValidate="tbxFName" Display="Dynamic" ErrorMessage="*Please enter first name." runat="server" />
     </div>
 
     <div class="form-group">
         <h3><span class="label label-default col-md-12 col-xs-12 ">Last Name</span></h3>
         <asp:TextBox ID="tbxLName" for="usr" type="text" CssClass="form-control" runat="server" />
-        <asp:RequiredFieldValidator ID="rfvLName" CssClass="alert alert-danger col-xs-12 " ControlToValidate="tbxLName" Display="Dynamic" ErrorMessage="*Please enter last name." runat="server" />
+        <asp:RequiredFieldValidator ID="rfvLName" CssClass="alert alert-danger label col-xs-12 " ControlToValidate="tbxLName" Display="Dynamic" ErrorMessage="*Please enter last name." runat="server" />
     </div>
 </div><!--End Left Column-->
 
@@ -23,13 +23,13 @@
         <h3><span class="label label-default col-md-12 col-xs-12 ">Email</span></h3>
         <asp:TextBox ID="tbxEmail" CssClass="form-control" runat="server" />
         <asp:RequiredFieldValidator ID="rfvEmail" ControlToValidate="tbxEmail" CssClass="alert alert-danger col-xs-12 " Display="Dynamic" ErrorMessage="*Please enter email." runat="server" />
-        <asp:RegularExpressionValidator ID="revEmail" ControlToValidate="tbxEmail" CssClass="alert alert-danger col-xs-12 " Display="Dynamic" ErrorMessage="*Invalid email." ValidationExpression="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$" runat="server" />
+        <asp:RegularExpressionValidator ID="revEmail" ControlToValidate="tbxEmail" CssClass="alert alert-danger label col-xs-12 " Display="Dynamic" ErrorMessage="*Invalid email." ValidationExpression="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$" runat="server" />
     </div>
 
     <div class="form-group">
         <h3><span class="label label-default col-md-12 col-xs-12 ">Nationality</span></h3>
         <asp:DropDownList CssClass="form-control" ID="lstNationalities" runat="server" />
-        <asp:RequiredFieldValidator ID="rfvNationality" CssClass="alert alert-danger col-xs-12 " Display="Dynamic" ControlToValidate="lstNationalities" ErrorMessage="*Please select nationality." InitialValue="-- Select Nationality --" runat="server" />
+        <asp:RequiredFieldValidator ID="rfvNationality" CssClass="alert alert-danger label col-xs-12 " Display="Dynamic" ControlToValidate="lstNationalities" ErrorMessage="*Please select nationality." InitialValue="-- Select Nationality --" runat="server" />
     </div>
 
     <div class="checkbox">
