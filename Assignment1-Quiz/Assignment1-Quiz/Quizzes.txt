@@ -1,2 +1,4 @@
 1,General Questions,General Knowledge,0,0
 2,Movie Quotes,Movies,0,0
+3,Easy Pop Quiz,Music,2,6
+4,Football History,Sports,2,6

@@ -10,3 +10,15 @@
 2,What film is "My name is Maximus Decimus Meridius Commander of the armies of the North General of the Felix legions loyal servant to the true Emperor Marcus Aurelius. Father to a murdered son. husband to a murdered wife. And I will have my vengeance in this life or the next." from?,Gladiator,The Eagle,Ben Hur,Braveheart,Gladiator
 2,What film is "...I have nipples. Greg. Could you milk me?" from?,Zoolander,Anchorman,Meet the Parents,The Other Guys,Meet the Parents
 2,What film is "Mama always said life was like a box of chocolates. You never know what you're gonna get." from?,Saving Private Ryan,Forrest Gump,The Pursuit of Happiness,Drive,Forrest Gump
+3,What Sonny & Cher song was a hit in the 1980s for UB40 & Chrissie Hynde?,I Can't Help Falling In Love With You,I Got You Babe,Red Red Wine,Don't Get Me Wrong,I Got You Babe
+3,Which female pop star hit the headlines in 2007 when she shaved her head?,Madonna,Kylie Minogue,Britney Spears,Lady Gaga,Britney Spears
+3,Who was The Beatles' manager?,Brian Epstein,Paul McCartney,Pete Best,Cilla Black,Brian Epstein
+3,What nationality is singer Bryan Adams?,English,American,Australian,Canadian,Canadian
+3,Elton John's hit Candle In The Wind was originally written about which famous actress?,Greta Garbo,Audrey Hepburn,Marilyn Monroe,Thora Hird,Marilyn Monroe
+3,Who had a hit in the sixties with You Really Got Me?,The Kinks,The Monkees,The Who,The Rolling Stones,The Kinks
+4,What was the name of the first World Cup trophy?,Jules Rimet trophy,Rodolphe Seeldrayers trophy,Daniel Burley Woolfall trophy,Arthur Drewry trophy,Jules Rimet trophy
+4,When was the world's first official football body established?,1853,1863,1873,1883,1863
+4,Against which country did England play history's first international football fixture?,Scotland,France,Belgium,Italy,Scotland
+4,What is the oldest football club in history according to FIFA?,The Football Club of Edinburgh,TSV 1860 Munchen,Sheffield F.C.,Melbourne Football Club,Sheffield F.C.
+4,Against which team did Uruguay win the first World Cup final in 1930?,USA,Yugoslavia,Brazil,Argentina,Argentina
+4,What was history's first official World Cup soccer ball called?,Tango,Azteca,Telstar,Jabulani,Telstar
