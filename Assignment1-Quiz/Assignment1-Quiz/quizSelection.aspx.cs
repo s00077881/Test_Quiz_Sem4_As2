@@ -35,7 +35,6 @@ namespace Assignment1_Quiz
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session.Clear();
         }
 
         /***************************************

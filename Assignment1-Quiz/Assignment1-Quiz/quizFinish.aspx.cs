@@ -13,14 +13,14 @@ namespace Assignment1_Quiz
         List<QuizQuestions> questions;
         List<int> quesAnswered;
         List<string> answers;
-        int score = 0;
+        public int score = 0;
+        public double average = 0;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
-            {
                 ShowResult();
-            }
+
         }
 
         protected void ShowResult()
@@ -38,72 +38,55 @@ namespace Assignment1_Quiz
                 DisplayAnswers(4, lblQuestion5, lstAnswers5);
                 DisplayAnswers(5, lblQuestion6, lstAnswers6);
 
+                List<Quiz> quizzes = new List<Quiz>();
+
+                string[] readFile = File.ReadAllLines(Server.MapPath("Quizzes.txt"));
+                string[] splitLine;
+
+                for (int i = 0; i < readFile.Length; i++)
+                {
+                    splitLine = readFile[i].Split(',');
+                    Quiz newQuiz = new Quiz(splitLine[0], splitLine[1], splitLine[2], Convert.ToInt32(splitLine[3]), Convert.ToInt32(splitLine[4]));
+                    quizzes.Add(newQuiz);
+                }
+
+                foreach (Quiz q in quizzes)
+                {
+                    if (q._quizID == questions.ElementAt(0)._id)
+                    {
+                        int timeTaken = q._timeTaken + 1;
+                        int totalScore = q._totalScore + score;
+
+                        q._timeTaken = timeTaken;
+                        q._totalScore = totalScore;
+
+                        average = Convert.ToDouble(q._totalScore) / Convert.ToDouble(q._timeTaken);
+
+                        lblTotalPeople.Text = string.Format("Total people to take quiz: {0}", q._timeTaken);
+                        lblAverageScore.Text = string.Format("Average score is: {0:f2}", average);
+                    }
+                }
+
+                string[] writeToFile = new string[quizzes.Count];
+
+                for (int i = 0; i < quizzes.Count; i++)
+                {
+                    Quiz currentQuiz = quizzes.ElementAt(i);
+                    writeToFile[i] = currentQuiz.WriteScoreTotal();
+                }
+
+                File.WriteAllLines((Server.MapPath("Quizzes.txt")), writeToFile);
+
                 lblScore.Text = string.Format("Your score: {0}/6", score);
 
                 DateTime timeStart = (DateTime)Session["timeStart"];
-                TimeSpan timeTaken = DateTime.Now.Subtract(timeStart);
-                lblTimeTaken.Text = string.Format("Time taken: {0:hh\\:mm\\:ss}", timeTaken);
+                TimeSpan timeTakenTime = DateTime.Now.Subtract(timeStart);
+                lblTimeTaken.Text = string.Format("Time taken: {0:hh\\:mm\\:ss}", timeTakenTime);
 
             }
             else
                 Response.Redirect("quizSelection.aspx");
-
-
-
-            List<Quiz> quizzes = new List<Quiz>();
-            double average = 0;
-
-            string[] readFile = File.ReadAllLines(Server.MapPath("Quizzes.txt"));
-            string[] splitLine;
-
-            for (int i = 0; i < readFile.Length; i++)
-            {
-                splitLine = readFile[i].Split(',');
-                Quiz newQuiz = new Quiz(splitLine[0], splitLine[1], splitLine[2], Convert.ToInt32(splitLine[3]), Convert.ToInt32(splitLine[4]));
-                quizzes.Add(newQuiz);
-            }
-
-            foreach(Quiz q in quizzes)
-            {
-                if (q._quizID == questions.ElementAt(0)._id)
-                {
-                    int timeTaken = q._timeTaken +1;
-                    int totalScore = q._totalScore + score;
-
-                    q._timeTaken = timeTaken;
-                    q._totalScore = totalScore;
-
-                    average = Convert.ToDouble(q._totalScore) / Convert.ToDouble(q._timeTaken);
-
-                    lblTotalPeople.Text = string.Format("Total people to take quiz: {0}", q._timeTaken);
-                    lblAverageScore.Text = string.Format("Average score is: {0:f2}", average);
-                }
-            }
-
-            string[] writeToFile = new string[quizzes.Count];
-
-            for (int i = 0; i < quizzes.Count; i++)
-            {
-                Quiz currentQuiz = quizzes.ElementAt(i);
-                writeToFile[i] = currentQuiz.WriteScoreTotal();
-            }
-            File.WriteAllLines((Server.MapPath("Quizzes.txt")), writeToFile);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            
         }
 
         protected void DisplayAnswers(int index, Label lblID, RadioButtonList lstID)
@@ -130,6 +113,19 @@ namespace Assignment1_Quiz
                 else
                     ans.Attributes["style"] = "color:black";
             }
+        }
+
+        protected void btnRestartQuiz_Click(object sender, EventArgs e)
+        {
+            Session.Remove("answers");
+            Response.Redirect("question1.aspx");
+        }
+
+        protected void btnNewQuiz_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Session.Abandon();
+            Response.Redirect("quizSelection.aspx");
         }
     }
 }

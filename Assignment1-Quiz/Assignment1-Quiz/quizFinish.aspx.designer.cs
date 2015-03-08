@@ -121,15 +121,6 @@ namespace Assignment1_Quiz {
         protected global::System.Web.UI.WebControls.RadioButtonList lstAnswers6;
         
         /// <summary>
-        /// lblScore control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblScore;
-        
-        /// <summary>
         /// lblTimeTaken control.
         /// </summary>
         /// <remarks>
@@ -137,6 +128,15 @@ namespace Assignment1_Quiz {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTimeTaken;
+        
+        /// <summary>
+        /// lblScore control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblScore;
         
         /// <summary>
         /// lblTotalPeople control.
@@ -155,5 +155,23 @@ namespace Assignment1_Quiz {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblAverageScore;
+        
+        /// <summary>
+        /// btnNewQuiz control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnNewQuiz;
+        
+        /// <summary>
+        /// btnRestartQuiz control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRestartQuiz;
     }
 }

@@ -41,10 +41,6 @@ h2{
     font-size:24px;
 }
 
-label{
-    font-size:18px;
-}
-
 #dropButton{
     cursor:pointer;
 }
@@ -90,7 +86,6 @@ body {
 
 /********end master page*********
 ********************************/
-
 
 /**********wobble effect*********
 https://github.com/IanLunn/Hover
