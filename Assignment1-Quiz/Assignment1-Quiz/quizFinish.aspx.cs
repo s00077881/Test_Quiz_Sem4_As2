@@ -91,24 +91,24 @@ namespace Assignment1_Quiz
 
         protected void DisplayAnswers(int index, Label lblID, RadioButtonList lstID)
         {
-            lblID.Text = questions.ElementAt(quesAnswered.ElementAt(index))._question.ToString();
+            lblID.Text = questions.ElementAt(quesAnswered.ElementAt(index))._question;
 
-            lstID.Items.Add(new ListItem(questions.ElementAt(quesAnswered.ElementAt(index))._option1.ToString(), questions.ElementAt(quesAnswered.ElementAt(index))._option1.ToString()));
-            lstID.Items.Add(new ListItem(questions.ElementAt(quesAnswered.ElementAt(index))._option2.ToString(), questions.ElementAt(quesAnswered.ElementAt(index))._option2.ToString()));
-            lstID.Items.Add(new ListItem(questions.ElementAt(quesAnswered.ElementAt(index))._option3.ToString(), questions.ElementAt(quesAnswered.ElementAt(index))._option3.ToString()));
-            lstID.Items.Add(new ListItem(questions.ElementAt(quesAnswered.ElementAt(index))._option4.ToString(), questions.ElementAt(quesAnswered.ElementAt(index))._option4.ToString()));
+            lstID.Items.Add(new ListItem(questions.ElementAt(quesAnswered.ElementAt(index))._option1, questions.ElementAt(quesAnswered.ElementAt(index))._option1));
+            lstID.Items.Add(new ListItem(questions.ElementAt(quesAnswered.ElementAt(index))._option2, questions.ElementAt(quesAnswered.ElementAt(index))._option2));
+            lstID.Items.Add(new ListItem(questions.ElementAt(quesAnswered.ElementAt(index))._option3, questions.ElementAt(quesAnswered.ElementAt(index))._option3));
+            lstID.Items.Add(new ListItem(questions.ElementAt(quesAnswered.ElementAt(index))._option4, questions.ElementAt(quesAnswered.ElementAt(index))._option4));
 
             foreach (ListItem ans in lstID.Items)
             {
                 if (ans.Value == answers[index])
                     ans.Selected = true;
 
-                if (ans.Selected == true && ans.Value == questions.ElementAt(quesAnswered.ElementAt(index))._answer.ToString())
+                if (ans.Selected == true && ans.Value == questions.ElementAt(quesAnswered.ElementAt(index))._answer)
                 {
                     ans.Attributes["style"] = "color:green";
                     score += 1;
                 }
-                else if (ans.Selected == true && ans.Value != questions.ElementAt(quesAnswered.ElementAt(index))._answer.ToString())
+                else if (ans.Selected == true && ans.Value != questions.ElementAt(quesAnswered.ElementAt(index))._answer)
                     ans.Attributes["style"] = "color:red";
                 else
                     ans.Attributes["style"] = "color:black";

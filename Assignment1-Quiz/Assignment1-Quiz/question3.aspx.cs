@@ -19,12 +19,12 @@ namespace Assignment1_Quiz
 
                 if (questions != null && quesAnswered != null)
                 {
-                    lblQuestion.Text = questions.ElementAt(quesAnswered.ElementAt(2))._question.ToString();
+                    lblQuestion.Text = questions.ElementAt(quesAnswered.ElementAt(2))._question;
 
-                    lstAnswers.Items.Add(new ListItem(questions.ElementAt(quesAnswered.ElementAt(2))._option1.ToString(), questions.ElementAt(quesAnswered.ElementAt(2))._option1.ToString()));
-                    lstAnswers.Items.Add(new ListItem(questions.ElementAt(quesAnswered.ElementAt(2))._option2.ToString(), questions.ElementAt(quesAnswered.ElementAt(2))._option2.ToString()));
-                    lstAnswers.Items.Add(new ListItem(questions.ElementAt(quesAnswered.ElementAt(2))._option3.ToString(), questions.ElementAt(quesAnswered.ElementAt(2))._option3.ToString()));
-                    lstAnswers.Items.Add(new ListItem(questions.ElementAt(quesAnswered.ElementAt(2))._option4.ToString(), questions.ElementAt(quesAnswered.ElementAt(2))._option4.ToString()));
+                    lstAnswers.Items.Add(new ListItem(questions.ElementAt(quesAnswered.ElementAt(2))._option1, questions.ElementAt(quesAnswered.ElementAt(2))._option1));
+                    lstAnswers.Items.Add(new ListItem(questions.ElementAt(quesAnswered.ElementAt(2))._option2, questions.ElementAt(quesAnswered.ElementAt(2))._option2));
+                    lstAnswers.Items.Add(new ListItem(questions.ElementAt(quesAnswered.ElementAt(2))._option3, questions.ElementAt(quesAnswered.ElementAt(2))._option3));
+                    lstAnswers.Items.Add(new ListItem(questions.ElementAt(quesAnswered.ElementAt(2))._option4, questions.ElementAt(quesAnswered.ElementAt(2))._option4));
                 }
                 else
                     Response.Redirect("quizSelection.aspx");
