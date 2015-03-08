@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mainContentBlock" runat="server">
 
-    <div class="progress col-xs-12">
+    <div class="progress">
         <div class="progress-bar progress-bar-info progress-bar-striped" style="width: 0%"></div>
     </div>
 

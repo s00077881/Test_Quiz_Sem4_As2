@@ -46,6 +46,12 @@ namespace Assignment1_Quiz
                     user.Expires = DateTime.Now.AddYears(1);
                     Response.Cookies.Add(user);
                 }
+                else
+                {
+                    HttpCookie user = new HttpCookie("s00147036/s00077881");
+                    user.Expires = DateTime.Now.AddDays(-1);
+                    Response.Cookies.Add(user);
+                }
 
                 Response.Redirect("quizSelection.aspx");
             }

@@ -36,7 +36,7 @@ html {
 
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 50px;
+  margin-bottom: 100px;
 }
 
 .footer {
@@ -44,7 +44,7 @@ body {
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 50px;
+  height: 100px;
   background-color:#333333;
 }
 

@@ -1,2 +1,2 @@
-1,General Questions,General Knowledge,68,4
+1,General Questions,General Knowledge,0,0
 2,Movie Quotes,Movies,0,0
