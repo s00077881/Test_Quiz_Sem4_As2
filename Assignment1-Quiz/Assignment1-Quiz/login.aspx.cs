@@ -14,6 +14,7 @@ namespace Assignment1_Quiz
         {
             if (!IsPostBack)
             {
+                //Red in nationalities text file and populate dropdown list
                 string[] readFile = File.ReadAllLines(Server.MapPath("Nationalities.txt"));
 
                 for (int i = 0; i < readFile.Length; i++)
@@ -21,6 +22,7 @@ namespace Assignment1_Quiz
                     lstNationalities.Items.Add(new ListItem(readFile[i], readFile[i]));
                 }
 
+                //Check if cookie exists // if(true) populate relivent input fields
                 if (Request.Cookies["s00147036/s00077881"] != null)
                 {
                     tbxFName.Text = Request.Cookies["s00147036/s00077881"]["Firstname"];
@@ -30,6 +32,16 @@ namespace Assignment1_Quiz
                 }
             }
         }
+
+
+        /***********************************************************************
+         * On butten click if(valid) create new cookie and store user information
+         * Check if Remember me checked
+         * Add 1 year to todays date
+         * Store new date with cookie
+         * Redirect to quizSelection page
+         ***********************************************************************/
+
 
         protected void btnChoose_Click(object sender, EventArgs e)
         {

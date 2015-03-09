@@ -3,11 +3,11 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mainContentBlock" runat="server">
 
-    <div class="progress">
+    <div class="progress"><!--Contains progress bar-->
         <div class="progress-bar progress-bar-success progress-bar-striped" style="width: 100%"></div>
     </div>
 
-    <div class="col-xs-12 col-md-6">
+    <div class="col-xs-12 col-md-6"><!--Left Column-->
         <div class="spacer">
             <strong><asp:Label ID="lblQuestion1" runat="server" /></strong>
             <asp:RadioButtonList ID="lstAnswers1" Enabled="false" runat="server" />
@@ -32,9 +32,9 @@
             <strong><asp:Label ID="lblQuestion6" runat="server" /></strong>
             <asp:RadioButtonList ID="lstAnswers6" Enabled="false" runat="server" />
         </div>
-    </div>
+    </div><!--End Left Column-->
 
-    <div class="col-xs-12 col-md-6">
+    <div class="col-xs-12 col-md-6"><!--Right Column-->
         <div class="col-xs-12 center-block spacer formHolder" style="font-size:18px">
             <strong><asp:Label ID="lblTimeTaken" runat="server" /></strong>
         </div>
@@ -60,11 +60,12 @@
             <asp:Button ID="btnNewQuiz" Text="Select New Quiz" CssClass="btn btn-default col-xs-12 col-md-6 spacer " OnClick="btnNewQuiz_Click" runat="server" />
             <asp:Button ID="btnRestartQuiz" Text="Restart Quiz" CssClass="btn btn-default col-xs-12 col-md-6 spacer " OnClick="btnRestartQuiz_Click" runat="server" />
         </div>
-    </div>
+    </div><!--End Right Column-->
 
 
     <script type="text/javascript">
 
+        //Dispalys the the users score and average in a bar chart
         //http://canvasjs.com/editor/?id=http://canvasjs.com/example/gallery/column/oil_reserves/
 
         window.onload = function () {
