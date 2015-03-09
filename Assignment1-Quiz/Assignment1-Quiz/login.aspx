@@ -26,7 +26,7 @@
         <asp:RegularExpressionValidator ID="revEmail" ControlToValidate="tbxEmail" CssClass="alert alert-danger label col-xs-12 " Display="Dynamic" ErrorMessage="*Invalid email." ValidationExpression="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$" runat="server" />
     </div>
 
-    <div class="form-group"><!--NAtionality Input Field-->
+    <div class="form-group"><!--Nationality Input Field-->
         <h3><span class="label label-default col-md-12 col-xs-12 ">Nationality</span></h3>
         <asp:DropDownList CssClass="form-control" ID="lstNationalities" runat="server" />
         <asp:RequiredFieldValidator ID="rfvNationality" CssClass="alert alert-danger label col-xs-12 " Display="Dynamic" ControlToValidate="lstNationalities" ErrorMessage="*Please select nationality." InitialValue="-- Select Nationality --" runat="server" />
