@@ -70,11 +70,11 @@ namespace Assignment1_Quiz
         }
 
 
-        /*********************************
+        /**************************************
          * On click loads the questions for the
          * selected quiz and stores them in the
          * session. Redirects to question1.aspx
-         *********************************/
+         **************************************/
 
         protected void startQuiz_Click(object sender, EventArgs e)
         {
@@ -128,7 +128,7 @@ namespace Assignment1_Quiz
 
         /*****************************************************************
          * Adds new quiz and questions to quizzes.txt and quizQuestions.txt
-         * ***************************************************************/
+         *****************************************************************/
 
         protected void btnAddQuiz_Click(object sender, EventArgs e)
         {
