@@ -14,14 +14,6 @@ namespace Assignment1_Quiz
         {
             if (!IsPostBack)
             {
-                //Red in nationalities text file and populate dropdown list
-                string[] readFile = File.ReadAllLines(Server.MapPath("Nationalities.txt"));
-
-                for (int i = 0; i < readFile.Length; i++)
-                {
-                    lstNationalities.Items.Add(new ListItem(readFile[i], readFile[i]));
-                }
-
                 //Check if cookie exists // if(true) populate relivent input fields
                 if (Request.Cookies["s00147036/s00077881"] != null)
                 {
