@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="ProjectData">
+  <DataContextMoniker Name="/ProjectDataDataContext" />
+  <nestedChildShapes>
+    <classShape Id="fa2b1710-98a1-449a-8d27-46b04b2c1953" absoluteBounds="2.5, 1.875, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/ProjectDataDataContext/Quize" />
+      <nestedChildShapes>
+        <elementListCompartment Id="36cfb7d1-d870-42af-9999-53c8aea6d599" absoluteBounds="2.5149999999999997, 2.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f2662d73-544b-4264-9fb3-0f12bffc86b8" absoluteBounds="7.125, 1.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/ProjectDataDataContext/QuizAnswer" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5d00cd76-19cf-4a37-98b3-93a1f6f7f285" absoluteBounds="7.14, 2.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e42d68f1-819b-4219-acb7-0f2938769d2e" absoluteBounds="5.125, 4, 2, 1.3862939453125">
+      <DataClassMoniker Name="/ProjectDataDataContext/QuizQuestion" />
+      <nestedChildShapes>
+        <elementListCompartment Id="404da123-ec2a-4c75-b3de-8950dfddfdd7" absoluteBounds="5.14, 4.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.1249995 : 4); (6.1249995 : 2.53929768880208); (7.125 : 2.53929768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ProjectDataDataContext/QuizQuestion/QuizQuestion_QuizAnswer" />
+      <nodes>
+        <classShapeMoniker Id="e42d68f1-819b-4219-acb7-0f2938769d2e" />
+        <classShapeMoniker Id="f2662d73-544b-4264-9fb3-0f12bffc86b8" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.5 : 3.64589680989583); (5.125 : 4)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ProjectDataDataContext/Quize/Quize_QuizQuestion" />
+      <nodes>
+        <classShapeMoniker Id="fa2b1710-98a1-449a-8d27-46b04b2c1953" />
+        <classShapeMoniker Id="e42d68f1-819b-4219-acb7-0f2938769d2e" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
