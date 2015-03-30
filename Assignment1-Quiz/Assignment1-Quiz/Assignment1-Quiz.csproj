@@ -57,6 +57,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Quiz_ProjectData.mdf" />
+    <Content Include="App_Data\Quiz_ProjectData_log.ldf">
+      <DependentUpon>Quiz_ProjectData.mdf</DependentUpon>
+    </Content>
     <Content Include="question1.aspx" />
     <Content Include="question2.aspx" />
     <Content Include="question3.aspx" />
