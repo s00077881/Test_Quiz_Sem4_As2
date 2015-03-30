@@ -33,6 +33,10 @@ namespace Assignment1_Quiz
         //List of currently loaded quizzes // Populate from text file "Quizzes.txt"
         public List<Quiz> quizCurrentList = new List<Quiz>();
 
+        //MAin link to database
+        ProjectDataDataContext db = new ProjectDataDataContext();
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
         }
@@ -45,27 +49,23 @@ namespace Assignment1_Quiz
         protected void btnCat_Click(object sender, EventArgs e)
         {
             ImageButton btn = (ImageButton)sender;
-            Quiz quiz;
 
-            string[] readFile = File.ReadAllLines(Server.MapPath("Quizzes.txt"));
-            string[] splitLine;
-
-            for (int i = 0; i < readFile.Length; i++)
+            try
             {
-                splitLine = readFile[i].Split(',');
-                if (splitLine[2] == btn.AlternateText)
+                var catQuizes = from q in db.Quizes
+                                where q.Category == btn.AlternateText
+                                select new Quiz(Convert.ToString(q.Id) ,q.Name, q.Category);
+
+                lstQuizSelect.Items.Clear();
+
+                foreach (var cat in catQuizes)
                 {
-                    quiz = new Quiz(splitLine[0], splitLine[1], splitLine[2]);
-                    quizCurrentList.Add(quiz);
+                    lstQuizSelect.Items.Add(new ListItem(cat._quizName, Convert.ToString(cat._quizID)));
                 }
             }
-
-            lstQuizSelect.Items.Clear();
-
-            //Add quiz dropdown list
-            for (int i = 0; i < quizCurrentList.Count; i++)
+            catch(Exception)
             {
-                lstQuizSelect.Items.Add(new ListItem(quizCurrentList.ElementAt(i)._quizName, quizCurrentList.ElementAt(i)._quizID));
+                //Need to populate error mesage
             }
         }
 
@@ -80,19 +80,34 @@ namespace Assignment1_Quiz
         {
             List<QuizQuestions> questions = new List<QuizQuestions>();
 
-            QuizQuestions question;
-            string[] readFile = File.ReadAllLines(Server.MapPath("QuizQuestions.txt"));
-            string[] splitLine;
+            //QuizQuestions question;
+            //string[] readFile = File.ReadAllLines(Server.MapPath("QuizQuestions.txt"));
+            //string[] splitLine;
 
 
-            for (int i = 0; i < readFile.Length; i++)
+            //for (int i = 0; i < readFile.Length; i++)
+            //{
+            //    splitLine = readFile[i].Split(',');
+            //    if (splitLine[0] == lstQuizSelect.SelectedValue)
+            //    {
+            //        question = new QuizQuestions(splitLine[0],splitLine[1], splitLine[2], splitLine[3], splitLine[4], splitLine[5], splitLine[6]);
+            //        questions.Add(question);
+            //    }
+            //}
+
+            try
             {
-                splitLine = readFile[i].Split(',');
-                if (splitLine[0] == lstQuizSelect.SelectedValue)
-                {
-                    question = new QuizQuestions(splitLine[0],splitLine[1], splitLine[2], splitLine[3], splitLine[4], splitLine[5], splitLine[6]);
-                    questions.Add(question);
-                }
+                var questionStore = from q in db.QuizQuestions
+                                    where q.QuizId == Convert.ToInt32(lstQuizSelect.SelectedValue)
+                                    select q;
+
+                //var answerStore = from a in db.QuizAnswers
+                //                  where a.QuestionId == questionStore.
+
+            }
+            catch (Exception)
+            {
+                //Need to populate error mesage
             }
 
             Session.Add("timeStart", DateTime.Now);
