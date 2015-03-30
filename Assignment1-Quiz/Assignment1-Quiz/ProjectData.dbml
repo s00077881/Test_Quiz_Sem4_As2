@@ -1,5 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Quiz_ProjectData" Class="ProjectDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Quiz_ProjectData.mdf;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.QuizQuestions" Member="QuizQuestions">
+    <Type Name="QuizQuestion">
+      <Column Name="QuizId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Question" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="QuizQuestion_QuizAnswer" Member="QuizAnswer" ThisKey="QuizId" OtherKey="QuizId" Type="QuizAnswer" Cardinality="One" />
+      <Association Name="Quize_QuizQuestion" Member="Quize" ThisKey="QuizId" OtherKey="Id" Type="Quize" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.QuizAnswers" Member="QuizAnswers">
+    <Type Name="QuizAnswer">
+      <Column Name="QuizId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Answer" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Value" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="QuizQuestion_QuizAnswer" Member="QuizQuestion" ThisKey="QuizId" OtherKey="QuizId" Type="QuizQuestion" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.Quizes" Member="Quizes">
     <Type Name="Quize">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -7,25 +23,7 @@
       <Column Name="Category" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
       <Column Name="TotalTimesTaken" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TotalScore" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Quize_QuizQuestion" Member="QuizQuestions" ThisKey="Id" OtherKey="QuizId" Type="QuizQuestion" />
-    </Type>
-  </Table>
-  <Table Name="dbo.QuizAnswers" Member="QuizAnswers">
-    <Type Name="QuizAnswer">
-      <Column Name="QuestionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Answer" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="Value" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="AnswerId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Association Name="QuizQuestion_QuizAnswer" Member="QuizQuestion" ThisKey="QuestionId" OtherKey="QuestionId" Type="QuizQuestion" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.QuizQuestions" Member="QuizQuestions">
-    <Type Name="QuizQuestion">
-      <Column Name="QuizId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Question" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="QuestionId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Association Name="QuizQuestion_QuizAnswer" Member="QuizAnswers" ThisKey="QuestionId" OtherKey="QuestionId" Type="QuizAnswer" />
-      <Association Name="Quize_QuizQuestion" Member="Quize" ThisKey="QuizId" OtherKey="Id" Type="Quize" IsForeignKey="true" />
+      <Association Name="Quize_QuizQuestion" Member="QuizQuestion" ThisKey="Id" OtherKey="QuizId" Type="QuizQuestion" Cardinality="One" />
     </Type>
   </Table>
 </Database>
