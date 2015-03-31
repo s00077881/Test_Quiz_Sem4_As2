@@ -9,9 +9,9 @@ namespace Assignment1_Quiz
     {
         public int _questionId { get; set; }
         public string _answer { get; set; }
-        public bool _value { get; set; }
+        public int? _value { get; set; }
 
-        public QuizAnswers(int questionId, string answer, bool value)
+        public QuizAnswers(int questionId, string answer, int? value)
         {
             _questionId = questionId;
             _answer = answer;

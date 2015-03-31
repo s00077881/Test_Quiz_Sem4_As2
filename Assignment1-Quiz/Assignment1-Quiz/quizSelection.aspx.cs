@@ -79,39 +79,29 @@ namespace Assignment1_Quiz
         protected void startQuiz_Click(object sender, EventArgs e)
         {
             List<QuizQuestions> questions = new List<QuizQuestions>();
-
-            //QuizQuestions question;
-            //string[] readFile = File.ReadAllLines(Server.MapPath("QuizQuestions.txt"));
-            //string[] splitLine;
-
-
-            //for (int i = 0; i < readFile.Length; i++)
+            
+            //try
             //{
-            //    splitLine = readFile[i].Split(',');
-            //    if (splitLine[0] == lstQuizSelect.SelectedValue)
-            //    {
-            //        question = new QuizQuestions(splitLine[0],splitLine[1], splitLine[2], splitLine[3], splitLine[4], splitLine[5], splitLine[6]);
-            //        questions.Add(question);
-            //    }
+                var answerStore = from q in db.Quizes
+                                  where q.Id == Convert.ToInt32(lstQuizSelect.SelectedValue)
+                                  from qq in db.QuizQuestions
+                                  where qq.QuizId == q.Id
+                                  from a in db.QuizAnswers
+                                  where a.QuestionId == qq.QuestionId
+                                  select new QuizQuestions(
+                                      qq.QuestionId,
+                                      qq.Question,
+                                      qq.QuizId,
+                                      new QuizAnswers(a.QuestionId, a.Answer, a.Value));
+
+            //}
+            //catch (Exception)
+            //{
+            //    //Need to populate error mesage
             //}
 
-            try
-            {
-                var questionStore = from q in db.QuizQuestions
-                                    where q.QuizId == Convert.ToInt32(lstQuizSelect.SelectedValue)
-                                    select q;
-
-                //var answerStore = from a in db.QuizAnswers
-                //                  where a.QuestionId == questionStore.
-
-            }
-            catch (Exception)
-            {
-                //Need to populate error mesage
-            }
-
             Session.Add("timeStart", DateTime.Now);
-            Session.Add("questions", questions);
+            Session.Add("questions", answerStore);
             Session.Add("quesAnswered", RandomArray());
             Response.Redirect("question1.aspx");
         }
@@ -196,48 +186,48 @@ namespace Assignment1_Quiz
                 /************************************************
                  Add New Question To The Quiz Question Text File
                  ************************************************/
-                List<QuizQuestions> oldQuestions = new List<QuizQuestions>();
-                List<QuizQuestions> newQuestions = (List<QuizQuestions>)ViewState["formQuestions"];
+                //List<QuizQuestions> oldQuestions = new List<QuizQuestions>();
+                //List<QuizQuestions> newQuestions = (List<QuizQuestions>)ViewState["formQuestions"];
 
 
-                //Read in text file
-                readFile = File.ReadAllLines(Server.MapPath("QuizQuestions.txt"));
-                QuizQuestions qq;
+                ////Read in text file
+                //readFile = File.ReadAllLines(Server.MapPath("QuizQuestions.txt"));
+                //QuizQuestions qq;
 
 
                 //Read in quizQuestion text file
-                for (int i = 0; i < readFile.Length; i++)
-                {
-                    splitLine = readFile[i].Split(',');
-                    qq = new QuizQuestions(splitLine[0], splitLine[1], splitLine[2], splitLine[3], splitLine[4], splitLine[5], splitLine[6]);
-                    oldQuestions.Add(qq);
-                }
+                //for (int i = 0; i < readFile.Length; i++)
+                //{
+                //    splitLine = readFile[i].Split(',');
+                //    qq = new QuizQuestions(splitLine[0], splitLine[1], splitLine[2], splitLine[3], splitLine[4], splitLine[5], splitLine[6]);
+                //    oldQuestions.Add(qq);
+                //}
 
-                for (int i = 0; i < newQuestions.Count; i++)
-                {
-                    qq = new QuizQuestions(
-                        id,
-                        newQuestions.ElementAt(i)._question,
-                        newQuestions.ElementAt(i)._option1,
-                        newQuestions.ElementAt(i)._option2,
-                        newQuestions.ElementAt(i)._option3,
-                        newQuestions.ElementAt(i)._option4,
-                        newQuestions.ElementAt(i)._answer
-                        );
-                    oldQuestions.Add(qq);
-                }
+                //for (int i = 0; i < newQuestions.Count; i++)
+                //{
+                //    qq = new QuizQuestions(
+                //        id,
+                //        newQuestions.ElementAt(i)._question,
+                //        newQuestions.ElementAt(i)._option1,
+                //        newQuestions.ElementAt(i)._option2,
+                //        newQuestions.ElementAt(i)._option3,
+                //        newQuestions.ElementAt(i)._option4,
+                //        newQuestions.ElementAt(i)._answer
+                //        );
+                //    oldQuestions.Add(qq);
+                //}
 
                 //Write collection to "QuizQuestions.txt" file
-                writeToFile = new string[oldQuestions.Count];
+                //writeToFile = new string[oldQuestions.Count];
 
 
-                for (int i = 0; i < oldQuestions.Count; i++)
-                {
-                    QuizQuestions curQuestion = oldQuestions.ElementAt(i);
-                    writeToFile[i] = curQuestion.WriteQuestions();
-                }
+                //for (int i = 0; i < oldQuestions.Count; i++)
+                //{
+                //    QuizQuestions curQuestion = oldQuestions.ElementAt(i);
+                //    writeToFile[i] = curQuestion.WriteQuestions();
+                //}
 
-                File.WriteAllLines((Server.MapPath("QuizQuestions.txt")), writeToFile);
+                //File.WriteAllLines((Server.MapPath("QuizQuestions.txt")), writeToFile);
             }
         }
 
@@ -258,47 +248,47 @@ namespace Assignment1_Quiz
 
             List<QuizQuestions> quizQ = (List<QuizQuestions>)ViewState["formQuestions"];
 
-            if (quizQ != null)
-            {
-                if (quizQ[lstSelectQuestion.SelectedIndex]._question == null)
-                {
-                    tbxEnterQuestion.Text = string.Empty;
-                    tbxOption1.Text = string.Empty;
-                    tbxOption2.Text = string.Empty;
-                    tbxOption3.Text = string.Empty;
-                    tbxOption4.Text = string.Empty;
+            //if (quizQ != null)
+            //{
+            //    if (quizQ[lstSelectQuestion.SelectedIndex]._question == null)
+            //    {
+            //        tbxEnterQuestion.Text = string.Empty;
+            //        tbxOption1.Text = string.Empty;
+            //        tbxOption2.Text = string.Empty;
+            //        tbxOption3.Text = string.Empty;
+            //        tbxOption4.Text = string.Empty;
 
-                    lstSelectAns.SelectedIndex = 0;
+            //        lstSelectAns.SelectedIndex = 0;
 
-                }
-                else
-                {
-                    tbxEnterQuestion.Text = quizQ[lstSelectQuestion.SelectedIndex]._question;
-                    tbxOption1.Text = quizQ[lstSelectQuestion.SelectedIndex]._option1;
-                    tbxOption2.Text = quizQ[lstSelectQuestion.SelectedIndex]._option2;
-                    tbxOption3.Text = quizQ[lstSelectQuestion.SelectedIndex]._option3;
-                    tbxOption4.Text = quizQ[lstSelectQuestion.SelectedIndex]._option4;
+            //    }
+            //    else
+            //    {
+                    //tbxEnterQuestion.Text = quizQ[lstSelectQuestion.SelectedIndex]._question;
+                    //tbxOption1.Text = quizQ[lstSelectQuestion.SelectedIndex]._option1;
+                    //tbxOption2.Text = quizQ[lstSelectQuestion.SelectedIndex]._option2;
+                    //tbxOption3.Text = quizQ[lstSelectQuestion.SelectedIndex]._option3;
+                    //tbxOption4.Text = quizQ[lstSelectQuestion.SelectedIndex]._option4;
 
-                    if (quizQ[lstSelectQuestion.SelectedIndex]._answer == tbxOption1.Text)
-                        lstSelectAns.SelectedIndex = 0;
-                    else if (quizQ[lstSelectQuestion.SelectedIndex]._answer == tbxOption2.Text)
-                        lstSelectAns.SelectedIndex = 1;
-                    else if (quizQ[lstSelectQuestion.SelectedIndex]._answer == tbxOption3.Text)
-                        lstSelectAns.SelectedIndex = 2;
-                    else
-                        lstSelectAns.SelectedIndex = 3;
-                }
-            }
-            else
-            {
-                tbxEnterQuestion.Text = string.Empty;
-                tbxOption1.Text = string.Empty;
-                tbxOption2.Text = string.Empty;
-                tbxOption3.Text = string.Empty;
-                tbxOption4.Text = string.Empty;
+                    //if (quizQ[lstSelectQuestion.SelectedIndex]._answer == tbxOption1.Text)
+                    //    lstSelectAns.SelectedIndex = 0;
+                    //else if (quizQ[lstSelectQuestion.SelectedIndex]._answer == tbxOption2.Text)
+                    //    lstSelectAns.SelectedIndex = 1;
+                    //else if (quizQ[lstSelectQuestion.SelectedIndex]._answer == tbxOption3.Text)
+                    //    lstSelectAns.SelectedIndex = 2;
+                    //else
+                    //    lstSelectAns.SelectedIndex = 3;
+            //    }
+            //}
+            //else
+            //{
+            //    tbxEnterQuestion.Text = string.Empty;
+            //    tbxOption1.Text = string.Empty;
+            //    tbxOption2.Text = string.Empty;
+            //    tbxOption3.Text = string.Empty;
+            //    tbxOption4.Text = string.Empty;
 
-                lstSelectAns.SelectedIndex = 0;
-            }
+            //    lstSelectAns.SelectedIndex = 0;
+            //}
         }
 
         /*********************************************************
@@ -348,9 +338,9 @@ namespace Assignment1_Quiz
                     }
                 }
 
-                curQues = new QuizQuestions(tbxEnterQuestion.Text, tbxOption1.Text, tbxOption2.Text, tbxOption3.Text, tbxOption4.Text, selectedAns);
-                quizQ[lstSelectQuestion.SelectedIndex] = curQues;
-                ViewState.Add("formQuestions", quizQ);
+                //curQues = new QuizQuestions(tbxEnterQuestion.Text, tbxOption1.Text, tbxOption2.Text, tbxOption3.Text, tbxOption4.Text, selectedAns);
+                //quizQ[lstSelectQuestion.SelectedIndex] = curQues;
+                //ViewState.Add("formQuestions", quizQ);
             }
         }
 
@@ -370,18 +360,18 @@ namespace Assignment1_Quiz
             }
             else
             {
-                foreach (QuizQuestions qq in quizQ)
-                {
-                    if (qq._question == null ||
-                        qq._option1 == null ||
-                        qq._option2 == null ||
-                        qq._option3 == null ||
-                        qq._option4 == null
-                        )
-                    {
-                        args.IsValid = false;
-                    }
-                }
+                //foreach (QuizQuestions qq in quizQ)
+                //{
+                //    if (qq._question == null ||
+                //        qq._option1 == null ||
+                //        qq._option2 == null ||
+                //        qq._option3 == null ||
+                //        qq._option4 == null
+                //        )
+                //    {
+                //        args.IsValid = false;
+                //    }
+                //}
             }
         }
     }

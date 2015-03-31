@@ -2,36 +2,36 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="ProjectData">
   <DataContextMoniker Name="/ProjectDataDataContext" />
   <nestedChildShapes>
-    <classShape Id="1314eb71-57aa-472a-b40f-c065d5166df5" absoluteBounds="3.5, 1.25, 2, 1.1939925130208338">
-      <DataClassMoniker Name="/ProjectDataDataContext/QuizQuestion" />
-      <nestedChildShapes>
-        <elementListCompartment Id="00acfda0-91d2-4b39-8744-56de037ecdaf" absoluteBounds="3.515, 1.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="c6696515-1918-4332-8476-a35bdb0b1033" absoluteBounds="6.25, 1.125, 2, 1.3862939453125">
-      <DataClassMoniker Name="/ProjectDataDataContext/QuizAnswer" />
-      <nestedChildShapes>
-        <elementListCompartment Id="a46bc810-86d0-43e2-86da-6eabda84149d" absoluteBounds="6.265, 1.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="7a43e983-1237-4157-ae38-ad67b92523e9" absoluteBounds="0.75, 0.875, 2, 1.7708968098958331">
       <DataClassMoniker Name="/ProjectDataDataContext/Quize" />
       <nestedChildShapes>
         <elementListCompartment Id="3c4e7968-6600-4fdc-a9d0-e9a6eeecb707" absoluteBounds="0.765, 1.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(5.5 : 1.84699625651042); (6.25 : 1.84699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/ProjectDataDataContext/QuizQuestion/QuizQuestion_QuizAnswer" />
-      <nodes>
-        <classShapeMoniker Id="1314eb71-57aa-472a-b40f-c065d5166df5" />
-        <classShapeMoniker Id="c6696515-1918-4332-8476-a35bdb0b1033" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 1.84699625651042); (3.5 : 1.84699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <classShape Id="0569c381-16c6-4c88-bbe4-c1d884f31c68" absoluteBounds="4, 1.25, 2.375, 1.3862939453125">
+      <DataClassMoniker Name="/ProjectDataDataContext/QuizQuestion" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4112f419-6f9f-4183-bf0f-c55486c90d7c" absoluteBounds="4.015, 1.71, 2.3449999999999998, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 1.94314697265625); (4 : 1.94314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/ProjectDataDataContext/Quize/Quize_QuizQuestion" />
       <nodes>
         <classShapeMoniker Id="7a43e983-1237-4157-ae38-ad67b92523e9" />
-        <classShapeMoniker Id="1314eb71-57aa-472a-b40f-c065d5166df5" />
+        <classShapeMoniker Id="0569c381-16c6-4c88-bbe4-c1d884f31c68" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="bcbd92cb-0b88-4842-b545-89404d4d9d8f" absoluteBounds="7.75, 1.5, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/ProjectDataDataContext/QuizAnswer" />
+      <nestedChildShapes>
+        <elementListCompartment Id="869c23cf-121b-4fbb-a844-8bf0920e7a85" absoluteBounds="7.7650000000000006, 1.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.375 : 2.06814697265625); (7.75 : 2.06814697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ProjectDataDataContext/QuizQuestion/QuizQuestion_QuizAnswer" />
+      <nodes>
+        <classShapeMoniker Id="0569c381-16c6-4c88-bbe4-c1d884f31c68" />
+        <classShapeMoniker Id="bcbd92cb-0b88-4842-b545-89404d4d9d8f" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

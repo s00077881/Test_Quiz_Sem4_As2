@@ -153,6 +153,7 @@
     <Compile Include="quiz.Master.designer.cs">
       <DependentUpon>quiz.Master</DependentUpon>
     </Compile>
+    <Compile Include="QuizAnswers.cs" />
     <Compile Include="quizFinish.aspx.cs">
       <DependentUpon>quizFinish.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
