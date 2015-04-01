@@ -62,12 +62,7 @@
     <Content Include="App_Data\Quiz_ProjectData_log.ldf">
       <DependentUpon>Quiz_ProjectData.mdf</DependentUpon>
     </Content>
-    <Content Include="question1.aspx" />
-    <Content Include="question2.aspx" />
-    <Content Include="question3.aspx" />
-    <Content Include="question4.aspx" />
-    <Content Include="question5.aspx" />
-    <Content Include="question6.aspx" />
+    <Content Include="questions.aspx" />
     <Content Include="quiz.Master" />
     <Content Include="ProjectData.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
@@ -103,47 +98,12 @@
       <DependentUpon>ProjectData.dbml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="question1.aspx.cs">
-      <DependentUpon>question1.aspx</DependentUpon>
+    <Compile Include="questions.aspx.cs">
+      <DependentUpon>questions.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="question1.aspx.designer.cs">
-      <DependentUpon>question1.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="question2.aspx.cs">
-      <DependentUpon>question2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="question2.aspx.designer.cs">
-      <DependentUpon>question2.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="question3.aspx.cs">
-      <DependentUpon>question3.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="question3.aspx.designer.cs">
-      <DependentUpon>question3.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="question4.aspx.cs">
-      <DependentUpon>question4.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="question4.aspx.designer.cs">
-      <DependentUpon>question4.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="question5.aspx.cs">
-      <DependentUpon>question5.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="question5.aspx.designer.cs">
-      <DependentUpon>question5.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="question6.aspx.cs">
-      <DependentUpon>question6.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="question6.aspx.designer.cs">
-      <DependentUpon>question6.aspx</DependentUpon>
+    <Compile Include="questions.aspx.designer.cs">
+      <DependentUpon>questions.aspx</DependentUpon>
     </Compile>
     <Compile Include="Quiz.cs" />
     <Compile Include="quiz.Master.cs">

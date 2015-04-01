@@ -15,7 +15,10 @@ namespace Assignment1_Quiz
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            curIndex = (int)Session["QuestionCurIndex"];
+            if (Session["QuestionCurIndex"] != null)
+                curIndex = (int)Session["QuestionCurIndex"];
+            else
+                Response.Redirect("quizSelection.aspx");
 
             if (!IsPostBack)
             {
@@ -118,7 +121,7 @@ namespace Assignment1_Quiz
             curIndex++;
             Session.Add("QuestionCurIndex", curIndex);
 
-            Response.Redirect("question1.aspx");
+            Response.Redirect("questions.aspx");
         }
 
         protected void btnPrevQuestion_Click(object sender, EventArgs e)
@@ -128,7 +131,7 @@ namespace Assignment1_Quiz
             curIndex--;
             Session.Add("QuestionCurIndex", curIndex);
 
-            Response.Redirect("question1.aspx");
+            Response.Redirect("questions.aspx");
         }
 
         protected void btnFinishQuiz_Click(object sender, EventArgs e)

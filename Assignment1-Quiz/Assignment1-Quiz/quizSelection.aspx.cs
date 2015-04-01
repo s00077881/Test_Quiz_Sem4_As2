@@ -110,7 +110,7 @@ namespace Assignment1_Quiz
             Session.Add("QuestionCurIndex", 0);
             Session.Add("timeStart", DateTime.Now);
             Session.Add("quesAnswered", RandomArray(questionIds));
-            Response.Redirect("question1.aspx");
+            Response.Redirect("questions.aspx");
         }
 
 
