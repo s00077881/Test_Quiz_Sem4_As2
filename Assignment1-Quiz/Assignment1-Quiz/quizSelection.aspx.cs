@@ -77,31 +77,28 @@ namespace Assignment1_Quiz
          **************************************/
 
         protected void startQuiz_Click(object sender, EventArgs e)
-        {
-            List<QuizQuestions> questions = new List<QuizQuestions>();
-            
-            //try
-            //{
-                var answerStore = from q in db.Quizes
-                                  where q.Id == Convert.ToInt32(lstQuizSelect.SelectedValue)
-                                  from qq in db.QuizQuestions
-                                  where qq.QuizId == q.Id
-                                  from a in db.QuizAnswers
-                                  where a.QuestionId == qq.QuestionId
-                                  select new QuizQuestions(
-                                      qq.QuestionId,
-                                      qq.Question,
-                                      qq.QuizId,
-                                      new QuizAnswers(a.QuestionId, a.Answer, a.Value));
+        {  
+            try
+            {
+                List<QuizQuestions> answerStore = (from q in db.Quizes
+                                                    where q.Id == Convert.ToInt32(lstQuizSelect.SelectedValue)
+                                                    from qq in db.QuizQuestions
+                                                    where qq.QuizId == q.Id
+                                                    from a in db.QuizAnswers
+                                                    where a.QuestionId == qq.QuestionId
+                                                    select new QuizQuestions(
+                                                        qq.QuestionId,
+                                                        qq.Question,
+                                                        qq.QuizId,
+                                                        new QuizAnswers(a.QuestionId, a.Answer, a.Value))).ToList();
 
-            //}
-            //catch (Exception)
-            //{
-            //    //Need to populate error mesage
-            //}
-
+                    Session.Add("questions", answerStore);
+            }
+            catch (Exception)
+            {
+                //Need to populate error message
+            }
             Session.Add("timeStart", DateTime.Now);
-            Session.Add("questions", answerStore);
             Session.Add("quesAnswered", RandomArray());
             Response.Redirect("question1.aspx");
         }

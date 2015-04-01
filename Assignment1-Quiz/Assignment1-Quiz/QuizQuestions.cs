@@ -9,7 +9,7 @@ namespace Assignment1_Quiz
     public class QuizQuestions
     {
         public int _questionId { get; set; }
-        string _question { get; set; }
+        public string _question { get; set; }
         public int _quizId { get; set; }
         public QuizAnswers _answers { get; set; }
 
