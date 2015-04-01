@@ -10,35 +10,31 @@ namespace Assignment1_Quiz
 {
     public partial class question1 : System.Web.UI.Page
     {
+        //Variable to control the currently displayed question
+        public int curIndex;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            /************************************************************
-            * If questions or questions answered exists in the session
-            * Pull the question for this page and place in the label
-            * Then pull the answers and populate the radio button list
-            *
-            * If answers is not null then run through the radio button
-            * list and select the appropriate button if that answer is in
-            * the array in the correct position
-            * 
-            * This is the same code used on the remaining question pages
-            * with the exception of the ElemantAt() being the correct
-            * value for the specific page
-            ************************************************************/
+            //List containg all questions and answers for selected quiz
+            List<QuizQuestions> qq = (List<QuizQuestions>)Session["questions"];
+
+            curIndex = (int)Session["QuestionCurIndex"];
+
+            if (curIndex > 0)
+                btnPrevQuestion.Visible = true;
+            else
+                btnPrevQuestion.Visible = false;
+
+                
+
+            List<int> quesAnswered = (List<int>)Session["quesAnswered"];
+            List<string> answers = (List<string>)Session["answers"];
+
             if (!IsPostBack)
             {
-                //List containg all questions and answers for selectede quiz
-                List<QuizQuestions> qq = (List<QuizQuestions>)Session["questions"];
-
-                List<int> quesAnswered = (List<int>)Session["quesAnswered"];
-                List<string> answers = (List<string>)Session["answers"];
-
                 if (qq != null && quesAnswered != null)
                 {
-                    //Test variable selects currently displayed answers // In this case Answers for question 1
-                    int curIndex = 0;
-
-                    //Pull relivent answers from qq object list
+                    //Pull relivent question & answers from qq object list
                     var quesAns = from item in qq
                                   where item._questionId == quesAnswered.ElementAt(curIndex)
                                   select new
@@ -54,13 +50,14 @@ namespace Assignment1_Quiz
 
                     foreach (var item in quesAns)
                     {
+                        //Assign Text and value to list box items // Value of 1 == Correct answer
                         lstAnswers.Items.Add(new ListItem(item._answer, item._value));
 
                         if (stop == false)
                         {
                             lblQuestion.Text = item._question;
                             stop = true;
-                        } 
+                        }
                     }
 
                 }
@@ -69,10 +66,13 @@ namespace Assignment1_Quiz
 
                 if (answers != null)
                 {
-                    foreach (ListItem ans in lstAnswers.Items)
+                    if (answers.Count > curIndex)
                     {
-                        if (ans.Value == answers[0])
-                            ans.Selected = true;
+                        foreach (ListItem ans in lstAnswers.Items)
+                        {
+                            if (ans.Value == answers[curIndex])
+                                ans.Selected = true;
+                        }
                     }
                 }
             }
@@ -91,13 +91,19 @@ namespace Assignment1_Quiz
         {
             List<string> answers = (List<string>)Session["answers"];
 
-            if (answers == null)
+            if (answers != null)
             {
-                answers = new List<string>();
-                answers.Add(lstAnswers.SelectedValue);
+                if (answers.Count > curIndex)
+                {
+                    answers[curIndex] = lstAnswers.SelectedItem.Text;
+                }
             }
             else
-                answers[0] = lstAnswers.SelectedValue;
+            {
+                answers = new List<string>();
+                answers.Add(lstAnswers.SelectedItem.Text);
+            }
+                
 
             Session.Add("answers", answers);
         }
@@ -105,7 +111,21 @@ namespace Assignment1_Quiz
         protected void btnNextQuestion_Click(object sender, EventArgs e)
         {
             AddAnswer();
-            Response.Redirect("question2.aspx");
+
+            curIndex++;
+            Session.Add("QuestionCurIndex", curIndex);
+
+            Response.Redirect("question1.aspx");
+        }
+
+        protected void btnPrevQuestion_Click(object sender, EventArgs e)
+        {
+            AddAnswer();
+
+            curIndex--;
+            Session.Add("QuestionCurIndex", curIndex);
+
+            Response.Redirect("question1.aspx");
         }
     }
 }

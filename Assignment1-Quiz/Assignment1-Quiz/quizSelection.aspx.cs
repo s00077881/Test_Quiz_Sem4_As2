@@ -80,6 +80,7 @@ namespace Assignment1_Quiz
         {
             List<QuizQuestions> answerStore = null;
             List<int> questionIds = null;
+
             try
             {
                 answerStore = (from q in db.Quizes
@@ -106,8 +107,7 @@ namespace Assignment1_Quiz
                 //Need to populate error message
             }
 
-            //List<int> test = RandomArray();
-
+            Session.Add("QuestionCurIndex", 0);
             Session.Add("timeStart", DateTime.Now);
             Session.Add("quesAnswered", RandomArray(questionIds));
             Response.Redirect("question1.aspx");

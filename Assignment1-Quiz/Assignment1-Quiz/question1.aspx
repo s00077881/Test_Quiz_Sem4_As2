@@ -14,6 +14,7 @@
     </div>
 
     <div class="spacer col-xs-12">
+        <asp:Button ID="btnPrevQuestion" Text="Previous Question" CssClass="btn spacer col-xs-6 btn-default" OnClick="btnPrevQuestion_Click" Visible="false" runat="server" />
         <asp:Button ID="btnNextQuestion" Text="Next Question" CssClass="btn spacer col-xs-6 btn-default pull-right" OnClick="btnNextQuestion_Click" runat="server" />
     </div>
 </asp:Content>
