@@ -27,31 +27,40 @@ namespace Assignment1_Quiz
             ************************************************************/
             if (!IsPostBack)
             {
+                //List containg all questions and answers for selectede quiz
                 List<QuizQuestions> qq = (List<QuizQuestions>)Session["questions"];
+
                 List<int> quesAnswered = (List<int>)Session["quesAnswered"];
                 List<string> answers = (List<string>)Session["answers"];
 
                 if (qq != null && quesAnswered != null)
                 {
                     //Test variable selects currently displayed answers // In this case Answers for question 1
-                    int curIndex = 1;
+                    int curIndex = 0;
 
                     //Pull relivent answers from qq object list
                     var quesAns = from item in qq
-                                  where item._questionId == curIndex
+                                  where item._questionId == quesAnswered.ElementAt(curIndex)
                                   select new
                                   {
+                                      _question = item._question,
                                       _answer = item._answers._answer,
                                       _value = item._answers._value.ToString()
                                   };
-  
 
 
-                    lblQuestion.Text = qq.ElementAt(curIndex-1)._question;
+                    //Variable to prevent question being written to screen 4 times
+                    bool stop = false;
 
                     foreach (var item in quesAns)
                     {
                         lstAnswers.Items.Add(new ListItem(item._answer, item._value));
+
+                        if (stop == false)
+                        {
+                            lblQuestion.Text = item._question;
+                            stop = true;
+                        } 
                     }
 
                 }

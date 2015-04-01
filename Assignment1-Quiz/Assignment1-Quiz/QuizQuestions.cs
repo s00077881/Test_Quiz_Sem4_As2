@@ -17,7 +17,6 @@ namespace Assignment1_Quiz
 
         public QuizQuestions(int questionId,string questions, int quizId, QuizAnswers answers)
         {
-
             _questionId = questionId;
             _question = questions;
             _quizId = quizId;

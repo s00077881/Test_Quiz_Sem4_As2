@@ -77,29 +77,39 @@ namespace Assignment1_Quiz
          **************************************/
 
         protected void startQuiz_Click(object sender, EventArgs e)
-        {  
+        {
+            List<QuizQuestions> answerStore = null;
+            List<int> questionIds = null;
             try
             {
-                List<QuizQuestions> answerStore = (from q in db.Quizes
-                                                    where q.Id == Convert.ToInt32(lstQuizSelect.SelectedValue)
-                                                    from qq in db.QuizQuestions
-                                                    where qq.QuizId == q.Id
-                                                    from a in db.QuizAnswers
-                                                    where a.QuestionId == qq.QuestionId
-                                                    select new QuizQuestions(
-                                                        qq.QuestionId,
-                                                        qq.Question,
-                                                        qq.QuizId,
-                                                        new QuizAnswers(a.QuestionId, a.Answer, a.Value))).ToList();
+                answerStore = (from q in db.Quizes
+                               where q.Id == Convert.ToInt32(lstQuizSelect.SelectedValue)
+                               from qq in db.QuizQuestions
+                               where qq.QuizId == q.Id
+                               from a in db.QuizAnswers
+                               where a.QuestionId == qq.QuestionId
+                               select new QuizQuestions(
+                                   qq.QuestionId,
+                                   qq.Question,
+                                   qq.QuizId,
+                                   new QuizAnswers(a.QuestionId, a.Answer, a.Value))).ToList();
 
-                    Session.Add("questions", answerStore);
+                //Question ids for random generator
+                questionIds = (from id in answerStore
+                           select id._questionId).Distinct().ToList();
+
+                //Store questions, Answers and there right/wrong value in session
+                Session.Add("questions", answerStore);
             }
             catch (Exception)
             {
                 //Need to populate error message
             }
+
+            //List<int> test = RandomArray();
+
             Session.Add("timeStart", DateTime.Now);
-            Session.Add("quesAnswered", RandomArray());
+            Session.Add("quesAnswered", RandomArray(questionIds));
             Response.Redirect("question1.aspx");
         }
 
@@ -109,18 +119,18 @@ namespace Assignment1_Quiz
          * in a random order
          * ****************************************/
 
-        protected List<int> RandomArray()
+        protected List<int> RandomArray(List<int> questionIds)
         {
             List<int> quesAnswered = new List<int>();
             Random rnd = new Random();
             int num;
 
-            while (quesAnswered.Count < 6)
+            while (quesAnswered.Count < questionIds.Count())
             {
-                num = rnd.Next(0, 6);
+                num = rnd.Next(0, questionIds.Count());
 
-                if (!quesAnswered.Contains(num))
-                    quesAnswered.Add(num);
+                if (!quesAnswered.Contains(questionIds.ElementAt(num)))
+                    quesAnswered.Add(questionIds.ElementAt(num));
 
             }
 
