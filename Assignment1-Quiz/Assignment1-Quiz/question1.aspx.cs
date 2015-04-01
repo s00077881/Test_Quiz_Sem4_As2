@@ -15,28 +15,21 @@ namespace Assignment1_Quiz
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //List containg all questions and answers for selected quiz
-            List<QuizQuestions> qq = (List<QuizQuestions>)Session["questions"];
-
             curIndex = (int)Session["QuestionCurIndex"];
-
-            if (curIndex > 0)
-                btnPrevQuestion.Visible = true;
-            else
-                btnPrevQuestion.Visible = false;
-
-                
-
-            List<int> quesAnswered = (List<int>)Session["quesAnswered"];
-            List<string> answers = (List<string>)Session["answers"];
 
             if (!IsPostBack)
             {
+                //List containg all questions and answers for selected quiz
+                List<QuizQuestions> qq = (List<QuizQuestions>)Session["questions"];
+                List<int> quesAnswered = (List<int>)Session["quesAnswered"];
+
+                List<string> answers = (List<string>)Session["answers"]; 
+
                 if (qq != null && quesAnswered != null)
                 {
                     //Pull relivent question & answers from qq object list
                     var quesAns = from item in qq
-                                  where item._questionId == quesAnswered.ElementAt(curIndex)
+                                  where item._questionId == quesAnswered[curIndex]
                                   select new
                                   {
                                       _question = item._question,
@@ -51,7 +44,7 @@ namespace Assignment1_Quiz
                     foreach (var item in quesAns)
                     {
                         //Assign Text and value to list box items // Value of 1 == Correct answer
-                        lstAnswers.Items.Add(new ListItem(item._answer, item._value));
+                        lstAnswers.Items.Add(new ListItem(item._answer, item._answer));
 
                         if (stop == false)
                         {
@@ -60,19 +53,33 @@ namespace Assignment1_Quiz
                         }
                     }
 
+                    //Set correct buttons on page // if not on the first page previous button appears etc.
+                    if (curIndex > 0)
+                        btnPrevQuestion.Visible = true;
+                    else
+                        btnPrevQuestion.Visible = false;
+
+                    if (curIndex == quesAnswered.Count-1)
+                    {
+                        btnNextQuestion.Visible = false;
+                        btnFinishQuiz.Visible = true;
+                    }
+                    else
+                    {
+                        btnNextQuestion.Visible = true;
+                        btnFinishQuiz.Visible = false;
+                    }
                 }
                 else
                     Response.Redirect("quizSelection.aspx");
 
-                if (answers != null)
+                //Populate the selected value on that question
+                if (answers != null && answers.Count > curIndex)
                 {
-                    if (answers.Count > curIndex)
+                    foreach (ListItem ans in lstAnswers.Items)
                     {
-                        foreach (ListItem ans in lstAnswers.Items)
-                        {
-                            if (ans.Value == answers[curIndex])
-                                ans.Selected = true;
-                        }
+                        if (ans.Value == answers[curIndex])
+                            ans.Selected = true;
                     }
                 }
             }
@@ -91,19 +98,15 @@ namespace Assignment1_Quiz
         {
             List<string> answers = (List<string>)Session["answers"];
 
-            if (answers != null)
-            {
-                if (answers.Count > curIndex)
-                {
-                    answers[curIndex] = lstAnswers.SelectedItem.Text;
-                }
-            }
-            else
+            if (answers == null)
             {
                 answers = new List<string>();
-                answers.Add(lstAnswers.SelectedItem.Text);
+                answers.Add(lstAnswers.SelectedValue);
             }
-                
+            else if (answers.Count == curIndex)
+                answers.Add(lstAnswers.SelectedValue);
+            else if (answers.Count > curIndex)
+                answers[curIndex] = lstAnswers.SelectedValue;
 
             Session.Add("answers", answers);
         }
@@ -127,5 +130,11 @@ namespace Assignment1_Quiz
 
             Response.Redirect("question1.aspx");
         }
+
+        protected void btnFinishQuiz_Click(object sender, EventArgs e)
+        {
+            AddAnswer();
+            Response.Redirect("quizFinish.aspx");
+        }     
     }
 }
