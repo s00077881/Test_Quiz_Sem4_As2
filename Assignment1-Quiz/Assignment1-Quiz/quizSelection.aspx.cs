@@ -154,40 +154,50 @@ namespace Assignment1_Quiz
 
             if (IsValid)
             {
-                List<Quiz> newQuiz = new List<Quiz>();
-
-                Quiz readQuiz;
-
-                //Get quiz information (name, category)
-                string name = tbxCreateName.Text;
-                string category = lstCat.SelectedValue;
-
-                //Read in text file
-                string[] readFile = File.ReadAllLines(Server.MapPath("Quizzes.txt"));
-                string[] splitLine;
-
-                for (int i = 0; i < readFile.Length; i++)
+                try 
                 {
-                    splitLine = readFile[i].Split(',');
-                    readQuiz = new Quiz(splitLine[0], splitLine[1], splitLine[2]);
-                    newQuiz.Add(readQuiz);
+                    Quize q = new Quize
+                    {
+                        Name = tbxCreateName.Text,
+                        Category = lstCat.SelectedValue,
+                        TotalTimesTaken = 0,
+                        TotalScore = 0,
+                    };
+
+                    db.Quizes.Add(q);
+                }
+                catch(Exception ex)
+                {
+                    //TO DO
                 }
 
-                string id = Convert.ToString(newQuiz.Count + 1);
 
-                //Add new quiz to the newquiz list
-                readQuiz = new Quiz(id, name, category);
-                newQuiz.Add(readQuiz);
+                ////Read in text file
+                //string[] readFile = File.ReadAllLines(Server.MapPath("Quizzes.txt"));
+                //string[] splitLine;
 
-                //Write collection to "Quizzes.txt" file
-                string[] writeToFile = new string[newQuiz.Count];
+                //for (int i = 0; i < readFile.Length; i++)
+                //{
+                //    splitLine = readFile[i].Split(',');
+                //    readQuiz = new Quiz(splitLine[0], splitLine[1], splitLine[2]);
+                //    newQuiz.Add(readQuiz);
+                //}
 
-                for (int i = 0; i < newQuiz.Count; i++)
-                {
-                    Quiz currentQuiz = newQuiz.ElementAt(i);
-                    writeToFile[i] = currentQuiz.WriteFormat();
-                }
-                File.WriteAllLines((Server.MapPath("Quizzes.txt")), writeToFile);
+                //string id = Convert.ToString(newQuiz.Count + 1);
+
+                ////Add new quiz to the newquiz list
+                //readQuiz = new Quiz(id, name, category);
+                //newQuiz.Add(readQuiz);
+
+                ////Write collection to "Quizzes.txt" file
+                //string[] writeToFile = new string[newQuiz.Count];
+
+                //for (int i = 0; i < newQuiz.Count; i++)
+                //{
+                //    Quiz currentQuiz = newQuiz.ElementAt(i);
+                //    writeToFile[i] = currentQuiz.WriteFormat();
+                //}
+                //File.WriteAllLines((Server.MapPath("Quizzes.txt")), writeToFile);
 
 
                 /************************************************
