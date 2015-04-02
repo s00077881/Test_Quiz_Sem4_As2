@@ -26,7 +26,7 @@ namespace Assignment1_Quiz
                 List<QuizQuestions> qq = (List<QuizQuestions>)Session["questions"];
                 List<int> quesAnswered = (List<int>)Session["quesAnswered"];
 
-                List<string> answers = (List<string>)Session["answers"]; 
+                List<SelectedAnswer> answers = (List<SelectedAnswer>)Session["answers"]; 
 
                 if (qq != null && quesAnswered != null)
                 {
@@ -81,7 +81,7 @@ namespace Assignment1_Quiz
                 {
                     foreach (ListItem ans in lstAnswers.Items)
                     {
-                        if (ans.Value == answers[curIndex])
+                        if (ans.Value == answers[curIndex]._answer)
                             ans.Selected = true;
                     }
                 }
@@ -99,17 +99,36 @@ namespace Assignment1_Quiz
 
         protected void AddAnswer()
         {
-            List<string> answers = (List<string>)Session["answers"];
+            List<QuizQuestions> qq = (List<QuizQuestions>)Session["questions"];
+            List<int> quesAnswered = (List<int>)Session["quesAnswered"];
 
+            List<SelectedAnswer> answers = (List<SelectedAnswer>)Session["answers"];
+            SelectedAnswer answer = new SelectedAnswer();
+
+            var quesAns = from item in qq
+                          where item._questionId == quesAnswered[curIndex]
+                          select new
+                          {
+                              _question = item._question,
+                              _answer = item._answers._answer,
+                              _value = item._answers._value.ToString()
+                          };
+
+            foreach (var item in quesAns)
+            {
+                if (item._answer == lstAnswers.SelectedValue)
+                    answer = new SelectedAnswer(lstAnswers.SelectedValue, Convert.ToInt32(item._value));
+            }
+            
             if (answers == null)
             {
-                answers = new List<string>();
-                answers.Add(lstAnswers.SelectedValue);
+                answers = new List<SelectedAnswer>();
+                answers.Add(answer);
             }
             else if (answers.Count == curIndex)
-                answers.Add(lstAnswers.SelectedValue);
+                answers.Add(answer);
             else if (answers.Count > curIndex)
-                answers[curIndex] = lstAnswers.SelectedValue;
+                answers[curIndex] = answer;
 
             Session.Add("answers", answers);
         }

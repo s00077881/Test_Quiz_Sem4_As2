@@ -8,6 +8,7 @@
       <Column Name="TotalTimesTaken" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TotalScore" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Quize_QuizQuestion" Member="QuizQuestions" ThisKey="Id" OtherKey="QuizId" Type="QuizQuestion" />
+      <Association Name="Quize_Attempt" Member="Attempts" ThisKey="Id" OtherKey="QuizID" Type="Attempt" />
     </Type>
   </Table>
   <Table Name="dbo.QuizQuestions" Member="QuizQuestions">
@@ -26,6 +27,36 @@
       <Column Name="Value" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="AnswerId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Association Name="QuizQuestion_QuizAnswer" Member="QuizQuestion" ThisKey="QuestionId" OtherKey="QuestionId" Type="QuizQuestion" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="User">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NationalityID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="User_Attempt" Member="Attempts" ThisKey="UserID" OtherKey="UserID" Type="Attempt" />
+      <Association Name="Nationality_User" Member="Nationality" ThisKey="NationalityID" OtherKey="Id" Type="Nationality" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Nationalities" Member="Nationalities">
+    <Type Name="Nationality">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nationality" Member="Nationality1" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Association Name="Nationality_User" Member="Users" ThisKey="Id" OtherKey="NationalityID" Type="User" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Attempts" Member="Attempts">
+    <Type Name="Attempt">
+      <Column Name="AttemptID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QuizID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TimeStart" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TimeEnd" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Score" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="User_Attempt" Member="User" ThisKey="UserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
+      <Association Name="Quize_Attempt" Member="Quize" ThisKey="QuizID" OtherKey="Id" Type="Quize" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
