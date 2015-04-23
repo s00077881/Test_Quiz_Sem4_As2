@@ -24,16 +24,13 @@ namespace Assignment1_Quiz
     /// Bootstrap
     /// jQuery
     /// 
-    /// GitHub : https://github.com/CollegeAssignments/Sem4_WebProg_Quiz
+    /// GitHub : 
     /// </summary>
 
 
     public partial class quizSelection : System.Web.UI.Page
     {
-        //List of currently loaded quizzes // Populate from text file "Quizzes.txt"
-        public List<Quiz> quizCurrentList = new List<Quiz>();
-
-        //MAin link to database
+        //Main link to database
         ProjectDataDataContext db = new ProjectDataDataContext();
 
 
@@ -101,6 +98,7 @@ namespace Assignment1_Quiz
 
                 //Store questions, Answers and there right/wrong value in session
                 Session.Add("questions", answerStore);
+                Session.Add("quesAnswered", RandomArray(questionIds));
             }
             catch (Exception)
             {
@@ -108,8 +106,7 @@ namespace Assignment1_Quiz
             }
 
             Session.Add("QuestionCurIndex", 0);
-            Session.Add("timeStart", DateTime.Now);
-            Session.Add("quesAnswered", RandomArray(questionIds));
+            Session.Add("timeStart", DateTime.Now);  
             Response.Redirect("questions.aspx");
         }
 

@@ -22,7 +22,7 @@
     <div class="form-group"><!--Email Input Field-->
         <h3><span class="label label-default col-md-12 col-xs-12 ">Email</span></h3>
         <asp:TextBox ID="tbxEmail" CssClass="form-control" runat="server" />
-        <asp:RequiredFieldValidator ID="rfvEmail" ControlToValidate="tbxEmail" CssClass="alert alert-danger col-xs-12 " Display="Dynamic" ErrorMessage="*Please enter email." runat="server" />
+        <asp:RequiredFieldValidator ID="rfvEmail" ControlToValidate="tbxEmail" CssClass="alert alert-danger label col-xs-12 " Display="Dynamic" ErrorMessage="*Please enter email." runat="server" />
         <asp:RegularExpressionValidator ID="revEmail" ControlToValidate="tbxEmail" CssClass="alert alert-danger label col-xs-12 " Display="Dynamic" ErrorMessage="*Invalid email." ValidationExpression="^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$" runat="server" />
     </div>
 
