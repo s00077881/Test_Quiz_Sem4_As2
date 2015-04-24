@@ -18,5 +18,8 @@
         <asp:Button ID="btnNextQuestion" Text="Next Question" CssClass="btn spacer col-xs-6 btn-default pull-right" OnClick="btnNextQuestion_Click" runat="server" />
         <asp:Button ID="btnFinishQuiz" Text="Finish Quiz" CssClass="btn spacer col-xs-6 btn-success pull-right" OnClick="btnFinishQuiz_Click" Visible="false" runat="server" />
     </div>
-    <asp:Label ID="test" runat="server" />
+    <div class="col-xs-12 text-center">
+        <asp:Label CssClass="alert alert-danger label col-xs-12 spacer" ID="lblDbErrorNotice" runat="server" ></asp:Label>
+    </div>
+
 </asp:Content>

@@ -38,6 +38,10 @@
         </div>
     </div><!--End Right Column-->
 
+    <div class="col-xs-12 text-center">
+        <asp:Label CssClass="alert alert-danger label col-xs-12 spacer" ID="lblDbErrorNotice" runat="server" ></asp:Label>
+    </div>
+
     <script type="text/javascript">
 
         //Dispalys the the users score and average in a bar chart

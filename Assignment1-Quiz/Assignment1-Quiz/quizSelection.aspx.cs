@@ -62,7 +62,7 @@ namespace Assignment1_Quiz
             }
             catch(Exception)
             {
-                //Need to populate error mesage
+                lblDbErrorNotice.Text = "Internal Server Error. Please Contact the Site Administrator";
             }
         }
 
@@ -104,7 +104,7 @@ namespace Assignment1_Quiz
             }
             catch (Exception)
             {
-                //Need to populate error message
+                lblDbErrorNotice.Text = "Internal Server Error. Please Contact the Site Administrator";
             }
 
             Session.Add("QuizID", Convert.ToInt32(lstQuizSelect.SelectedValue));

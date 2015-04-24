@@ -97,9 +97,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="login.aspx" />
-    <Content Include="main.css" />
+    <Content Include="css\main.css" />
     <Content Include="quizFinish.aspx" />
     <Content Include="quizSelection.aspx" />
+    <Content Include="userHistory.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -148,6 +149,13 @@
       <DependentUpon>quizSelection.aspx</DependentUpon>
     </Compile>
     <Compile Include="SelectedAnswer.cs" />
+    <Compile Include="userHistory.aspx.cs">
+      <DependentUpon>userHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="userHistory.aspx.designer.cs">
+      <DependentUpon>userHistory.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

@@ -209,8 +209,7 @@ namespace Assignment1_Quiz
             }
             catch(Exception ex)
             {
-                test.Text = ex.Message;
-                //Populate error mesage
+                lblDbErrorNotice.Text = "Internal Server Error. Please Contact the Site Administrator";
             }
 
             var quizVariable = from q in db.Quizes
@@ -250,7 +249,7 @@ namespace Assignment1_Quiz
             }
             catch(Exception ex)
             {
-                //Populate Error Mesage
+                lblDbErrorNotice.Text = "Internal Server Error. Please Contact the Site Administrator";
             }
             //Add information need for quiz finish page to session
             Session.Add("Score", score);
