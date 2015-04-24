@@ -13,7 +13,7 @@
 
     <div class="form-group"><!--Last Name Input Field-->
         <h3><span class="label label-default col-md-12 col-xs-12 ">Last Name</span></h3>
-        <asp:TextBox ID="tbxLName" for="usr" type="text" CssClass="form-control" runat="server" />
+        <asp:TextBox ID="tbxLName" type="text" CssClass="form-control" runat="server" />
         <asp:RequiredFieldValidator ID="rfvLName" CssClass="alert alert-danger label col-xs-12 " ControlToValidate="tbxLName" Display="Dynamic" ErrorMessage="*Please enter last name." runat="server" />
     </div>
 </div><!--End Left Column-->

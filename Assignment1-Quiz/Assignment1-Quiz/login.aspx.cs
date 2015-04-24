@@ -47,6 +47,7 @@ namespace Assignment1_Quiz
                 string email = tbxEmail.Text;
                 int nation = lstNationalities.SelectedIndex;
 
+                //Get user id to ensure we dont try to write the same email to the db twice (returns zero if no record present)
                 int userId = GetUserID(email);
 
                 if (userId == 0)
@@ -109,11 +110,20 @@ namespace Assignment1_Quiz
 
         private int GetUserID(string email)
         {
-            int userId = (from u in db.Users
-                         where email == u.Email
-                         select u.UserID).Single();
+            int userId = 0;
 
+            try
+            {
+                userId = (from u in db.Users
+                              where email == u.Email
+                              select u.UserID).Single();
+            }
+            catch(Exception)
+            {
+                userId = 0;
+            }
 
+            //if(userId )
             return userId;
         }
     }
