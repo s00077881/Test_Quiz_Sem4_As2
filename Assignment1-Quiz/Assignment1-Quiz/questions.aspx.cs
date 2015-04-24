@@ -180,15 +180,18 @@ namespace Assignment1_Quiz
             DateTime tEnd = DateTime.Now;
             tEnd.ToString("yyyy-MM-dd H:mm:ss");
 
+            int userID = (int)Session["UserID"];
+            int quizID = (int)Session["QuizID"];
+
             try
             {
                 Attempt attempt = new Attempt
                 {
-                    UserID = (int)Session["UserID"],
-                    QuizID = (int)Session["QuizID"],
+                    UserID = userID,
+                    QuizID = quizID,
                     TimeStart = tStart,
                     TimeEnd = tEnd,
-                    Score = (int)score
+                    Score = score//Removed (int) cast. Put back if problems
                 };
 
                 db.Attempts.InsertOnSubmit(attempt);
@@ -200,6 +203,42 @@ namespace Assignment1_Quiz
                 //Populate error mesage
             }
 
+            var quizVariable = from q in db.Quizes
+                       where q.Id == quizID
+                       select new { _totalTimesTaken = q.TotalTimesTaken, _totalScore = q.TotalScore };
+
+            int tTT=0;
+            int tS=0;
+
+            foreach(var qV in quizVariable)
+            {
+                tTT = Convert.ToInt32(qV._totalTimesTaken);
+                tS = Convert.ToInt32(qV._totalScore);
+            }
+
+            //Variables for TotalTimesTaken & TotalScore
+            tTT++;
+            tS += score;
+
+            try
+            {
+                Quize QU = db.Quizes.First(q => q.Id == quizID);
+
+                QU.TotalTimesTaken = tTT;
+                QU.TotalScore = tS;
+
+                db.SubmitChanges();
+            }
+            catch(Exception ex)
+            {
+                //Populate Error Mesage
+            }
+            //Add information need for quiz finish page to session
+            Session.Add("Score", score);
+            Session.Add("TotalTimesTaken", tTT);
+            Session.Add("TotalScore", tS);
+            Session.Add("TimeEnd", tEnd);
+            
             
 
             Response.Redirect("quizFinish.aspx");

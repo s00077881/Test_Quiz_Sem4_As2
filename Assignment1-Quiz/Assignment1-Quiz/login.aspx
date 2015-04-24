@@ -45,7 +45,7 @@
 </div>
 
 <div class="col-xs-12 text-center">
-    <asp:Label CssClass="alert alert-danger label col-xs-12 spacer" ID="lblDbErrorNotice" runat="server" >fciysudgfbhuviasduhbvg</asp:Label>
+    <asp:Label CssClass="alert alert-danger label col-xs-12 spacer" ID="lblDbErrorNotice" runat="server" ></asp:Label>
 </div>
     
 

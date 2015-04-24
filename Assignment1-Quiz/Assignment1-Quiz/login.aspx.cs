@@ -26,7 +26,6 @@ namespace Assignment1_Quiz
                     lstNationalities.SelectedIndex = Convert.ToInt32(Request.Cookies["s00147036/s00077881"]["Nationality"]);
                 }
             }
-            lblDbErrorNotice.Text = "Internal Server Error. Please Contact the Site Administrator";
         }
 
 
