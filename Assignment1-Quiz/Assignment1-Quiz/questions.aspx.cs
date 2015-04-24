@@ -10,8 +10,16 @@ namespace Assignment1_Quiz
 {
     public partial class question1 : System.Web.UI.Page
     {
+        //Main link to database
+        ProjectDataDataContext db = new ProjectDataDataContext();
+
+
         //Variable to control the currently displayed question
         public int curIndex;
+
+        List<QuizQuestions> qq;
+        List<int> quesAnswered;
+        List<SelectedAnswer> answers;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,10 +31,10 @@ namespace Assignment1_Quiz
             if (!IsPostBack)
             {
                 //List containg all questions and answers for selected quiz
-                List<QuizQuestions> qq = (List<QuizQuestions>)Session["questions"];
-                List<int> quesAnswered = (List<int>)Session["quesAnswered"];
+                qq = (List<QuizQuestions>)Session["questions"];
+                quesAnswered = (List<int>)Session["quesAnswered"];
 
-                List<SelectedAnswer> answers = (List<SelectedAnswer>)Session["answers"]; 
+                answers = (List<SelectedAnswer>)Session["answers"]; 
 
                 if (qq != null && quesAnswered != null)
                 {
@@ -99,10 +107,10 @@ namespace Assignment1_Quiz
 
         protected void AddAnswer()
         {
-            List<QuizQuestions> qq = (List<QuizQuestions>)Session["questions"];
-            List<int> quesAnswered = (List<int>)Session["quesAnswered"];
+            qq = (List<QuizQuestions>)Session["questions"];
+            quesAnswered = (List<int>)Session["quesAnswered"];
 
-            List<SelectedAnswer> answers = (List<SelectedAnswer>)Session["answers"];
+            answers = (List<SelectedAnswer>)Session["answers"];
             SelectedAnswer answer = new SelectedAnswer();
 
             var quesAns = from item in qq
@@ -156,6 +164,44 @@ namespace Assignment1_Quiz
         protected void btnFinishQuiz_Click(object sender, EventArgs e)
         {
             AddAnswer();
+
+            //Add up total score
+            int score = 0;
+
+            foreach(var a in answers)
+            {
+                if (a._value == 1)
+                    score++;
+            }
+
+            DateTime tStart = (DateTime)Session["timeStart"];
+            tStart.ToString("yyyy-MM-dd H:mm:ss");
+
+            DateTime tEnd = DateTime.Now;
+            tEnd.ToString("yyyy-MM-dd H:mm:ss");
+
+            try
+            {
+                Attempt attempt = new Attempt
+                {
+                    UserID = (int)Session["UserID"],
+                    QuizID = (int)Session["QuizID"],
+                    TimeStart = tStart,
+                    TimeEnd = tEnd,
+                    Score = (int)score
+                };
+
+                db.Attempts.InsertOnSubmit(attempt);
+                db.SubmitChanges();
+            }
+            catch(Exception ex)
+            {
+                test.Text = ex.Message;
+                //Populate error mesage
+            }
+
+            
+
             Response.Redirect("quizFinish.aspx");
         }     
     }

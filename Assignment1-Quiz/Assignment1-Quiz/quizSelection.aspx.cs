@@ -96,6 +96,8 @@ namespace Assignment1_Quiz
                 questionIds = (from id in answerStore
                            select id._questionId).Distinct().ToList();
 
+
+
                 //Store questions, Answers and there right/wrong value in session
                 Session.Add("questions", answerStore);
                 Session.Add("quesAnswered", RandomArray(questionIds));
@@ -105,6 +107,7 @@ namespace Assignment1_Quiz
                 //Need to populate error message
             }
 
+            Session.Add("QuizID", Convert.ToInt32(lstQuizSelect.SelectedValue));
             Session.Add("QuestionCurIndex", 0);
             Session.Add("timeStart", DateTime.Now);  
             Response.Redirect("questions.aspx");

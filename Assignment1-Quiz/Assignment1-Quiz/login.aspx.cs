@@ -47,11 +47,9 @@ namespace Assignment1_Quiz
                 string email = tbxEmail.Text;
                 int nation = lstNationalities.SelectedIndex;
 
-                var userId = from u in db.Users
-                             where email == u.Email
-                             select u.UserID.ToString();
+                int userId = GetUserID(email);
 
-                if (userId.Count() == 0)
+                if (userId == 0)
                 {
                     //Add New user to database
                     User newUser = new User
@@ -73,7 +71,10 @@ namespace Assignment1_Quiz
 
                     db.SubmitChanges();
                 }
-                
+
+                //Check user id after insert
+                userId = GetUserID(email);
+
                 //Add user to Cookie
                 if (chkRemember.Checked)
                 {
@@ -99,6 +100,21 @@ namespace Assignment1_Quiz
 
                 Response.Redirect("quizSelection.aspx");
             }
+        }
+
+        /*********************************
+         * FIX THIS
+         * **************************/
+
+
+        private int GetUserID(string email)
+        {
+            int userId = (from u in db.Users
+                         where email == u.Email
+                         select u.UserID).Single();
+
+
+            return userId;
         }
     }
 }
