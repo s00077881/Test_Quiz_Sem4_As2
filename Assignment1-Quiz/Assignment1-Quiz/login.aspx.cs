@@ -26,6 +26,7 @@ namespace Assignment1_Quiz
                     lstNationalities.SelectedIndex = Convert.ToInt32(Request.Cookies["s00147036/s00077881"]["Nationality"]);
                 }
             }
+            lblDbErrorNotice.Text = "Internal Server Error. Please Contact the Site Administrator";
         }
 
 
@@ -67,9 +68,9 @@ namespace Assignment1_Quiz
                     }
                     catch (Exception ex)
                     {
-                        //Populate error message
+                        lblDbErrorNotice.Text = "Internal Server Error. Please Contact the Site Administrator";
                     }
-
+                    
                     db.SubmitChanges();
                 }
 
@@ -103,10 +104,6 @@ namespace Assignment1_Quiz
             }
         }
 
-        /*********************************
-         * FIX THIS
-         * **************************/
-
 
         private int GetUserID(string email)
         {
@@ -120,6 +117,7 @@ namespace Assignment1_Quiz
             }
             catch(Exception)
             {
+                //if user does not exist return 0 
                 userId = 0;
             }
 

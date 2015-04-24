@@ -43,6 +43,10 @@
 <div class="col-sx-12">
     <asp:Button ID="btnChoose" CssClass=" spacer btn btn-default col-xs-12 col-md-6 col-md-offset-3" Text="Log In" OnClick="btnChoose_Click" runat="server" />
 </div>
+
+<div class="col-xs-12 text-center">
+    <asp:Label CssClass="alert alert-danger label col-xs-12 spacer" ID="lblDbErrorNotice" runat="server" >fciysudgfbhuviasduhbvg</asp:Label>
+</div>
     
 
 
