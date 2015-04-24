@@ -13,6 +13,10 @@ namespace Assignment1_Quiz
         List<QuizQuestions> qq;
         List<int> quesAnswered;
         List<SelectedAnswer> answers;
+        DateTime timeStart;
+        DateTime timeEnd;
+        public int score;
+        public double average = 0;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -22,13 +26,19 @@ namespace Assignment1_Quiz
                 quesAnswered = (List<int>)Session["quesAnswered"];
                 answers = (List<SelectedAnswer>)Session["answers"];
 
-                if (answers != null)
+                if (qq != null)
                 {
-                    for (int i = 0; i < answers.Count; i++)
+                    if (answers != null)
                     {
-                        ShowQuestionResults(i);
+                        for (int i = 0; i < answers.Count; i++)
+                        {
+                            ShowQuestionResults(i);
+                            ShowScore();
+                        }
                     }
                 }
+                else
+                    Response.Redirect("login.aspx");
             }
         }
 
@@ -86,6 +96,41 @@ namespace Assignment1_Quiz
             div.Controls.Add(lblQuestion);
             div.Controls.Add(lstAnswers);
             divLeftColumn.Controls.Add(div);
+        }
+
+        private void ShowScore()
+        {
+            timeStart = (DateTime)Session["timeStart"];
+            timeEnd = (DateTime)Session["TimeEnd"];
+            score = (int)Session["Score"];
+
+            average = Convert.ToDouble((int)Session["TotalScore"]) / Convert.ToDouble((int)Session["TotalTimesTaken"]);
+
+            TimeSpan timeTakenTime = timeEnd - timeStart;
+
+            lblTimeTaken.Text = string.Format("Time taken: {0:hh\\:mm\\:ss}", timeTakenTime);
+            lblTotalPeople.Text = string.Format("Total people to take quiz: {0}", (int)Session["TotalTimesTaken"]);
+            lblAverageScore.Text = string.Format("Average score is: {0:f2}", average);
+            lblScore.Text = string.Format("Your score: {0}/{1}", score, quesAnswered.Count());
+
+        }
+
+        //Restarts Quiz
+        //On click remove answers from session and redirect to question1.aspx
+
+        protected void btnRestartQuiz_Click(object sender, EventArgs e)
+        {
+            Session.Remove("answers");
+            Session.Add("QuestionCurIndex", 0);
+            Session.Add("CheckTaken", false);
+            Response.Redirect("questions.aspx");
+        }
+
+        //On click clear the session and redirect to quiz selection
+
+        protected void btnNewQuiz_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("quizSelection.aspx");
         }
     }
 }

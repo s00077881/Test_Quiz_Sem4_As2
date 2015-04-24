@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="mainContentBlock" runat="server">
 
     <div class="progress">
-        <div class="progress-bar progress-bar-info progress-bar-striped" style="width: 0%"></div>
+        <div id="progBar" class="progress-bar progress-bar-info progress-bar-striped" runat="server"></div>
     </div>
 
     <strong><asp:Label ID="lblQuestion" CssClass="col-xs-12 text-center" runat="server" /></strong>

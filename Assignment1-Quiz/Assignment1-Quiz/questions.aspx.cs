@@ -33,8 +33,9 @@ namespace Assignment1_Quiz
                 //List containg all questions and answers for selected quiz
                 qq = (List<QuizQuestions>)Session["questions"];
                 quesAnswered = (List<int>)Session["quesAnswered"];
+                ProgressBar();
 
-                answers = (List<SelectedAnswer>)Session["answers"]; 
+                answers = (List<SelectedAnswer>)Session["answers"];
 
                 if (qq != null && quesAnswered != null)
                 {
@@ -141,6 +142,15 @@ namespace Assignment1_Quiz
             Session.Add("answers", answers);
         }
 
+        //Used to update the progress bar at the top of the page for each question
+        private void ProgressBar()
+        {
+            double step = 100 / quesAnswered.Count();
+            double stepAmount = step * curIndex;
+
+            progBar.Attributes["style"] = string.Format("width:{0}%", stepAmount);
+        }
+
         protected void btnNextQuestion_Click(object sender, EventArgs e)
         {
             AddAnswer();
@@ -217,8 +227,17 @@ namespace Assignment1_Quiz
             }
 
             //Variables for TotalTimesTaken & TotalScore
-            tTT++;
-            tS += score;
+            bool checkTaken = false;
+
+            if (Session["CheckTaken"] != null)
+                checkTaken = (bool)Session["CheckTaken"];
+
+            if (checkTaken == false)
+            {
+                tTT++;
+                tS += score;
+                checkTaken = true;
+            }
 
             try
             {
@@ -238,6 +257,7 @@ namespace Assignment1_Quiz
             Session.Add("TotalTimesTaken", tTT);
             Session.Add("TotalScore", tS);
             Session.Add("TimeEnd", tEnd);
+            Session.Add("CheckTaken", checkTaken);
             
             
 

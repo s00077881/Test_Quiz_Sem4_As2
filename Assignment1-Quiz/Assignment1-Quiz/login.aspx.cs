@@ -106,7 +106,7 @@ namespace Assignment1_Quiz
 
         private int GetUserID(string email)
         {
-            int userId = 0;
+            int userId;
 
             try
             {

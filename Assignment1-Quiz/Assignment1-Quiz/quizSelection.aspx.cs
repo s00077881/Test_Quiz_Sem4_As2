@@ -109,7 +109,8 @@ namespace Assignment1_Quiz
 
             Session.Add("QuizID", Convert.ToInt32(lstQuizSelect.SelectedValue));
             Session.Add("QuestionCurIndex", 0);
-            Session.Add("timeStart", DateTime.Now);  
+            Session.Add("timeStart", DateTime.Now);
+            Session.Add("CheckTaken", false);
             Response.Redirect("questions.aspx");
         }
 

@@ -13,6 +13,15 @@ namespace Assignment1_Quiz {
     public partial class question1 {
         
         /// <summary>
+        /// progBar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl progBar;
+        
+        /// <summary>
         /// lblQuestion control.
         /// </summary>
         /// <remarks>
