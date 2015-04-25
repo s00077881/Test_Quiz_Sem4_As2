@@ -33,8 +33,9 @@
         </div>
 
         <div class="col-md-12 ansSpacer formHolder">
-            <asp:Button ID="btnNewQuiz" Text="Select New Quiz" CssClass="btn btn-default col-xs-12 col-md-6 spacer " OnClick="btnNewQuiz_Click" runat="server" />
+            <asp:Button ID="btnAttempts" Text="Previous Attempts" CssClass="btn btn-default col-xs-12 col-md-6 spacer " OnClick="btnAttempts_Click" runat="server" />
             <asp:Button ID="btnRestartQuiz" Text="Restart Quiz" CssClass="btn btn-default col-xs-12 col-md-6 spacer " OnClick="btnRestartQuiz_Click" runat="server" />
+            <asp:Button ID="btnNewQuiz" Text="Select New Quiz" CssClass="btn btn-default col-xs-12 col-md-12 spacer " OnClick="btnNewQuiz_Click" runat="server" />
         </div>
     </div><!--End Right Column-->
 

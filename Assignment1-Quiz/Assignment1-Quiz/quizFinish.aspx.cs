@@ -115,6 +115,11 @@ namespace Assignment1_Quiz
 
         }
 
+        protected void btnAttempts_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("userHistory.aspx");
+        }
+
         //Restarts Quiz
         //On click remove answers from session and redirect to question1.aspx
 

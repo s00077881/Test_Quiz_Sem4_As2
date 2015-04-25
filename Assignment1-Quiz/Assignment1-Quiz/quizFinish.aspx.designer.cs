@@ -58,13 +58,13 @@ namespace Assignment1_Quiz {
         protected global::System.Web.UI.WebControls.Label lblAverageScore;
         
         /// <summary>
-        /// btnNewQuiz control.
+        /// btnAttempts control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNewQuiz;
+        protected global::System.Web.UI.WebControls.Button btnAttempts;
         
         /// <summary>
         /// btnRestartQuiz control.
@@ -74,6 +74,15 @@ namespace Assignment1_Quiz {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnRestartQuiz;
+        
+        /// <summary>
+        /// btnNewQuiz control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnNewQuiz;
         
         /// <summary>
         /// lblDbErrorNotice control.
