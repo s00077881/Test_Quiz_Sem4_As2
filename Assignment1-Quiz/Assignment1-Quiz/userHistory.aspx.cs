@@ -67,7 +67,7 @@ namespace Assignment1_Quiz
                     * Pull out the quiz name, date taken, time taken 
                     * and score from attempts for that user and quiz
                     * 
-                    * Use this info to fill the drigview and the populate the chart
+                    * Use this info to fill the gridview and the populate the chart
                     *******************************************************************/
                     var query = from q in db.Attempts
                                 where q.UserID == userId && q.QuizID == Convert.ToInt32(lstQuizzes.SelectedValue)
@@ -164,7 +164,7 @@ namespace Assignment1_Quiz
             {
                 var query = from q in db.Attempts
                             where q.UserID == userId && q.QuizID == Convert.ToInt32(lstQuizzes.SelectedValue)
-                            orderby q.TimeEnd descending
+                            orderby q.TimeEnd ascending
                             select new
                             {
                                 Score = q.Score
@@ -179,7 +179,7 @@ namespace Assignment1_Quiz
             {
                 var query = from q in db.Attempts
                             where q.UserID == userId
-                            orderby q.TimeEnd descending
+                            orderby q.TimeEnd ascending
                             select new
                             {
                                 Score = q.Score

@@ -20,7 +20,7 @@
 
     <div class="col-xs-12 text-center form-control spacer">
         <div class="col-xs-3 formHolder"><label>Quiz</label></div>
-        <div class="col-xs-3 formHolder"><label>Date</label></div>
+        <div class="col-xs-3 formHolder"><label>Date / Time</label></div>
         <div class="col-xs-3 formHolder"><label>Time Taken</label></div>
         <div class="col-xs-3 formHolder"><label>Score</label></div>
     </div>
@@ -31,7 +31,7 @@
             <asp:BoundField HeaderText="Quiz" DataField="Quiz" HtmlEncode="False" >
                 <ItemStyle Width="25%"></ItemStyle>
             </asp:BoundField>
-            <asp:BoundField HeaderText="Date" DataField="Date" HtmlEncode="False" DataFormatString = "{0:d}" >
+            <asp:BoundField HeaderText="Date" DataField="Date" HtmlEncode="False" DataFormatString = "{0:dd/mm/yyyy hh:mm}" >
                 <ItemStyle Width="25%"></ItemStyle>
             </asp:BoundField>
             <asp:BoundField HeaderText="Time Taken" DataField="TimeTaken" HtmlEncode="False">
