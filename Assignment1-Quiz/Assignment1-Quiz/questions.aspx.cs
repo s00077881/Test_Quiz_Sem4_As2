@@ -185,10 +185,10 @@ namespace Assignment1_Quiz
             }
 
             DateTime tStart = (DateTime)Session["timeStart"];
-            tStart.ToString("yyyy-MM-dd H:mm:ss");
+            //tStart.ToString("yyyy-MM-dd H:mm:ss");
 
             DateTime tEnd = DateTime.Now;
-            tEnd.ToString("yyyy-MM-dd H:mm:ss");
+            //tEnd.ToString("yyyy-MM-dd H:mm:ss");
 
             int userID = (int)Session["UserID"];
             int quizID = (int)Session["QuizID"];
@@ -209,7 +209,7 @@ namespace Assignment1_Quiz
             }
             catch(Exception ex)
             {
-                lblDbErrorNotice.Text = "Internal Server Error. Please Contact the Site Administrator";
+                lblDbErrorNotice.Text = "Internal Server Error. Error Message: " + ex.Message + ". Please Contact the Site Administrator.";
             }
 
             var quizVariable = from q in db.Quizes
@@ -249,7 +249,7 @@ namespace Assignment1_Quiz
             }
             catch(Exception ex)
             {
-                lblDbErrorNotice.Text = "Internal Server Error. Please Contact the Site Administrator";
+                lblDbErrorNotice.Text = "Internal Server Error. Error Message: " + ex.Message + ". Please Contact the Site Administrator.";
             }
             //Add information need for quiz finish page to session
             Session.Add("Score", score);

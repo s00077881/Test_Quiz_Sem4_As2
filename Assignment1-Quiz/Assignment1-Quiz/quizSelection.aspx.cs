@@ -102,9 +102,9 @@ namespace Assignment1_Quiz
                 Session.Add("questions", answerStore);
                 Session.Add("quesAnswered", RandomArray(questionIds));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                lblDbErrorNotice.Text = "Internal Server Error. Please Contact the Site Administrator";
+                lblDbErrorNotice.Text = "Internal Server Error. Error Message: " + ex.Message + ". Please Contact the Site Administrator.";
             }
 
             Session.Add("QuizID", Convert.ToInt32(lstQuizSelect.SelectedValue));

@@ -67,7 +67,7 @@ namespace Assignment1_Quiz
                     }
                     catch (Exception ex)
                     {
-                        lblDbErrorNotice.Text = "Internal Server Error. Please Contact the Site Administrator";
+                        lblDbErrorNotice.Text = "Internal Server Error. Error Message: " + ex.Message + ". Please Contact the Site Administrator.";
                     }
                     
                     db.SubmitChanges();

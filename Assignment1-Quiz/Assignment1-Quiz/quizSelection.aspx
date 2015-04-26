@@ -45,7 +45,7 @@
                 
             </div><!--EndRightColumn-->
 
-            <div class="col-xs-12 text-center">
+            <div class="col-xs-12 text-center formHolder">
                 <asp:Label CssClass="alert alert-danger label col-xs-12 spacer" ID="lblDbErrorNotice" runat="server" ></asp:Label>
             </div>
         </div>

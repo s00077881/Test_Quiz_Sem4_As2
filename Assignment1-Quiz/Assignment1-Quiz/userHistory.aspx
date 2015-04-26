@@ -10,7 +10,7 @@
     </div>
 
     <div class="col-xs-12 text-center form-control spacer">
-        <div class="col-xs-3 formHolder"><label>User</label></div>
+        <div class="col-xs-3 formHolder"><label>Date</label></div>
         <div class="col-xs-3 formHolder"><label>Quiz</label></div>
         <div class="col-xs-3 formHolder"><label>Time Taken</label></div>
         <div class="col-xs-3 formHolder"><label>Score</label></div>
@@ -19,13 +19,13 @@
     <asp:GridView ID="gvAttempts" AutoGenerateColumns="false" ShowHeader="false" CssClass="col-xs-12" Font-Size="14px" runat="server">
         <RowStyle HorizontalAlign="Center" />
         <Columns>
-            <asp:BoundField HeaderText="User" DataField="User">
+            <asp:BoundField HeaderText="Date" DataField="Date" HtmlEncode="False" DataFormatString = "{0:d}" >
                 <ItemStyle Width="25%"></ItemStyle>
             </asp:BoundField>
-            <asp:BoundField HeaderText="Quiz" DataField="Quiz">
+            <asp:BoundField HeaderText="Quiz" DataField="Quiz" HtmlEncode="False" >
                 <ItemStyle Width="25%"></ItemStyle>
             </asp:BoundField>
-            <asp:BoundField HeaderText="Time Taken" DataField="TimeTaken">
+            <asp:BoundField HeaderText="Time Taken" DataField="TimeTaken" HtmlEncode="False">
                 <ItemStyle Width="25%"></ItemStyle>
             </asp:BoundField>
             <asp:BoundField HeaderText="Score" DataField="Score">
@@ -33,4 +33,7 @@
             </asp:BoundField>
         </Columns>
     </asp:GridView>
+    <div class="col-xs-12 text-center formHolder">
+        <asp:Label CssClass="alert alert-danger label col-xs-12 spacer" ID="lblDbErrorNotice" runat="server" ></asp:Label>
+    </div>
 </asp:Content>

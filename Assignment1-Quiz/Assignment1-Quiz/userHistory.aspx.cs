@@ -18,21 +18,28 @@ namespace Assignment1_Quiz
             {
                 if (Session["UserID"] != null)
                 {
-                    var query = from q in db.Quizes
-                                select new
-                                {
-                                    Name = q.Name,
-                                    Value = q.Id
-                                };
-
-                    foreach (var item in query)
+                    try
                     {
-                        lstQuizzes.Items.Add(new ListItem(item.Name, Convert.ToString(item.Value)));
+                        var query = from q in db.Quizes
+                                    select new
+                                    {
+                                        Name = q.Name,
+                                        Value = q.Id
+                                    };
+
+                        foreach (var item in query)
+                        {
+                            lstQuizzes.Items.Add(new ListItem(item.Name, Convert.ToString(item.Value)));
+                        }
+
+                        userId = (int)Session["UserID"];
+
+                        PopulateAllQuizzes();
                     }
-
-                    userId = (int)Session["UserID"];
-
-                    PopulateAllQuizzes();
+                    catch(Exception ex)
+                    {
+                        lblDbErrorNotice.Text = "Internal Server Error. Error Message: " + ex.Message + ". Please Contact the Site Administrator.";
+                    }
                 }
                 else
                     Response.Redirect("login.aspx");
@@ -45,18 +52,27 @@ namespace Assignment1_Quiz
             {
                 userId = (int)Session["UserID"];
 
-                var query = from q in db.Attempts
-                             where q.UserID == userId && q.QuizID == Convert.ToInt32(lstQuizzes.SelectedValue)
-                             select new
-                             {
-                                 User = q.User.FirstName + " " + q.User.LastName,
-                                 Quiz = q.Quize.Name,
-                                 TimeTaken = q.TimeEnd - q.TimeStart,
-                                 q.Score
-                             };
+                try
+                {
+                    var query = from q in db.Attempts
+                                where q.UserID == userId && q.QuizID == Convert.ToInt32(lstQuizzes.SelectedValue)
+                                orderby q.TimeEnd ascending
+                                select new
+                                {
+                                    User = q.User.FirstName + " " + q.User.LastName,
+                                    Quiz = q.Quize.Name,
+                                    Date = q.TimeEnd,
+                                    TimeTaken = String.Format("{0:hh\\:mm\\:ss}", q.TimeEnd - q.TimeStart),
+                                    q.Score
+                                };
 
-                gvAttempts.DataSource = query;
-                gvAttempts.DataBind();
+                    gvAttempts.DataSource = query;
+                    gvAttempts.DataBind();
+                }
+                catch (Exception ex)
+                {
+                    lblDbErrorNotice.Text = "Internal Server Error. Error Message: " + ex.Message + ". Please Contact the Site Administrator.";
+                }
             }
             else
                 PopulateAllQuizzes();
@@ -66,18 +82,26 @@ namespace Assignment1_Quiz
         {
             userId = (int)Session["UserID"];
 
-            var query = from q in db.Attempts
-                         where q.UserID == userId
-                         select new
-                         {
-                             User = q.User.FirstName + " " + q.User.LastName,
-                             Quiz = q.Quize.Name,
-                             TimeTaken = q.TimeEnd - q.TimeStart,
-                             q.Score
-                         };
+            try
+            {
+                var query = from q in db.Attempts
+                            where q.UserID == userId
+                            select new
+                            {
+                                User = q.User.FirstName + " " + q.User.LastName,
+                                Quiz = q.Quize.Name,
+                                Date = Convert.ToDateTime(q.TimeEnd),
+                                TimeTaken = String.Format("{0:hh\\:mm\\:ss}", q.TimeEnd - q.TimeStart),
+                                q.Score
+                            };
 
-            gvAttempts.DataSource = query;
-            gvAttempts.DataBind();
+                gvAttempts.DataSource = query;
+                gvAttempts.DataBind();
+            }
+            catch (Exception ex)
+            {
+                lblDbErrorNotice.Text = "Internal Server Error. Error Message: " + ex.Message + ". Please Contact the Site Administrator.";
+            }
         }
     }
 }
