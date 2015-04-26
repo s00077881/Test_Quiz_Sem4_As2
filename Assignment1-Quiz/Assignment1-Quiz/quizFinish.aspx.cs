@@ -126,15 +126,17 @@ namespace Assignment1_Quiz
         protected void btnRestartQuiz_Click(object sender, EventArgs e)
         {
             Session.Remove("answers");
+            Session.Add("timeStart", DateTime.Now);
             Session.Add("QuestionCurIndex", 0);
             Session.Add("CheckTaken", false);
             Response.Redirect("questions.aspx");
         }
 
-        //On click clear the session and redirect to quiz selection
+        //On click clear the answers from session and redirect to quiz selection
 
         protected void btnNewQuiz_Click(object sender, EventArgs e)
         {
+            Session.Remove("answers");
             Response.Redirect("quizSelection.aspx");
         }
     }
