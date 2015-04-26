@@ -26,7 +26,7 @@ namespace Assignment1_Quiz
             if (Session["QuestionCurIndex"] != null)
                 curIndex = (int)Session["QuestionCurIndex"];
             else
-                Response.Redirect("quizSelection.aspx");
+                Response.Redirect("login.aspx");
 
             if (!IsPostBack)
             {
@@ -83,7 +83,7 @@ namespace Assignment1_Quiz
                     }
                 }
                 else
-                    Response.Redirect("quizSelection.aspx");
+                    Response.Redirect("login.aspx");
 
                 //Populate the selected value on that question
                 if (answers != null && answers.Count > curIndex)
