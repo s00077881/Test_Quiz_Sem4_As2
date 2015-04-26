@@ -18,13 +18,14 @@ namespace Assignment1_Quiz
     /// s00147036
     /// -------------
     /// 
-    /// Assignment 1 - Web Programming
+    /// Assignment 2- Web Programming
     /// 
     /// Asp.net
     /// Bootstrap
     /// jQuery
+    /// SQL Server
     /// 
-    /// GitHub : 
+    /// GitHub : https://github.com/CollegeAssignments/Sem4_WebProg_Quiz_Part2
     /// </summary>
 
 
@@ -80,6 +81,19 @@ namespace Assignment1_Quiz
 
             try
             {
+                /***************************************
+                 *Pulls all question and answers associated with 
+                 *the currently selected quiz. The value of the listbox
+                 * item matches up with the quiz id in the quiz table.
+                 * Stores them in a list in the format - 
+                 * 
+                 * Question 1 - answer1 - 0
+                 * Question 1 - answer2 - 1 (marks correct answer)
+                 * Question 1 - answer3 - 0
+                 * Question 1 - answer4 - 0
+                 * 
+                 * If the quiz has 10 questions the list will store 40 question objects (10*4)
+                 **************************************/
                 answerStore = (from q in db.Quizes
                                where q.Id == Convert.ToInt32(lstQuizSelect.SelectedValue)
                                from qq in db.QuizQuestions
@@ -136,6 +150,11 @@ namespace Assignment1_Quiz
             }
 
             return quesAnswered;
+        }
+
+        protected void prvResults_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("userHistory.aspx");
         }
     }
 }

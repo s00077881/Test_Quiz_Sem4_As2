@@ -42,7 +42,7 @@
             </div><!--EndLeftColumn-->
 
             <div class="col-md-6 col-xs-12"><!--RightColumn-->
-                
+                <asp:Button ID="prvResults" CssClass="btn btn-default col-xs-12 spacer" Text="Quiz History" runat="server" CausesValidation="false" OnClick="prvResults_Click"/>
             </div><!--EndRightColumn-->
 
             <div class="col-xs-12 text-center formHolder">

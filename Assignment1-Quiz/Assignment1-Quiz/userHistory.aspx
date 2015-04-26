@@ -66,7 +66,7 @@
             theme: "theme1",
             data: [
                 {        
-                    type: "splineArea",
+                    type: "spline",
                     dataPoints:[
                             <%=dataPoints%>
                     ]

@@ -173,94 +173,96 @@ namespace Assignment1_Quiz
 
         protected void btnFinishQuiz_Click(object sender, EventArgs e)
         {
-            AddAnswer();
-
-            //Add up total score
-            int score = 0;
-
-            foreach(var a in answers)
+            if (Session["UserID"] != null)
             {
-                if (a._value == 1)
-                    score++;
-            }
+                AddAnswer();
 
-            DateTime tStart = (DateTime)Session["timeStart"];
-            //tStart.ToString("yyyy-MM-dd H:mm:ss");
+                //Add up total score
+                int score = 0;
 
-            DateTime tEnd = DateTime.Now;
-            //tEnd.ToString("yyyy-MM-dd H:mm:ss");
-
-            int userID = (int)Session["UserID"];
-            int quizID = (int)Session["QuizID"];
-
-            try
-            {
-                Attempt attempt = new Attempt
+                foreach (var a in answers)
                 {
-                    UserID = userID,
-                    QuizID = quizID,
-                    TimeStart = tStart,
-                    TimeEnd = tEnd,
-                    Score = score//Removed (int) cast. Put back if problems
-                };
+                    if (a._value == 1)
+                        score++;
+                }
 
-                db.Attempts.InsertOnSubmit(attempt);
-                db.SubmitChanges();
+                DateTime tStart = (DateTime)Session["timeStart"];
+                DateTime tEnd = DateTime.Now;
+
+                int userID = (int)Session["UserID"];
+                int quizID = (int)Session["QuizID"];
+
+                try
+                {
+                    Attempt attempt = new Attempt
+                    {
+                        UserID = userID,
+                        QuizID = quizID,
+                        TimeStart = tStart,
+                        TimeEnd = tEnd,
+                        Score = score//Removed (int) cast. Put back if problems
+                    };
+
+                    db.Attempts.InsertOnSubmit(attempt);
+                    db.SubmitChanges();
+                }
+                catch (Exception ex)
+                {
+                    lblDbErrorNotice.Text = "Internal Server Error. Error Message: " + ex.Message + ". Please Contact the Site Administrator.";
+                }
+
+                var quizVariable = from q in db.Quizes
+                                   where q.Id == quizID
+                                   select new { _totalTimesTaken = q.TotalTimesTaken, _totalScore = q.TotalScore };
+
+                int tTT = 0;
+                int tS = 0;
+
+                foreach (var qV in quizVariable)
+                {
+                    tTT = Convert.ToInt32(qV._totalTimesTaken);
+                    tS = Convert.ToInt32(qV._totalScore);
+                }
+
+                //Variables for TotalTimesTaken & TotalScore
+                bool checkTaken = false;
+
+                if (Session["CheckTaken"] != null)
+                    checkTaken = (bool)Session["CheckTaken"];
+
+                if (checkTaken == false)
+                {
+                    tTT++;
+                    tS += score;
+                    checkTaken = true;
+                }
+
+                try
+                {
+                    Quize QU = db.Quizes.First(q => q.Id == quizID);
+
+                    QU.TotalTimesTaken = tTT;
+                    QU.TotalScore = tS;
+
+                    db.SubmitChanges();
+                }
+                catch (Exception ex)
+                {
+                    lblDbErrorNotice.Text = "Internal Server Error. Error Message: " + ex.Message + ". Please Contact the Site Administrator.";
+                }
+                //Add information need for quiz finish page to session
+                Session.Add("Score", score);
+                Session.Add("TotalTimesTaken", tTT);
+                Session.Add("TotalScore", tS);
+                Session.Add("TimeEnd", tEnd);
+                Session.Add("CheckTaken", checkTaken);
+
+
+
+                Response.Redirect("quizFinish.aspx");
             }
-            catch(Exception ex)
-            {
-                lblDbErrorNotice.Text = "Internal Server Error. Error Message: " + ex.Message + ". Please Contact the Site Administrator.";
-            }
-
-            var quizVariable = from q in db.Quizes
-                       where q.Id == quizID
-                       select new { _totalTimesTaken = q.TotalTimesTaken, _totalScore = q.TotalScore };
-
-            int tTT=0;
-            int tS=0;
-
-            foreach(var qV in quizVariable)
-            {
-                tTT = Convert.ToInt32(qV._totalTimesTaken);
-                tS = Convert.ToInt32(qV._totalScore);
-            }
-
-            //Variables for TotalTimesTaken & TotalScore
-            bool checkTaken = false;
-
-            if (Session["CheckTaken"] != null)
-                checkTaken = (bool)Session["CheckTaken"];
-
-            if (checkTaken == false)
-            {
-                tTT++;
-                tS += score;
-                checkTaken = true;
-            }
-
-            try
-            {
-                Quize QU = db.Quizes.First(q => q.Id == quizID);
-
-                QU.TotalTimesTaken = tTT;
-                QU.TotalScore = tS;
-
-                db.SubmitChanges();
-            }
-            catch(Exception ex)
-            {
-                lblDbErrorNotice.Text = "Internal Server Error. Error Message: " + ex.Message + ". Please Contact the Site Administrator.";
-            }
-            //Add information need for quiz finish page to session
-            Session.Add("Score", score);
-            Session.Add("TotalTimesTaken", tTT);
-            Session.Add("TotalScore", tS);
-            Session.Add("TimeEnd", tEnd);
-            Session.Add("CheckTaken", checkTaken);
-            
-            
-
-            Response.Redirect("quizFinish.aspx");
+            else
+                Response.Redirect("login.aspx");
         }     
     }
 }
