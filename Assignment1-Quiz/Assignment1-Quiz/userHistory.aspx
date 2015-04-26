@@ -53,7 +53,7 @@
 
     <script type="text/javascript">
 
-        //Dispalys the the users previous scores using a line chart
+        //Dispalys the the users score and average in a bar chart
         //http://canvasjs.com/editor/?id=http://canvasjs.com/example/gallery/column/oil_reserves/
 
         window.onload = function () {

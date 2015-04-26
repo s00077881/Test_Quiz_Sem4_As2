@@ -98,11 +98,12 @@ namespace Assignment1_Quiz
         }
 
         /************************************************************
-         * AddAnswer method is used to populate the answers list with
-         * selected answer and store in the session
-         * 
-         * The query pulls question and answers for the current index
-         * of question
+        * AddAnswer method is used to populate the answers list with
+        * selected answer and store in the session
+        * 
+        * Again this code is the same on every question page, with the
+        * exception of checking if the count is greater than the specific
+        * page
         ************************************************************/
 
         protected void AddAnswer()
