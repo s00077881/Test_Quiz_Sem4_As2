@@ -145,6 +145,9 @@ namespace Assignment1_Quiz
         //Used to update the progress bar at the top of the page for each question
         private void ProgressBar()
         {
+            //Divides 100% by the number oquestions in current quiz -- 100/6=16.6
+            //Multiply it by the current question index -- 16.6*3= 49.8;
+            //On question 3 bar will be set to 50%
             double step = 100 / quesAnswered.Count();
             double stepAmount = step * curIndex;
 
