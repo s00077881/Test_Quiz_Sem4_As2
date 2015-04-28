@@ -31,7 +31,7 @@
             <asp:BoundField HeaderText="Quiz" DataField="Quiz" HtmlEncode="False" >
                 <ItemStyle Width="25%"></ItemStyle>
             </asp:BoundField>
-            <asp:BoundField HeaderText="Date" DataField="Date" HtmlEncode="False" DataFormatString = "{0:dd/mm/yyyy hh:mm}" >
+            <asp:BoundField HeaderText="Date" DataField="Date" HtmlEncode="False" DataFormatString = "{0:dd/MM/yyyy hh:mm}" >
                 <ItemStyle Width="25%"></ItemStyle>
             </asp:BoundField>
             <asp:BoundField HeaderText="Time Taken" DataField="TimeTaken" HtmlEncode="False">

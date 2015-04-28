@@ -28,6 +28,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PublishDatabaseSettings>&lt;Objects&gt;&lt;ObjectGroup Name="ConnectionString-Deployment" Order="1"&gt;&lt;Destination Path="testQyizAss2_db" /&gt;&lt;Object Type="DbFullSql"&gt;&lt;PreSource Path="Data Source=%28localdb%29\v11.0%3bAttachDbFilename=&amp;quot%3bC:\Users\Brian\Google Drive\College\Year 2\Semester 2\Web Programming\Sem4_WebProg_Quiz_Part2\Assignment1-Quiz\Assignment1-Quiz\App_Data\Quiz_ProjectData.mdf&amp;quot%3b%3bIntegrated Security=True" ScriptSchema="True" ScriptData="True" CopyAllFullTextCatalogs="False" DriDefaults="True" /&gt;&lt;Source Path="obj\Debug\AutoScripts\ConnectionString-Deployment_SchemaAndData.sql" Transacted="True" /&gt;&lt;/Object&gt;&lt;/ObjectGroup&gt;&lt;/Objects&gt;</PublishDatabaseSettings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -89,6 +90,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="Properties\PublishProfiles\testQuizAss2.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -102,7 +104,9 @@
     <Content Include="quizFinish.aspx" />
     <Content Include="quizSelection.aspx" />
     <Content Include="userHistory.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="login.aspx.cs">
